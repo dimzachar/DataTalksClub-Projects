@@ -3,10 +3,24 @@ import os
 from utils.csv_handler import CSVHandler
 from utils.deployment_checker import DeploymentChecker
 
+# from .config import year, course, base_path
+from .config import deploy_csv_path, titles_csv_path
+
 
 def main():
-    deploy_csv_path = os.path.join("Data", "scraped", "final_output.csv")
-    csv_handler = CSVHandler(deploy_csv_path)
+    # output_prefix = "projects_mlzoomcamp_2021"
+    # deploy_csv_path = f"{base_path}/{output_prefix}_cleaned_titles_deploy.csv"
+
+    # The input CSV for this script would be the output from the title generation step
+    # input_csv_path = f"{base_path}/{output_prefix}_cleaned_titles.csv"
+
+    # Initialize CSVHandler
+    csv_handler = CSVHandler(titles_csv_path)
+    # Initialize cleaned_csv_path dynamically (from config or wherever you get it)
+    # cleaned_csv_path = os.path.join(base_path, f"cleaned_scraped_{course}_{year}.csv")
+
+    # Initialize csv_handler with the cleaned_csv_path
+    # csv_handler = CSVHandler(cleaned_csv_path)
 
     # Define keywords for deployment types
     batch_keywords = ['batch', 'hadoop', 'spark']

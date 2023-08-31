@@ -11,17 +11,20 @@ class ScrapingHandler:
         self.folder_path = folder_path
         self.course = course
         self.year = year
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
+        self.subdirectory = f"{folder_path}/{course}/{year}"  # Added this line
+        if not os.path.exists(self.subdirectory):  # Updated this line
+            os.makedirs(self.subdirectory)  # Updated this line
 
     def scrape_data(self):
         response = requests.get(self.url, timeout=10)
         soup = BeautifulSoup(response.content, 'html.parser')
         tables = soup.find_all('table')
+        filenames = []
         for i, table in enumerate(tables):
-            file_name = f"scraped_data_tab_{i+1}_{self.course}_{self.year}.csv"
+            file_name = f"scraped_data_tab_{i + 1}_{self.course}_{self.year}.csv"
+            filenames.append(file_name)
             with open(
-                f"{self.folder_path}/{file_name}",
+                f"{self.subdirectory}/{file_name}",  # Updated this line
                 'w',
                 newline='',
                 encoding='utf-8',
@@ -32,4 +35,4 @@ class ScrapingHandler:
                     for cell in row.find_all(['td', 'th']):
                         csv_row.append(cell.get_text())
                     csvwriter.writerow(csv_row)
-        return len(tables)
+        return filenames

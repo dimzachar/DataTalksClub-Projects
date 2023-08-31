@@ -6,16 +6,16 @@ quality_checks:
 	black .
 	pylint --recursive=y .
 
-scrape:
-	python src/perform_data_scraping.py
+# scrape:
+# 	python -m src.perform_data_scraping
 
-clean:
-	python src/clean_and_save_csv.py
+scrape: quality_checks
+	python -m src.scrape_and_clean
 
-titles: clean
-	python src/generate_and_save_titles.py
+titles:
+	python -m src.generate_and_save_titles
 
-deploy: titles
-	python src/check_and_save_deployment.py
+deploy:
+	python -m src.check_and_save_deployment
 
-all: test quality_checks data clean titles deploy
+all: scrape titles deploy
