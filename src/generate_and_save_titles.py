@@ -36,9 +36,7 @@ def main():
         print(f"Debug: Index: {index}, Row Data: {row}")
 
         if '/tree/' in row['project_url']:
-            github_url = url_constructor.construct_readme_api_url(
-                row['project_url']
-            )  # Corrected this line
+            github_url = url_constructor.construct_readme_api_url(row['project_url'])
         else:
             project_url = row['project_url'].split('github.com/')[-1]
             if project_url.endswith('.git'):
@@ -67,7 +65,7 @@ def main():
         titles.append(title)
 
     csv_handler.update_titles(titles)
-    # Remove quotes and "Title:"
+
     csv_handler.df['project_title'] = csv_handler.df['project_title'].str.replace(
         '"', ''
     )

@@ -11,9 +11,9 @@ class ScrapingHandler:
         self.folder_path = folder_path
         self.course = course
         self.year = year
-        self.subdirectory = f"{folder_path}/{course}/{year}"  # Added this line
-        if not os.path.exists(self.subdirectory):  # Updated this line
-            os.makedirs(self.subdirectory)  # Updated this line
+        self.subdirectory = f"{folder_path}/{course}/{year}"
+        if not os.path.exists(self.subdirectory):
+            os.makedirs(self.subdirectory)
 
     def scrape_data(self):
         response = requests.get(self.url, timeout=10)

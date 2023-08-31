@@ -6,9 +6,6 @@ quality_checks:
 	black .
 	pylint --recursive=y .
 
-# scrape:
-# 	python -m src.perform_data_scraping
-
 scrape: quality_checks
 	python -m src.scrape_and_clean
 

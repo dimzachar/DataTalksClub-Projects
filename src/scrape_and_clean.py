@@ -43,17 +43,14 @@ def main():
     # Combine all dataframes
     combined_df = pd.concat(list_of_dfs, ignore_index=True)
 
-    # Your existing code to clean and save combined_df
     # Save the combined DataFrame to a temporary CSV
-    combined_csv_path = os.path.join(
-        subdirectory, "temporary_combined.csv"
-    )  # Updated this line
+    combined_csv_path = os.path.join(subdirectory, "temporary_combined.csv")
     combined_df.to_csv(combined_csv_path, index=False)
 
     # Clean and save the combined CSV
     cleaned_csv_path = os.path.join(
         subdirectory, f"cleaned_scraped_{course}_{year}.csv"
-    )  # Updated this line
+    )
     csv_handler = CSVHandler(combined_csv_path)
     csv_handler.clean_and_deduplicate('project_url')
     csv_handler.save(cleaned_csv_path)
