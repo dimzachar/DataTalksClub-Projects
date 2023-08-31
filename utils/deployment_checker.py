@@ -17,7 +17,7 @@ class DeploymentChecker:
         return None
 
     def check_deployment_type(self, url):
-        response = requests.get(url, timeout=10)  # Added timeout argument
+        response = requests.get(url, timeout=10)
         soup = BeautifulSoup(response.text, 'html.parser')
         readme_element = soup.find(
             'article', {'class': 'markdown-body entry-content container-lg'}
