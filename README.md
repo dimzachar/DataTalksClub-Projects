@@ -31,6 +31,7 @@ DataTalksClub-Projects is a Python repository aimed at automating the analysis o
 ├── src/           # Python source files
 ├── tests/         # Test files (TBD)
 ├── utils/         # Utility files
+├── .env           # Environment variables
 ├── .gitignore     # Git ignore rules
 ├── LICENSE        # License file
 ├── Makefile       # Makefile for automation
