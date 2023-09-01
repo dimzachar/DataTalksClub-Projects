@@ -122,9 +122,9 @@ This repository includes a Continuous Integration (CI) workflow that automatical
 
 The CI workflow is configured to perform the following tasks:
 
-Code quality checks
-Unit tests
-Integration tests
+- Code quality checks
+- Unit tests
+- Integration tests
 
 ## Configuration Files
 
