@@ -5,7 +5,6 @@
 
 - [Introduction](#introduction)
 - [Folder Structure](#folder-structure)
-- [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
     - [Clone the Repository](#clone-the-repository)
     - [Environment Setup](#environment-setup)
@@ -61,11 +60,15 @@ pipenv shell
 
 ### Environment Variables
 
-To run this project, you'll need to add a `.env` file in your project root. Replace your_openai_api_key_here and your_github_access_token_here with your actual OpenAI API key and GitHub access token, respectively.
+To run this project, you'll need to add a `.env` file in your project root. Replace `your_openai_api_key_here` and `your_github_access_token_here` with your actual OpenAI API key and GitHub access token, respectively.
 
 ## Makefile Usage
 
-### Run tests (TBD):
+The Makefile included in this repository provides a convenient way to run various tasks. Below are the commands you can use:
+
+### Run tests (TBD)
+
+This command will run all the unit tests and integration tests for the project.
 
 ```bash
 make test
@@ -73,11 +76,15 @@ make test
 
 ### Quality Checks
 
+Run this command to perform code quality checks. It includes isort, black and pylint.
+
 ```bash
 make quality_checks
 ```
 
 ### Scrape Data
+
+Use this command to scrape data from specified sources. The data will be saved in the appropriate format and location.
 
 ```bash
 make scrape
@@ -85,17 +92,23 @@ make scrape
 
 ### Generate Titles
 
+This command will generate titles for the projects using OpenAI's API.
+
 ```bash
 make titles
 ```
 
 ### Check Deployments
 
+Run this command to check the deployment status of project services such as web, batch or streaming.
+
 ```bash
 make deploy
 ```
 
 ### Run All Tasks
+
+This command is a shortcut to run all of the above tasks in sequence. It's a quick way to ensure that everything is set up correctly.
 
 ```bash
 make all
