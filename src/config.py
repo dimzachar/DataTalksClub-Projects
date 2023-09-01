@@ -2,7 +2,7 @@ import os
 
 # Define base and subdirectories
 base_path = "Data"
-course = "mlopszoomcamp"
+course = "dezoomcamp"
 year = 2023
 
 # Construct full paths

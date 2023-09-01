@@ -24,7 +24,7 @@ class ScrapingHandler:
             file_name = f"scraped_data_tab_{i + 1}_{self.course}_{self.year}.csv"
             filenames.append(file_name)
             with open(
-                f"{self.subdirectory}/{file_name}", 
+                f"{self.subdirectory}/{file_name}",
                 'w',
                 newline='',
                 encoding='utf-8',
