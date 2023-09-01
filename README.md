@@ -10,6 +10,7 @@
     - [Environment Setup](#environment-setup)
     - [Environment Variables](#environment-variables)
 - [Makefile Usage](#makefile-usage)
+- [CI/CD Pipeline](#cicd-pipeline)
 - [Configuration Files](#configuration-files)
 - [Contributing](#contributing)
 - [License](#license)
@@ -114,6 +115,16 @@ This command is a shortcut to run all of the above tasks in sequence. It's a qui
 ```bash
 make all
 ```
+
+## CI/CD Pipeline (TBD)
+
+This repository includes a Continuous Integration (CI) workflow that automatically builds and tests the Python project upon each push or pull request. This ensures that the codebase remains stable and free of errors as new changes are integrated.
+
+The CI workflow is configured to perform the following tasks:
+
+Code quality checks
+Unit tests
+Integration tests
 
 ## Configuration Files
 
