@@ -69,6 +69,17 @@ def main():
     csv_handler.df['project_title'] = csv_handler.df['project_title'].str.replace(
         '"', ''
     )
+    
+    csv_handler.df['project_title'] = csv_handler.df['project_title'].str.replace(
+        'Predictor', 'Prediction'
+    )
+    csv_handler.df['project_title'] = csv_handler.df['project_title'].str.replace(
+        'Detection', 'Prediction'
+    )
+    csv_handler.df['project_title'] = csv_handler.df['project_title'].str.replace(
+        'Classifier', 'Classification'
+    )
+    
     csv_handler.df['project_title'] = csv_handler.df['project_title'].str.replace(
         'Title: ', ''
     )

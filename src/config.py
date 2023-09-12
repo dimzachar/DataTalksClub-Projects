@@ -17,4 +17,4 @@ if not os.path.exists(subdirectory):
 # Paths for various CSV files
 cleaned_csv_path = f"{subdirectory}/cleaned_{base_name}.csv"
 titles_csv_path = f"{subdirectory}/{output_prefix}_cleaned_titles.csv"
-deploy_csv_path = f"{subdirectory}/{output_prefix}_cleaned_titles_deploy.csv"
+deploy_csv_path = "data.csv"
