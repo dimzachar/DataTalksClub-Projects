@@ -16,6 +16,7 @@ class GitHubAPI:
                 print(
                     f"Failed to fetch README for {github_url}. Status code: {response.status_code}"
                 )
+                print("Response Content:", response.content.decode())
                 return None
             response_json = response.json()
             if 'content' not in response_json:

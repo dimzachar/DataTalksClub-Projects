@@ -1,285 +1,283 @@
 project_url,project_title,Deployment Type,Reason
-https://github.com/JesusAcuna/data-engineering-project,SIEN Nutrition Tracker,Batch,batch
-https://github.com/ANelson82/de_zoomcamp_2022_earthquake_capstone,Seismic Data Analytics Platform,Unknown,
-https://github.com/davidag/data-engineering-zoomcamp/tree/main/final_project,Smoking Content Analysis,Unknown,
-https://github.com/PandaKata/dezoomcamp-project,Global Covid Data Analysis,Unknown,
-https://github.com/YahyaMohand/train_delay_analysis_DE,Train Delay Analysis Solution,Unknown,
-https://github.com/mrsvllmr/de_zoomcamp_2023_project.git,Covid-19 Data Visualization,Batch,batch
-https://github.com/CloudsProgram/pltr_project,Palantir Stock Visualization,Unknown,
-https://github.com/boisalai/twitter-dashboard,#dataengineering Twitter Pipeline,Batch,spark
-https://github.com/mbertrand/eo-climate-pipeline,Tucson NDVI Dashboard,Unknown,
+https://github.com/JesusAcuna/data-engineering-project,SIEN Pipeline Development,Batch,batch
+https://github.com/ANelson82/de_zoomcamp_2022_earthquake_capstone,Automated Seismic Data,Unknown,
+https://github.com/davidag/data-engineering-zoomcamp/tree/main/final_project,Non-Profit Forum Analytics,Unknown,
+https://github.com/PandaKata/dezoomcamp-project,Global COVID-19 Analysis,Unknown,
+https://github.com/YahyaMohand/train_delay_analysis_DE,Train Delay Analytics,Unknown,
+https://github.com/mrsvllmr/de_zoomcamp_2023_project.git,Covid-19 Dashboard Insights,Batch,batch
+https://github.com/CloudsProgram/pltr_project,Palantir Data Visualization,Unknown,
+https://github.com/boisalai/twitter-dashboard,Twitter Data Analysis Pipeline,Batch,spark
+https://github.com/mbertrand/eo-climate-pipeline,NDVI Dashboard Demo,Unknown,
 https://github.com/Hunter-99/de-course-final-project,Steam Games Data Pipeline,Unknown,
-https://github.com/jagadish432/jagadish-dezoomcamp-final-project,IPL Insights Dashboard,Unknown,
-https://github.com/dattapadal/tsnpdcl_de,Telangana Power Consumption Analysis,Unknown,
+https://github.com/jagadish432/jagadish-dezoomcamp-final-project,IPL Dashboard Analytics,Unknown,
+https://github.com/dattapadal/tsnpdcl_de,Telangana Power Consumption,Unknown,
 https://github.com/biomlds/dez-capstone-project-2023,Unknown,Unknown,
-https://github.com/shalltearb1oodfallen/airbnb,Airbnb Data Analysis Pipeline,Batch,spark
-https://github.com/TFong1/sf_crime/,San Francisco Crime Analysis,Unknown,
-https://github.com/clamytoe/de_capstone,Crypto Data Analysis Pipeline,Streaming,real-time
-https://github.com/SophiaUrena/zoomcamp-project,NYPD Data Dashboard Creation,Unknown,
-https://github.com/Ezzaldin97/online-store-pipeline.git,Postgres Data Analytics Pipeline,Unknown,
+https://github.com/shalltearb1oodfallen/airbnb,Airbnb Insights Dashboard,Batch,spark
+https://github.com/TFong1/sf_crime/,SF Crime Analysis,Unknown,
+https://github.com/clamytoe/de_capstone,Crypto Fluctuation Analysis,Streaming,real-time
+https://github.com/SophiaUrena/zoomcamp-project,NYC Crime Dashboard,Unknown,
+https://github.com/Ezzaldin97/online-store-pipeline.git,Automated Data Transformation Pipeline,Unknown,
 https://github.com/mikecolemn/mpls-311-data,Minneapolis 311 Dashboard,Batch,batch
-https://github.com/AniWaffl/dezoomcamp-project,Online Store Analysis Plan,Streaming,stream
-https://github.com/shivanipadal/Fire_Incident_DE,US Fire Incident Analysis,Unknown,
-https://github.com/waggjeff/DE-Zoomcamp-FinalProject,S&P500 Stock Analysis Dashboard,Batch,batch
-https://github.com/JaimeArboleda/de-zoomcamp-capstone,US Stock Market Analysis,Batch,spark
-https://github.com/ETM1123/divvy-data-pipeline,Divvy Bike Data Analysis,Unknown,
+https://github.com/AniWaffl/dezoomcamp-project,Global Store Analytics,Streaming,stream
+https://github.com/shivanipadal/Fire_Incident_DE,US Fire Trends Analysis,Unknown,
+https://github.com/waggjeff/DE-Zoomcamp-FinalProject,S&P500 Stock Analysis,Batch,batch
+https://github.com/JaimeArboleda/de-zoomcamp-capstone,Stock Market Insights,Batch,spark
+https://github.com/ETM1123/divvy-data-pipeline,Bikeshare Data Automation,Unknown,
 https://github.com/oktavianidewi/github-data-pipeline,Github Analytics Pipeline,Batch,batch
-https://github.com/Eugenirfan/Toronto_crime_etl,Toronto Auto Theft Surge,Unknown,
-https://github.com/svetlanakononova/smm-analyze,Super Mario Player Analysis,Unknown,
-https://github.com/bartoszsklodowski/de_zoomcamp_project,UK Crime Pipeline,Batch,batch
-https://github.com/NielKemp/DEZoomcampProject,Crop Yield Dashboard,Unknown,
-https://github.com/subinkpaul/chicago_crimes_project.git,Data Pipeline Creation,Batch,batch
+https://github.com/Eugenirfan/Toronto_crime_etl,Toronto's Auto Theft Spike,Unknown,
+https://github.com/svetlanakononova/smm-analyze,Global Mario Analytics,Unknown,
+https://github.com/bartoszsklodowski/de_zoomcamp_project,Data Pipeline Mastery,Batch,batch
+https://github.com/NielKemp/DEZoomcampProject,Satellite Crop Analytics,Unknown,
+https://github.com/subinkpaul/chicago_crimes_project.git,Chicago Crime Analysis Pipeline,Batch,batch
 https://github.com/baidlowi/DataEngineer/tree/main/Tourism%20Destination%20Insight,Unknown,Unknown,
-https://github.com/GbotemiB/gharchive_DE_project/,Github Data Pipeline Dashboard,Batch,batch
-https://github.com/padilha/nyc-motor-vehicle-collisions,NYC Vehicle Collisions Pipeline,Batch,batch
-https://github.com/Data-Think-2021/DE-Final-Project-CO2,CO2 Emissions Dashboard,Batch,batch
-https://github.com/enochiankim/data-engineering-zoomcamp-2023_Final_Project,FAANG Stock Analysis Results,Unknown,
-https://github.com/aydark1/de_zoomcamp_repo,YouTube Data Extraction Pipeline,Batch,batch
-https://github.com/Valkea/DE_bootcamp_project,Energy Repartition Analysis,Streaming,real-time
+https://github.com/GbotemiB/gharchive_DE_project/,Github Data Visualization,Batch,batch
+https://github.com/padilha/nyc-motor-vehicle-collisions,NYC Collision Insights,Batch,batch
+https://github.com/Data-Think-2021/DE-Final-Project-CO2,CO2 Insights Dashboard,Batch,batch
+https://github.com/enochiankim/data-engineering-zoomcamp-2023_Final_Project,FAANG Data Analysis Pipeline,Unknown,
+https://github.com/aydark1/de_zoomcamp_repo,Youtube Trending Analysis,Batch,batch
+https://github.com/Valkea/DE_bootcamp_project,Energy Data Insights,Streaming,real-time
 https://github.com/ahmdxrzky/de-zoomcamp-2023/tree/main/final_project,Denpasar Weather Analysis,Unknown,
-https://github.com/MekongDelta-mind/de_zoomcamp_2023_capstone,Citi Bike Insights,Batch,batch
-https://github.com/Mani1213/Data_engineering_zoomcamp.git,Zoomcamp Data Engineering,Unknown,
+https://github.com/MekongDelta-mind/de_zoomcamp_2023_capstone,Bike Data Insights,Batch,batch
+https://github.com/Mani1213/Data_engineering_zoomcamp.git,Thank you for letting me know,Unknown,
 https://github.com/SebastianGrosss/de-zoomcamp-project-gc,Unknown,Unknown,
-https://github.com/dariader/bird_cy_flow,Cyprus Bird Tracker,Unknown,
-https://github.com/JMGGarcia/fifa-data-pipeline,FIFA 23 Team Evolution,Batch,spark
-https://github.com/chintalapudipraneeth/DataEngineering,Please provide more information about the content so I can,Unknown,
-https://github.com/DmitriiK/DEZC-FinalProject,Mediterranean Rent Data Analysis,Unknown,
-https://github.com/rzabolotin/de_zoomcamp_2023_project,Cultural Data Visualization,Unknown,
-https://github.com/yegireddihemanth/Data-engineering-zoomcamp,Zoomcamp Data Engineering - as the name,Unknown,
+https://github.com/dariader/bird_cy_flow,Avian Tracker Cyprus,Unknown,
+https://github.com/JMGGarcia/fifa-data-pipeline,Visualizing FIFA Team Evolution,Batch,spark
+https://github.com/chintalapudipraneeth/DataEngineering,Streamline Data Processes,Unknown,
+https://github.com/DmitriiK/DEZC-FinalProject,Turkish Rental Market Dashboard,Unknown,
+https://github.com/rzabolotin/de_zoomcamp_2023_project,Cultural Insights Dashboard,Unknown,
+https://github.com/yegireddihemanth/Data-engineering-zoomcamp,Data Engineering Fundamentals,Unknown,
 https://github.com/nutritiouss/de_zoocamp/tree/dev/Project,Unknown,Unknown,
-https://github.com/vspatil/citibike-data-pipeline,Citibike Data Analysis,Batch,batch
-https://github.com/Fedrpi/de-zoomcamp-bandcamp-project,Bandcamp Genre Popularity Analysis,Unknown,
+https://github.com/vspatil/citibike-data-pipeline,Citibike Analytics Visual,Batch,batch
+https://github.com/Fedrpi/de-zoomcamp-bandcamp-project,Bandcamp Genre Insights,Unknown,
 https://github.com/seacevedo/Solana-Pipeline,Solana Community Insights,Unknown,
-https://github.com/VeraZab/nyc-stats,NYC Data Pipeline Solution,Batch,batch
-https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring,COVID19 Data Pipeline Implementation,Batch,batch
-https://github.com/ashsii/dezoomcamp-project2023,Movie Rating Analysis,Unknown,
-https://github.com/MGibadulin/de_zoomcamp_2023/tree/main/final_project,German Energy Data Analysis,Unknown,
-https://github.com/ISazhyna/capstone_data_engineering,Temperature-Crime Correlation Analysis,Unknown,
-https://github.com/Jawakar/coins_dashboard,Crypto Performance Tracker,Batch,hadoop
-https://github.com/GrzegorzGatkowski/Air_Pollution_Pipeline,Polish Cities Air Pollution,Unknown,
-https://github.com/civispro/de_zoomcamp_project,Programming Language Statistics,Batch,spark
-https://github.com/tujimmy/de-tor-bikeshare,Toronto Bike Availability Analysis,Batch,spark
-https://github.com/lars-sorgalla/data-eng-zoomcamp-2023,Data Pipeline Automation Solution,Batch,spark
-https://github.com/derekwongtf/data-engineering_projects.git,Hong Kong Airbnb Analysis,Batch,batch
-https://github.com/HUJINNN0/dezoomcamp_project,Data Pipeline Implementation,Batch,batch
-https://github.com/Bee0933/inside-airbnb-pipeline,Airbnb Data Analysis,Batch,batch
-https://github.com/TylerJSimpson/personal_project_clinicaltrials_2023,Global Clinical Trial Data,Unknown,
-https://github.com/DenisBosiak/de-zoomcamp-project.git,Bike Share Data Analysis,Unknown,
-https://github.com/ozkary/data-engineering-mta-turnstile,MTA Subway Traffic Analysis,Unknown,
-https://github.com/kawczy83/2023_DE_ZoomCamp_Project,NYC Restaurant Inspection Dashboard,Unknown,
-https://github.com/Rohitjoshi07/FHVDataAnalysis,FHV Provider Analysis NYC,Batch,batch
+https://github.com/VeraZab/nyc-stats,NYC 311 Insights,Batch,batch
+https://github.com/MikhailKuklin/data-pipeline-COVID19-monitoring,COVID Dashboard Generator,Batch,batch
+https://github.com/ashsii/dezoomcamp-project2023,Movie Rating Trends Analysis,Unknown,
+https://github.com/MGibadulin/de_zoomcamp_2023/tree/main/final_project,German Energy Forecasting,Unknown,
+https://github.com/ISazhyna/capstone_data_engineering,Temperature-Crime Analysis,Unknown,
+https://github.com/Jawakar/coins_dashboard,Crypto Trends Dashboard,Batch,hadoop
+https://github.com/GrzegorzGatkowski/Air_Pollution_Pipeline,Pollution in Polish Cities,Unknown,
+https://github.com/civispro/de_zoomcamp_project,Programming Language Analytics,Batch,spark
+https://github.com/tujimmy/de-tor-bikeshare,Bike Availability Analysis,Batch,spark
+https://github.com/lars-sorgalla/data-eng-zoomcamp-2023,Python Data Pipeline: CSV,Batch,spark
+https://github.com/derekwongtf/data-engineering_projects.git,Hong Kong Room Analysis,Batch,batch
+https://github.com/HUJINNN0/dezoomcamp_project,Cloud Pipeline Project,Batch,batch
+https://github.com/Bee0933/inside-airbnb-pipeline,Sydney Airbnb Analytics,Batch,batch
+https://github.com/TylerJSimpson/personal_project_clinicaltrials_2023,Clinical Risk Mitigation,Unknown,
+https://github.com/DenisBosiak/de-zoomcamp-project.git,Bike Share Analysis Report,Unknown,
+https://github.com/ozkary/data-engineering-mta-turnstile,Peak Commuter Zones,Unknown,
+https://github.com/kawczy83/2023_DE_ZoomCamp_Project,NYC Restaurant Health Dashboard,Unknown,
+https://github.com/Rohitjoshi07/FHVDataAnalysis,NYC FHV Analysis,Batch,batch
 https://github.com/AshrafOmara12/Ukraine-Conflict-Twitter-Data-Pipeline/tree/main,Unknown,Batch,spark
-https://github.com/joshuaati/DE_airline_pipeline,Data Engineering Pipeline,Unknown,
-https://github.com/danstd/de_ag_export,Weekly USDA Export Visualization,Unknown,
-https://github.com/HCA97/de-zoomcamp-project,League Data Dashboard,Unknown,
-https://github.com/danielyrigney/USDA-Data-Pipeline,Nutrient Data Visualization,Unknown,
-https://github.com/xdice86/ticketmaster-etl-capstone,Ticketmaster Event Visualization,Unknown,
-https://github.com/ChungWasawat/dtc_de_project,COVID-19 Transportation Analysis,Unknown,
+https://github.com/joshuaati/DE_airline_pipeline,US Flight Analytics Dashboard,Unknown,
+https://github.com/danstd/de_ag_export,Export Dashboard Pipeline,Unknown,
+https://github.com/HCA97/de-zoomcamp-project,Morning Matches Misfire,Unknown,
+https://github.com/danielyrigney/USDA-Data-Pipeline,Exploring Added Sugar,Unknown,
+https://github.com/xdice86/ticketmaster-etl-capstone,Event Visualization Dashboard,Unknown,
+https://github.com/ChungWasawat/dtc_de_project,NYC Transport Shift,Unknown,
 https://github.com/triet-lq-holistics/soccer_stats,Unknown,Unknown,
-https://github.com/yjw868/data-engineering-zoomcamp-project,Train Performance Analysis Pipeline,Batch,batch
+https://github.com/yjw868/data-engineering-zoomcamp-project,Train Performance Analysis,Batch,batch
 https://github.com/suri976/Data_Engineering_Zoomcamp,Unknown,Unknown,
-https://github.com/AudhootChavan/de_zc_2023_project_audhoot_chavan,Tech Stock Sentiment Analysis,Batch,batch
-https://github.com/dinobronx/co2-gdp-sea,World Bank Data Analysis,Unknown,
-https://github.com/aboodJAD/de-paperswithcode,Papers with Code Analysis,Batch,batch
-https://github.com/sam-hatley/real-estate-data,Data Zoomcamp Capstone Summary,Batch,batch
-https://github.com/angeanto/dezoomcamp-project-youtube,Daily Data Migration with dbt,Batch,batch
+https://github.com/AudhootChavan/de_zc_2023_project_audhoot_chavan,Tech Stock Sentiments,Batch,batch
+https://github.com/dinobronx/co2-gdp-sea,SE Asia Emissions Analysis,Unknown,
+https://github.com/aboodJAD/de-paperswithcode,Paperswithcode Data Processing,Batch,batch
+https://github.com/sam-hatley/real-estate-data,UK Property Market Pipeline,Batch,batch
+https://github.com/angeanto/dezoomcamp-project-youtube,Data Migration: Postgres to,Batch,batch
 https://github.com/aeryuzhev/de-zoomcamp-project,Iowa Liquor Analysis,Batch,spark
-https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project,NYC Vehicle Collision Analysis,Batch,batch
-https://github.com/ktncktnc/Data_Engineer_Zoomcamp_Final_Project,Data Pipeline Automation Solution,Unknown,
-https://github.com/lisallreiber/biketheft_berlin,Berlin Bike Theft Insights,Batch,batch
+https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project,NYC Collision Dashboard,Batch,batch
+https://github.com/ktncktnc/Data_Engineer_Zoomcamp_Final_Project,Data Pipeline Automation,Unknown,
+https://github.com/lisallreiber/biketheft_berlin,Bike Theft in Berlin,Batch,batch
 https://github.com/Shixi99/de-zoomcampR/tree/main/project,Unknown,Unknown,
-https://github.com/AAKvashnin/DEZoomcamp_course_project,Fraud Data Visualization,Unknown,
-https://github.com/ruizcrp/dzc_project,NY School Grade Disparities,Batch,batch
-https://github.com/adrian-baumann/dwd-temp-project,Daily German Weather Pipeline,Unknown,
-https://github.com/Phillip-N/de-project,Used Car Data Pipeline,Batch,spark
-https://github.com/marmola90/dezoomcampam,Video Game Sales Dashboard,Unknown,
-https://github.com/reneboygarcia/week_7_capstone_mongodb.git,Data Pipeline Implementation,Unknown,
+https://github.com/AAKvashnin/DEZoomcamp_course_project,Fraud Prediction Pipeline,Unknown,
+https://github.com/ruizcrp/dzc_project,Analyzing NY School Grades,Batch,batch
+https://github.com/adrian-baumann/dwd-temp-project,German Weather Tracker,Unknown,
+https://github.com/Phillip-N/de-project,Used Cars Pipeline,Batch,spark
+https://github.com/marmola90/dezoomcampam,Game Sales Dashboard,Unknown,
+https://github.com/reneboygarcia/week_7_capstone_mongodb.git,MongoDB Data Analysis Pipeline,Unknown,
 https://github.com/ShaalanMarwan/airline-delay-and-cancellation/tree/main,Unknown,Unknown,
-https://github.com/datavadoz/eu-airbnb,European Airbnb Price Analysis,Unknown,
-https://github.com/Canerhan/data-engineering-zoomcamp/tree/main/week_7_myproject,Cloud-based Data Visualization Guide,Unknown,
-https://github.com/GattigorlaShivani/Data_Engineering_Zoomcamp.git,Please provide me with the content you would like me,Unknown,
-https://github.com/bsenst/dtc-de-2023/tree/main/fhir-synthea-project,Obesity and Disease Correlation,Unknown,
-https://github.com/elitongadotti/dtc-dataengineer-final-project,Parliamentary Quota Analysis,Unknown,
-https://github.com/ssmangilev/de-zoomcamp-project,Germany's Climate Data Analysis,Batch,batch
-https://github.com/shivkurtarkar/bussiness-dashboard,eCommerce Data Insights,Batch,batch
-https://github.com/falowo95/sp500_ETL_Pipeline,SP500 Dashboard Creation,Unknown,
+https://github.com/datavadoz/eu-airbnb,European Airbnb Analytics,Unknown,
+https://github.com/Canerhan/data-engineering-zoomcamp/tree/main/week_7_myproject,Data Analysis Guide 202,Unknown,
+https://github.com/GattigorlaShivani/Data_Engineering_Zoomcamp.git,Thank you for letting me know,Unknown,
+https://github.com/bsenst/dtc-de-2023/tree/main/fhir-synthea-project,Obesity Disease Correlations,Unknown,
+https://github.com/elitongadotti/dtc-dataengineer-final-project,Brazil's Parliamentary Spending:,Unknown,
+https://github.com/ssmangilev/de-zoomcamp-project,German Climate Dashboard,Batch,batch
+https://github.com/shivkurtarkar/bussiness-dashboard,Data-driven Business Insights,Batch,batch
+https://github.com/falowo95/sp500_ETL_Pipeline,Stock Data Analysis Dashboard,Unknown,
 https://github.com/nlarki/FPL_DE_Zoomcamp,Fantasy Football Dashboard,Unknown,
-https://github.com/Haebuk/GHArchive-Data-Pipeline-Project,Github Data Pipeline Setup,Unknown,
-https://github.com/GuillermoFabian/data-engineering-project,NY Bike Dashboard,Batch,spark
-https://github.com/draner/Data-Engineering-Bootcamp-2023-Project,4chan Data Visualization,Unknown,
-https://github.com/davidkingg/twitter-trends,Nigeria's Latest Twitter Trends,Batch,batch
-https://github.com/skipper-com/dtc_de_course_project,Internet Store Purchase Analysis,Batch,batch
+https://github.com/Haebuk/GHArchive-Data-Pipeline-Project,Github Archive Pipeline,Unknown,
+https://github.com/GuillermoFabian/data-engineering-project,Bike Share Evolution Dashboard,Batch,spark
+https://github.com/draner/Data-Engineering-Bootcamp-2023-Project,4chan Trend Insights,Unknown,
+https://github.com/davidkingg/twitter-trends,Nigeria's Real-Time Trends,Batch,batch
+https://github.com/skipper-com/dtc_de_course_project,Online Purchase Analysis,Batch,batch
 https://github.com/agpeel/splashing-thornbill/tree/main/data_engineering_zoomcamp_2023/project,Unknown,Unknown,
-https://github.com/antihaddock/data_engineering_camp_project,Data Engineering Camp Analysis,Unknown,
-https://github.com/venky-lucky/data_engineering_zoom_camp/tree/main/week-7-project,SIEN Nutrition Monitoring Program,Unknown,
-https://github.com/dmitry-rvn/DTC-DE-Project,Crypto Trading Data Pipeline,Batch,batch
-https://github.com/sn-datawizard/zoomcamp-finalproject,Global Population Trends Analysis,Batch,batch
-https://github.com/poshkaran04/stocks_data_transform,USA Stock Data Analysis,Unknown,
-https://github.com/VincenzoGalante/magic-the-gathering,MTG Card Data Analysis,Unknown,
-https://github.com/Mukesh-Sajjan/Data-Engineering-Project.git,Powerlifting Data Pipeline,Batch,batch
-https://github.com/lachlanpcasey/Zoomcamp_Project.git,Crypto Data Visualization,Unknown,
+https://github.com/antihaddock/data_engineering_camp_project,Optimized Funding Analytics,Unknown,
+https://github.com/venky-lucky/data_engineering_zoom_camp/tree/main/week-7-project,SIEN Pipeline Development,Unknown,
+https://github.com/dmitry-rvn/DTC-DE-Project,Crypto Trading Dashboard,Batch,batch
+https://github.com/sn-datawizard/zoomcamp-finalproject,Global Population Dynamics,Batch,batch
+https://github.com/poshkaran04/stocks_data_transform,USA Stock Analysis Insights,Unknown,
+https://github.com/VincenzoGalante/magic-the-gathering,MTG Card Analysis,Unknown,
+https://github.com/Mukesh-Sajjan/Data-Engineering-Project.git,Powerlifting Pipeline Dashboard,Batch,batch
+https://github.com/lachlanpcasey/Zoomcamp_Project.git,Crypto Data Visualization Pipeline,Unknown,
 https://github.com/ehub-96/DTC-Capstone-Project,Radioactive Waste Analysis,Batch,batch
-https://github.com/directdetour/BeerReviewsDataPipeline,Beer Review Data Pipeline,Unknown,
-https://github.com/larsskaret/ais-pipeline,AIS Data Dashboard Pipeline,Unknown,
-https://github.com/mf-andres/zoomcamp-project,Digital Marketplace Analysis Pipeline,Unknown,
-https://github.com/fxboakye/tfl-data-project,London Bike Data Extraction,Unknown,
-https://github.com/JeromeOrtwein/kleinanzeigen-apartments-rentaldata-pipeline.git,Stuttgart Rental Dashboard,Unknown,
-https://github.com/danietakeshi/de-zoomcamp-2023/tree/main/project,Data Pipeline Automation Solution,Unknown,
-https://github.com/Franklyne-kibet/us-accidents-data.git,US Traffic Accidents Dataset,Batch,spark
-https://github.com/lantenak/de_zoomcamp_project,Protected Area Analysis Pipeline,Unknown,
-https://github.com/PatrickVieira1/dataengineering-zoomcamp/tree/main/week_7_project,Gas Price Dashboard Creation,Unknown,
-https://github.com/mary435/MLA_Dashboard,Top Products Dashboard,Unknown,
-https://github.com/YasnairAngulo5/DTC-DE-FINAL-PROJECT,Global Economic Trends Analysis,Unknown,
-https://github.com/sam-leonid/zoomcamp_project2023,Flight Data Analysis,Unknown,
-https://github.com/Joseun/data-engineering-zoomcamp/tree/main/cohorts/2023/week_7_project,NBA 2022 Data Insights,Unknown,
-https://github.com/NobleNooblet/DE_Zoomcamp_Project,"Esports Earnings Report 
-
-Title:",Unknown,
-https://github.com/ulanliu/Covid_n_Monkeypox,Comparing Covid and Monkeypox,Unknown,
-https://github.com/gmzgian/Worldwide-Labour-Force-Project,Global Labor Analysis Pipeline,Batch,batch
-https://github.com/lilygrierjil/lily-de-zoomcamp-final-project/,Memphis Crime Data Analysis,Batch,batch
-https://github.com/Muhrutochka/de-zoomcamp-project,NCAA Basketball Data Analysis,Unknown,
-https://github.com/prashantg6838/datatalk-final-project.git,Automated Playstore Analytics Pipeline,Batch,batch
-https://github.com/vk-prodata/job_market_usa,LinkedIn Job Market Analysis,Unknown,
-https://github.com/irfan-fadhlurrahman/elt-pipeline-on-gcp,Capital Bike Share Dashboard,Batch,batch
-https://github.com/Arturomtz8/de-zoomcamp-project,Paranormal Reddit Analysis,Unknown,
-https://github.com/ankosta/de-zoomcamp-project,Crypto Market Analysis,Unknown,
-https://github.com/romiof/brazil-weather,Brazilian Weather Analysis Pipeline,Batch,batch
+https://github.com/directdetour/BeerReviewsDataPipeline,Beer Review Pipeline,Unknown,
+https://github.com/larsskaret/ais-pipeline,AIS Traffic Analysis,Unknown,
+https://github.com/mf-andres/zoomcamp-project,Wallapop Pricing Analysis,Unknown,
+https://github.com/fxboakye/tfl-data-project,Bike Trip Data Automation,Unknown,
+https://github.com/JeromeOrtwein/kleinanzeigen-apartments-rentaldata-pipeline.git,Stuttgart Rental Insights,Unknown,
+https://github.com/danietakeshi/de-zoomcamp-2023/tree/main/project,API Football Pipeline,Unknown,
+https://github.com/Franklyne-kibet/us-accidents-data.git,US Traffic Accident Insights,Batch,spark
+https://github.com/lantenak/de_zoomcamp_project,Protected Area Analysis,Unknown,
+https://github.com/PatrickVieira1/dataengineering-zoomcamp/tree/main/week_7_project,Scalable Gas Dashboard,Unknown,
+https://github.com/mary435/MLA_Dashboard,Mercado Libre Top,Unknown,
+https://github.com/YasnairAngulo5/DTC-DE-FINAL-PROJECT,Global Economic Trends Dashboard,Unknown,
+https://github.com/sam-leonid/zoomcamp_project2023,Flight Stats Dashboard,Unknown,
+https://github.com/Joseun/data-engineering-zoomcamp/tree/main/cohorts/2023/week_7_project,NBA Data Insights Pipeline,Unknown,
+https://github.com/NobleNooblet/DE_Zoomcamp_Project,Esports Earnings Analysis,Unknown,
+https://github.com/ulanliu/Covid_n_Monkeypox,COVID vs Monkeypox,Unknown,
+https://github.com/gmzgian/Worldwide-Labour-Force-Project,Global Workforce Insights,Batch,batch
+https://github.com/lilygrierjil/lily-de-zoomcamp-final-project/,Memphis Crime Insights,Batch,batch
+https://github.com/Muhrutochka/de-zoomcamp-project,NCAA Basketball Analytics Pipeline,Unknown,
+https://github.com/prashantg6838/datatalk-final-project.git,Playstore Analytics Pipeline,Batch,batch
+https://github.com/vk-prodata/job_market_usa,LinkedIn Job Insights,Unknown,
+https://github.com/irfan-fadhlurrahman/elt-pipeline-on-gcp,Bike Usage Dashboard,Batch,batch
+https://github.com/Arturomtz8/de-zoomcamp-project,Paranormal Subreddit,Unknown,
+https://github.com/ankosta/de-zoomcamp-project,Crypto Price Dependencies,Unknown,
+https://github.com/romiof/brazil-weather,Visualizing Brazilian Weather,Batch,batch
 https://github.com/tmaferreira/DataEngineeringZoomCampProject,US Car Crash Analysis,Streaming,streaming
-https://github.com/shubhankar4/sf-bay-area,Bay Area Trip Analysis,Unknown,
-https://github.com/AksharGoyal/data-eng-project-toronto-covid-data,COVID-19 Analysis in Toronto,Unknown,
+https://github.com/shubhankar4/sf-bay-area,SF Trip Insights,Unknown,
+https://github.com/AksharGoyal/data-eng-project-toronto-covid-data,COVID-19 Toronto Analysis,Unknown,
 https://github.com/Zesky665/DEZC_2023_Capstone/tree/Final_Version,Unknown,Unknown,
-https://github.com/SubtleParesh/gdelt-analytics-etl,Global Event Analysis Pipeline,Batch,batch
-https://github.com/ouverz/de_zoomcamp_2023/tree/main/capstone-project-tfl-cycling,TFL Cycling Dashboard Creation,Unknown,
-https://github.com/AndreiKalinin/Data_Engineering_Ski_Resorts,Ski Resort Comparison Analysis,Unknown,
-https://github.com/yatesmac/repo-exercise,Google Play Data Pipeline,Unknown,
+https://github.com/SubtleParesh/gdelt-analytics-etl,Global Event Impact Analysis,Batch,batch
+https://github.com/ouverz/de_zoomcamp_2023/tree/main/capstone-project-tfl-cycling,London Bike Dashboard,Unknown,
+https://github.com/AndreiKalinin/Data_Engineering_Ski_Resorts,Ski Resort Comparison Dashboard,Unknown,
+https://github.com/yatesmac/repo-exercise,Google Play Store Analytics,Unknown,
 https://github.com/paulonye/Cloudrunjobs/tree/main/prefectXcloudrun,Yahoo Finance Data Pipeline,Unknown,
-https://github.com/ngalkov/DEZoomcamp_project,Cloud-Based Property Analysis,Unknown,
+https://github.com/ngalkov/DEZoomcamp_project,UK Property Insights,Unknown,
 https://github.com/venky-lucky/data_engineering_zoom_camp/tree/main/week-8-project,Unknown,Unknown,
-https://github.com/yusyel/de-project/,Istanbul Traffic Analysis Dashboard,Batch,spark
-https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp.git,Hospital No-Show Analysis,Batch,batch
-https://github.com/jplaulau14/covid-19-toronto,COVID Data Pipeline Creation,Unknown,
-https://github.com/a-othman/zoomcamp-project,Ecommerce Analytics Dashboard,Batch,batch
-https://github.com/hirobo/world-earthquake,Earthquake Dashboard,Batch,batch
-https://github.com/TimShar2021/BIKE_DE,UK Bike Data Dashboard,Batch,spark
-https://github.com/NameIsGonzo/national_rail_project,Real-time Rail Performance Dashboard,Batch,spark
-https://github.com/DarynaP/dez-project-earthquakes,Earthquake Data Pipeline,Batch,batch
-https://github.com/ShaalanMarwan/airline-delay-and-cancellation,Airline Delay Analysis,Unknown,
-https://github.com/anammari/de-zoomcamp-project,Flight Delay Cancellation AI,Batch,batch
-https://github.com/melvinru/de-zc-project,Climate Dashboard Analysis,Unknown,
-https://github.com/undersea-nate/dc_bike_trip_project,Bikeshare Data Dashboard,Unknown,
-https://github.com/sandeep92134/DTC-DE-ZOOMcamp_project,Global Covid Analytics Pipeline,Unknown,
-https://github.com/jozimarback/de-zoomcamp-final-project,Global Education Pipeline,Unknown,
-https://github.com/IvanGuGon1/zoomcamp_divvy_project,Divvy Bikes Weather Analysis,Unknown,
-https://github.com/Chalermdej-l/Final_Project_FredETE,Fred Data Pipeline Implementation,Unknown,
-https://github.com/AbdelrahmanElmasry/Data-engineering-taxi-rides-project,NYC Taxi Usage Analysis,Unknown,
-https://github.com/rachelleperez/song_recommender,Workout Mood Playlist Generator,Streaming,streaming
-https://github.com/James-Wachuka/weather_data_pipeline,Weather Data Processing Pipeline,Unknown,
+https://github.com/yusyel/de-project/,Istanbul Traffic Analysis,Batch,spark
+https://github.com/Khunmi/Capstone-Project---Data-Engineering-ZoomCamp.git,Reducing Appointment No-Sh,Batch,batch
+https://github.com/jplaulau14/covid-19-toronto,Toronto COVID Pipeline,Unknown,
+https://github.com/a-othman/zoomcamp-project,Ecommerce Insights Dashboard,Batch,batch
+https://github.com/hirobo/world-earthquake,Quake Analytics Dashboard,Batch,batch
+https://github.com/TimShar2021/BIKE_DE,Bike Ride Analytics Dashboard,Batch,spark
+https://github.com/NameIsGonzo/national_rail_project,Rail PPM Dashboard,Batch,spark
+https://github.com/DarynaP/dez-project-earthquakes,Quake Analytics Dashboard,Batch,batch
+https://github.com/ShaalanMarwan/airline-delay-and-cancellation,Airline Disruptions Analysis,Unknown,
+https://github.com/anammari/de-zoomcamp-project,Meeting Flight Probability,Batch,batch
+https://github.com/melvinru/de-zc-project,Climate Dashboard Analytics,Unknown,
+https://github.com/undersea-nate/dc_bike_trip_project,Bike Data Insights,Unknown,
+https://github.com/sandeep92134/DTC-DE-ZOOMcamp_project,COVID-19 Global Analysis,Unknown,
+https://github.com/jozimarback/de-zoomcamp-final-project,Global Education Dashboard,Unknown,
+https://github.com/IvanGuGon1/zoomcamp_divvy_project,Weather and Divvy B,Unknown,
+https://github.com/Chalermdej-l/Final_Project_FredETE,Data Insights Pipeline,Unknown,
+https://github.com/AbdelrahmanElmasry/Data-engineering-taxi-rides-project,NYC Taxi Insights,Unknown,
+https://github.com/rachelleperez/song_recommender,FitMix: Personalized,Streaming,streaming
+https://github.com/James-Wachuka/weather_data_pipeline,City Weather Dashboard,Unknown,
 https://github.com/tiagogdev/data-engineer-zoomcamp-project,Pokemon Data Analysis Pipeline,Unknown,
-https://github.com/vykuang/toronto-service-calls-2023,Toronto Service Request Map,Unknown,
-https://github.com/mojafa/citi-bike,Citi Bike Analytics Dashboard,Batch,spark
-https://github.com/LexxaRRioo/dezoomcamp23-project,Board Game Analytics Dashboard,Batch,batch
-https://github.com/iurii-chernigin/audio-streaming-data-platform,Audio Analytics Platform,Streaming,real-time
+https://github.com/vykuang/toronto-service-calls-2023,Toronto Service Map,Unknown,
+https://github.com/mojafa/citi-bike,Bike Data Analytics Dashboard,Batch,spark
+https://github.com/LexxaRRioo/dezoomcamp23-project,Board Game Dashboard,Batch,batch
+https://github.com/iurii-chernigin/audio-streaming-data-platform,Stream Intelligence Platform,Streaming,real-time
 https://github.com/Nakulbajaj101/dataengineering-zoomcamp-project,Monthly COVID-19 Reports,Unknown,
-https://github.com/SeriyVol4ishe/final-project,Chicago Crime Analysis Pipeline,Unknown,
-https://github.com/gregorysprenger/bio-agents_and_precip,Select Agents and Precipitation,Unknown,
-https://github.com/albertaleksa/crime-reports-data,Crime Data Explorer,Batch,hadoop
+https://github.com/SeriyVol4ishe/final-project,Chicago Crime Pipeline,Unknown,
+https://github.com/gregorysprenger/bio-agents_and_precip,Agent-precipitation,Unknown,
+https://github.com/albertaleksa/crime-reports-data,City Crime Trends,Batch,hadoop
 https://github.com/EngMohamedKemany/DE-ZoomCAMP-Project_Universities_Rank/tree/master,Unknown,Unknown,
-https://github.com/hdt94/dtc-de-project,TLC Taxi Analytics Solution,Batch,batch
+https://github.com/hdt94/dtc-de-project,Cloud Data Pipeline System,Batch,batch
 https://github.com/brettdavies/de-zoomcamp-capstone,Unknown,Unknown,
-https://github.com/modfa/DE-ZOOMCAMP-CAPSTONE,Dams' Energy Analysis Pipeline,Batch,batch
+https://github.com/modfa/DE-ZOOMCAMP-CAPSTONE,Dams Energy Analysis Pipeline,Batch,batch
 https://github.com/dannhh/retail-sales.git,Istanbul Shopping Insights,Batch,spark
-https://github.com/dherzey/bechdel-movies-project,Women in Movies Analysis,Unknown,
+https://github.com/dherzey/bechdel-movies-project,Women in Film Analysis,Unknown,
 https://github.com/AQsAKo/de-final.git,Washington Bus Data Pipeline,Unknown,
 https://github.com/vuvuzella/de_zoomcamp_2023/tree/master/week_7,Unknown,Unknown,
-https://github.com/Param-29/stock-data-pipeline,Stock Outlier Detection Pipeline,Unknown,
-https://github.com/garistvlad/data-engineering-zoomcamp/tree/main/week-7,Cyprus Real Estate Pipeline,Unknown,
+https://github.com/Param-29/stock-data-pipeline,Apple Outlier Prediction,Unknown,
+https://github.com/garistvlad/data-engineering-zoomcamp/tree/main/week-7,Real Estate Insights: Cyprus,Unknown,
 https://github.com/Hfelipini/de-zoomcamp-project,Real-time Stock Analysis,Batch,batch
-https://github.com/Idowuilekura/twitter_inec_elt_pipeline,INEC Sentiment Tracker,Batch,spark
-https://github.com/elijellyeli/flight-project,Flight Pattern Dashboard,Unknown,
-https://github.com/wjuszczyk/dezoomcamp-project,Spotify and YouTube Analysis,Streaming,stream
+https://github.com/Idowuilekura/twitter_inec_elt_pipeline,Twitter Sentiment Tracker,Batch,spark
+https://github.com/elijellyeli/flight-project,Flight Pattern Analysis Pipeline,Unknown,
+https://github.com/wjuszczyk/dezoomcamp-project,Spotify vs. YouTube,Streaming,stream
 https://github.com/KeiranJOC/carbon-emissions-analysis-pipeline,Carbon Emissions Analysis Pipeline,Batch,batch
-https://github.com/Stephen137/de_zoomcamp_project,Spotify Data Pipeline Creation,Unknown,
-https://github.com/aliescont/dezoomcamp-project,Steam Reviews Analysis Pipeline,Batch,batch
-https://github.com/Fozan-Talat/divvy-bikeshare-de-project,Divvy Bikeshare Dashboard,Unknown,
-https://github.com/fluentnumbers/ecommerce_behavior,eCommerce Customer Analysis,Streaming,real-time
-https://github.com/AntonisCSt/DTC_data_engineering_project,YouTube Playlist Analytics,Batch,batch
-https://github.com/heaven-devoror/Final_Project,Top Energy Countries Identified,Unknown,
+https://github.com/Stephen137/de_zoomcamp_project,Spotify Audio Pipeline,Unknown,
+https://github.com/aliescont/dezoomcamp-project,Steam Review Analysis Pipeline,Batch,batch
+https://github.com/Fozan-Talat/divvy-bikeshare-de-project,Divvy Analytics Dashboard,Unknown,
+https://github.com/fluentnumbers/ecommerce_behavior,eCommerce Metrics Optimization,Streaming,real-time
+https://github.com/AntonisCSt/DTC_data_engineering_project,Real-time YouTube Insights,Batch,batch
+https://github.com/heaven-devoror/Final_Project,Global Power Analysis,Unknown,
 https://github.com/adamiaonr/de-zoomcamp-project,NYC Bus Delay Analysis,Unknown,
-https://github.com/alfa-th/de-zoomcamp-capstone,Bandcamp Sales Analysis,Batch,batch
-https://github.com/Tsovinar2000/taxi_trips_ETL,Chicago Taxi Fare Analysis,Batch,batch
-https://github.com/PWSampanis/MTG_Data_Engineering_Bootcamp,MTG Card Analysis Pipeline,Unknown,
-https://github.com/antonsn7/zoomcamp_project.git,Olist Sales Dashboard,Unknown,
-https://github.com/derekwongtf/de-zoomcamp-project2.git,NYC Parking Ticket Analysis,Batch,spark
-https://github.com/Nattawatt/data-engineer-zoomcamp/tree/main/week_7_project,Real-time Expressway Monitoring,Unknown,
-https://github.com/kkuznets/crypto-fear-and-greed-analysis,Crypto Data Automation Pipeline,Streaming,real-time
-https://github.com/JVAparicio/DE_Zoomcamp_Final_Project,Board Game Rankings Analysis,Unknown,
-https://github.com/romanyakovlev/spotify-top-charts-project,Global Music Popularity Analysis,Batch,spark
-https://github.com/ljvillarrealm/latam-cooliving,LatAm Cost Dashboard,Unknown,
+https://github.com/alfa-th/de-zoomcamp-capstone,Insights from Bandcamp Transactions,Batch,batch
+https://github.com/Tsovinar2000/taxi_trips_ETL,Chicago Taxi Insights,Batch,batch
+https://github.com/PWSampanis/MTG_Data_Engineering_Bootcamp,MTG Data Analysis,Unknown,
+https://github.com/antonsn7/zoomcamp_project.git,Brazilian Sales Dashboard,Unknown,
+https://github.com/derekwongtf/de-zoomcamp-project2.git,NYC Parking Analysis Pipeline,Batch,spark
+https://github.com/Nattawatt/data-engineer-zoomcamp/tree/main/week_7_project,Real-time Expressway Insights,Unknown,
+https://github.com/kkuznets/crypto-fear-and-greed-analysis,Crypto Pipeline Automation,Streaming,real-time
+https://github.com/JVAparicio/DE_Zoomcamp_Final_Project,Top-Ranked Board Games,Unknown,
+https://github.com/romanyakovlev/spotify-top-charts-project,Global Music Insights,Batch,spark
+https://github.com/ljvillarrealm/latam-cooliving,LatAm Cost Explorer,Unknown,
 https://github.com/waleedayoub/toronto-bicycle-data,Toronto Bike Share Analysis,Batch,batch
-https://github.com/uchiharon/DataTalksClub_de-zoomcamp_CapStone_Project,ETL Pipeline Creation,Unknown,
+https://github.com/uchiharon/DataTalksClub_de-zoomcamp_CapStone_Project,Power Metrics Pipeline,Unknown,
 https://github.com/vbugaevskii/de-zoomcamp-cycling-2023/tree/main,Unknown,Batch,batch
-https://github.com/zabull1/cycling_DE_project,London Cycling Data Pipeline,Unknown,
+https://github.com/zabull1/cycling_DE_project,Cycling Insights Dashboard,Unknown,
 https://github.com/wtfzambo/subreddit-analytics,Reddit Data Analysis Dashboard,Unknown,
-https://github.com/achi08rbb/nfl_project,NFL Data Pipeline Creation,Batch,batch
-https://github.com/jdaguilar/data-engineer-zoomcamp-capstone-project,GitHub Data Warehouse Pipeline,Batch,spark
-https://github.com/leocmcheung/tfldez,London Cycling Analysis,Unknown,
-https://github.com/calbergs/spotify-api,Spotify Listening Insights Dashboard,Unknown,
-https://github.com/ilyapetruhnov/ucdp-org-violence,Analyzing Organized Violence Data,Batch,spark
-https://github.com/Manny-97/DE-ZOOMCAMP-PROJECT,MotoGP Data Pipeline & Dashboard,Batch,batch
-https://github.com/richardjonyo/data-engineering-zoomcamp,Coal Production Analytics Pipeline,Batch,batch
-https://github.com/LadyTastingData/de-project,Global Games Sales Insights,Batch,spark
-https://github.com/AliaHa3/data-engineering-zoomcamp-project,Earthquake Analytics Dashboard,Batch,batch
+https://github.com/achi08rbb/nfl_project,NFL Team Analysis,Batch,batch
+https://github.com/jdaguilar/data-engineer-zoomcamp-capstone-project,GitHub Activity Analysis,Batch,spark
+https://github.com/leocmcheung/tfldez,London Cycling Dashboard,Unknown,
+https://github.com/calbergs/spotify-api,Spotify Listening Dashboard,Unknown,
+https://github.com/ilyapetruhnov/ucdp-org-violence,Global Violence Analysis,Batch,spark
+https://github.com/Manny-97/DE-ZOOMCAMP-PROJECT,MotoGP Data Insights,Batch,batch
+https://github.com/richardjonyo/data-engineering-zoomcamp,Coal Production Analytics,Batch,batch
+https://github.com/LadyTastingData/de-project,Game Sales Insights,Batch,spark
+https://github.com/AliaHa3/data-engineering-zoomcamp-project,Quake Analytics Dashboard,Batch,batch
 https://github.com/ZenOfAnalytics/data-engineering-zoomcamp/tree/main/week_7_project,Reddit Data Dashboard,Unknown,
 https://github.com/oleg-agapov/de-zoomcamp-project,GitHub Data Pipeline,Batch,batch
-https://github.com/iskaiska911/DEZoomCampProject,Earthquake Data Dashboard,Batch,spark
-https://github.com/OlegVolchenko/bikes-rental-project,London Bike Hire Pipeline,Unknown,
-https://github.com/rikk-a/de-camp,Space Data Pipeline Orchestration,Unknown,
+https://github.com/iskaiska911/DEZoomCampProject,Earthquake Insights Dashboard,Batch,spark
+https://github.com/OlegVolchenko/bikes-rental-project,London Bike Flow,Unknown,
+https://github.com/rikk-a/de-camp,Launch Data Analytics,Unknown,
 https://github.com/daniel-juhasz-ng/data-engineering-bootcamp-project,UK Crime Insights,Unknown,
-https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project,NYC Vehicle Collision Analysis,Batch,batch
-https://github.com/Tomtechno/data-engineering-us-accidents-ZOOMCAMP,US Car Accident Trends,Unknown,
-https://github.com/voidisperfect/dtc_project,COVID Data Pipeline Creation,Unknown,
-https://github.com/twistby/dtc-project.git,Chicago Street Crime Analysis,Unknown,
-https://github.com/Xanthus1/zoomcamp-louisville-data,Louisville Expenditure Comparison Pipeline,Unknown,
-https://github.com/sanyassyed/sf_eviction,SF Eviction Data Pipeline,Batch,batch
-https://github.com/MarieeCzy/METAR-Data-Engineering-and-Machine-Learning-Project,METAR Data Pipeline,Batch,batch
-https://github.com/bruceewue/de_zoomcamp_tfl_cycling,Cycling Trends in London,Batch,hadoop
-https://github.com/yalcinerbasi/data-engineering-zoomcamp-project,Land Registry Applications Analysis,Batch,batch
-https://github.com/Southboy12/NYSE-ETL-Pipeline,NYSE Stock Price Extraction,Unknown,
-https://github.com/Aditya-Gupta1/yelposphere,YelpoSphere Data Pipeline,Unknown,
+https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project,NYC Collision Dashboard,Batch,batch
+https://github.com/Tomtechno/data-engineering-us-accidents-ZOOMCAMP,US Car Accident Insights,Unknown,
+https://github.com/voidisperfect/dtc_project,Covid Tech Trends,Unknown,
+https://github.com/twistby/dtc-project.git,Crime & Schools: Chicago,Unknown,
+https://github.com/Xanthus1/zoomcamp-louisville-data,Expenditure Comparison Dashboard,Unknown,
+https://github.com/sanyassyed/sf_eviction,Eviction Data Analysis,Batch,batch
+https://github.com/MarieeCzy/METAR-Data-Engineering-and-Machine-Learning-Project,METAR Forecast Dashboard,Batch,batch
+https://github.com/bruceewue/de_zoomcamp_tfl_cycling,London Cycling Insights,Batch,hadoop
+https://github.com/yalcinerbasi/data-engineering-zoomcamp-project,Land Registry Analytics 202,Batch,batch
+https://github.com/Southboy12/NYSE-ETL-Pipeline,NYSE Stock Data Processing,Unknown,
+https://github.com/Aditya-Gupta1/yelposphere,Yelp Analysis Pipeline,Unknown,
 https://github.com/1armani/de-zoomcamp/blob/main/7_project,Unknown,Unknown,
-https://github.com/Trizzlenova/datatalks-imdb-capstone,IMDB Data Analysis Pipeline,Batch,batch
-https://github.com/aukrasnov/brand-monitoring-bi,Reddit Analytics Tool,Streaming,kafka
+https://github.com/Trizzlenova/datatalks-imdb-capstone,IMDB Data Insights,Batch,batch
+https://github.com/aukrasnov/brand-monitoring-bi,Reddit Marketing Tool,Streaming,kafka
 https://github.com/daniel-gheorghita/dezoomcamp/tree/main/7_project_Belgium_housing_market,Unknown,Unknown,
-https://github.com/linhpham-ldp/github-data-pipeline,Github Data Dashboard,Streaming,real-time
-https://github.com/piyush-an/NYC-Restaurant-Inspection,NYC Food Inspection Insights,Unknown,
+https://github.com/linhpham-ldp/github-data-pipeline,GitHub Analytics Dashboard,Streaming,real-time
+https://github.com/piyush-an/NYC-Restaurant-Inspection,NYC Food Insights,Unknown,
 https://github.com/DonaldWipper/Football-Tournaments-Data-Archive,Football Data Archive,Batch,spark
 https://github.com/carmad94/DE-zoomcamp-project-2023,Mindanao Weather Dashboard,Unknown,
-https://github.com/Asrst/reddit-api-data-pipeline,Reddit Data Dashboard,Batch,batch
-https://github.com/leonardokhorliey/movies-data-pipeline,Movies Data Engineering Pipeline,Batch,spark
-https://github.com/Konzisam/echarging_infrastracture_pipeline,German E-Charging Pipeline,Unknown,
-https://github.com/PeteCastle/League-of-Legends-Analytics,League Data Visualization Pipeline,Batch,spark
+https://github.com/Asrst/reddit-api-data-pipeline,Reddit Engagement Insights,Batch,batch
+https://github.com/leonardokhorliey/movies-data-pipeline,Movies Analytics Pipeline,Batch,spark
+https://github.com/Konzisam/echarging_infrastracture_pipeline,German e-Charging Pipeline,Unknown,
+https://github.com/PeteCastle/League-of-Legends-Analytics,League Analytics Trends,Batch,spark
 https://github.com/juicero-chief-juice-officer/zoomcamp_projects/tree/main,Unknown,Unknown,
-https://github.com/iparac/rotten-tomatoes-datacamp-project,Big Data Cloud Installation,Unknown,
+https://github.com/iparac/rotten-tomatoes-datacamp-project,Cloud Movie Analysis,Unknown,
 https://github.com/natashayasi/DEZ-2023-Project,Swiss Apartment Trends,Batch,batch
 https://github.com/avyazg/de-zoomcamp-project,Turkish Weather Analysis,Batch,batch
-https://github.com/jrhamilton/bcsales,Bandcamp Sales Analysis,Batch,spark
-https://github.com/alinali87/de-zoomcamp-project,GitHub Activity Analysis,Batch,batch
-https://github.com/olivermills/de-prices-paid-capstone,UK Property Price Analysis,Unknown,
-https://github.com/Shivampanwar/data-engineering-movielens,Movie Rating Pipeline,Batch,batch
-https://github.com/twu13/dezoom_2023/tree/main/project,CMS Payments Dashboard Creation,Unknown,
+https://github.com/jrhamilton/bcsales,Global Bandcamp Sales Analysis,Batch,spark
+https://github.com/alinali87/de-zoomcamp-project,GitHub Insights,Batch,batch
+https://github.com/olivermills/de-prices-paid-capstone,UK House Price Insights,Unknown,
+https://github.com/Shivampanwar/data-engineering-movielens,Data Pipeline Exploration,Batch,batch
+https://github.com/twu13/dezoom_2023/tree/main/project,Payments Analytics Dashboard,Unknown,
 https://github.com/EvanHofmeister/Housing-Wealth-Pipeline,US Housing Wealth Estimation,Streaming,real-time
 https://github.com/MekongDelta-mind/de_zoomcamp_2023_capstone/tree/review_attempt_2,Unknown,Batch,batch
 https://github.com/Light2Dark/quality-of-life,Malaysian Weather Dashboard,Unknown,
-https://github.com/JuanPacoHernandez/TelecommDescriptive-Analysis,IoT Consumption Dashboard,Batch,batch
-https://github.com/lironesamoun/data-engineering-capstone-project,Global Terrorism Analysis,Unknown,
+https://github.com/JuanPacoHernandez/TelecommDescriptive-Analysis,IoT Consumption Patterns,Batch,batch
+https://github.com/lironesamoun/data-engineering-capstone-project,Global Terrorism Analytics,Unknown,
 https://github.com/diegoib/de-github-user/tree/main,Unknown,Unknown,
-https://github.com/EzicStar/BA-turnstiles-pipeline,Buenos Aires Subway Analysis,Batch,batch
-https://github.com/NikSWE/acm-icpc-analytics,ACM ICPC World Finals History,Batch,spark
-https://github.com/guilhermefmk/lol_data_pipeline,League Data Analysis Pipeline,Unknown,
-https://github.com/sl2902/xetra,Xetra Stock Price Analysis,Unknown,
-https://github.com/sushasru/NYC-FHV-UberVsLyft,COVID Impact on Ride-hailing,Unknown,
-https://github.com/kevmo/analytics_dashboard,AWS Data Analytics Solution,Streaming,streaming
-https://github.com/cancamilo/dataworks-gis,Geospatial Renewable Energy Analysis,Batch,spark
-https://github.com/green-nk/nyc-citi-bike/,Citi Bike Dashboard Metrics,Batch,batch
-https://github.com/eeeds/data-engineering-camp-project,GCP Data Pipeline Implementation,Batch,batch
+https://github.com/EzicStar/BA-turnstiles-pipeline,Buenos Aires Subway Dashboard,Batch,batch
+https://github.com/NikSWE/acm-icpc-analytics,Programming Competition Insights,Batch,spark
+https://github.com/guilhermefmk/lol_data_pipeline,League Match Analytics,Unknown,
+https://github.com/sl2902/xetra,Xetra Stock Analysis,Unknown,
+https://github.com/sushasru/NYC-FHV-UberVsLyft,COVID Ride Share Analysis,Unknown,
+https://github.com/kevmo/analytics_dashboard,AWS Infrastructure Automation,Streaming,streaming
+https://github.com/cancamilo/dataworks-gis,Automated Climate Visualization Pipeline,Batch,spark
+https://github.com/green-nk/nyc-citi-bike/,NYC Bike Metrics Dashboard,Batch,batch
+https://github.com/eeeds/data-engineering-camp-project,Cloud Data Workflow,Batch,batch

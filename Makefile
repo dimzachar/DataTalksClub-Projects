@@ -15,4 +15,7 @@ titles:
 deploy:
 	python -m src.check_and_save_deployment
 
+streamlit:
+	streamlit run app.py
+
 all: scrape titles deploy

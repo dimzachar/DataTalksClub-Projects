@@ -9,6 +9,11 @@ pandas = "*"
 python-dotenv = "*"
 openai = "*"
 beautifulsoup4 = "*"
+streamlit = "*"
+matplotlib = "*"
+seaborn = "*"
+nltk = "*"
+wordcloud = "*"
 
 
 [dev-packages]
@@ -20,4 +25,4 @@ isort = "*"
 pre-commit = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "*"

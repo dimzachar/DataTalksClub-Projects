@@ -47,4 +47,4 @@ class DeploymentChecker:
             return 'Unknown', None
         except requests.exceptions.RequestException as e:
             print(f"Error checking deployment for URL {url}: {e}")
-            return 'Error', None  # or however you wish to handle this case
+            return 'Error', None

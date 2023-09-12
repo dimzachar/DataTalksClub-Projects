@@ -1,90 +1,91 @@
 project_url,project_title,Deployment Type,Reason
-https://github.com/hoe94/DTC_MLOPS_Project,Streamlining MLOps Deployment,Batch,batch
-https://github.com/kargarisaac/mlops-zoomcamp-final-project,Product Sentiment Analysis,Unknown,
-https://github.com/N3wBaz/mlops_zoomcamp_project,Diabetes Prediction Pipeline,Unknown,
-https://github.com/Nerdward/Mlops_project,House Price Predictor,Unknown,
-https://github.com/Mithrandir7/mlops-zoomcamp-project,India Rent Prediction Model,Unknown,
-https://github.com/drew-two/MLOpsFinal,Traffic Sign Classifier Implementation,Streaming,kinesis
-https://github.com/TSFelg/mlops_zoomcamp_project,Mobility Forecasting Application,Unknown,
-https://github.com/slavaheroes/mlops-zoomcamp-project,Fake News Detection Service,Web Service,flask
-https://github.com/ammarchalifah/mlops-smoke-detection,Smoke Detection Pipeline,Web Service,flask
-https://github.com/IzicTemi/e2e_fake_news_classifier,Fake News Classifier Pipeline,Web Service,flask
+https://github.com/hoe94/DTC_MLOPS_Project,MLOps for Customer C,Batch,batch
+https://github.com/kargarisaac/mlops-zoomcamp-final-project,Sentiment Prediction Platform,Unknown,
+https://github.com/N3wBaz/mlops_zoomcamp_project,Diabetes Prediction,Unknown,
+https://github.com/Nerdward/Mlops_project,House Price Prediction,Unknown,
+https://github.com/Mithrandir7/mlops-zoomcamp-project,Rent Price Prediction,Unknown,
+https://github.com/drew-two/MLOpsFinal,Traffic Sign Recognition AI,Streaming,kinesis
+https://github.com/TSFelg/mlops_zoomcamp_project,Retail Trends Forecasted,Unknown,
+https://github.com/slavaheroes/mlops-zoomcamp-project,Fake News Classification,Web Service,flask
+https://github.com/ammarchalifah/mlops-smoke-detection,Smoke Prediction Pipeline,Web Service,flask
+https://github.com/IzicTemi/e2e_fake_news_classifier,Fake News Detector,Web Service,flask
 https://github.com/alevalve/MLOPS_FINAL_PROJECT/tree/main/Final_Project,Unknown,Unknown,
-https://github.com/piyush-an/Weather-Prediction-MLOps,ML Deployment with MLflow,Web Service,fastapi
-https://github.com/froukje/ml-ops-zoomcamp/tree/master/07-project,Building Heat Load Analysis,Unknown,
+https://github.com/piyush-an/Weather-Prediction-MLOps,Smart Weather Prediction,Web Service,fastapi
+https://github.com/froukje/ml-ops-zoomcamp/tree/master/07-project,Building Heat Analysis,Unknown,
 https://github.com/louismichel100/End_Project_MLOPS.git,ECG Heart Failure Prediction,Unknown,
-https://github.com/EphraimX/mlops-zoomcamp-capstone-project,Emotion Categorization AI,Unknown,
-https://github.com/modfa/MLOps-Final-Project,Car Price Predictor,Unknown,
-https://github.com/cmigpereira/mlops-zoomcamp-project,Craigslist Price Predictor,Web Service,flask
-https://github.com/hannapethani/mlops-project.git,Bikeshare Ride Duration Prediction,Batch,batch
+https://github.com/EphraimX/mlops-zoomcamp-capstone-project,Emotion Naming Assistant,Unknown,
+https://github.com/modfa/MLOps-Final-Project,Car Price Prediction,Unknown,
+https://github.com/cmigpereira/mlops-zoomcamp-project,Vehicle Price Prediction,Web Service,flask
+https://github.com/hannapethani/mlops-project.git,Bike Ride Time Prediction,Batch,batch
 https://github.com/nahumsa/nyc-yellow-tripdata,NYC Taxi Time Prediction,Web Service,flask
-https://github.com/adamiaonr/mlops-zoomcamp-project,NYC Bus Delay Predictor,Unknown,
-https://github.com/surawut-jirasaktavee/course-mlops-zoomcamp/tree/main/08-project-capstone,Telecom Churn Prediction,Unknown,
-https://github.com/rgareev/mlops-openfoodfacts,Food Group Prediction AI,Batch,batch
+https://github.com/adamiaonr/mlops-zoomcamp-project,Bus Delay Prediction,Unknown,
+https://github.com/surawut-jirasaktavee/course-mlops-zoomcamp/tree/main/08-project-capstone,Churn Prediction Service,Unknown,
+https://github.com/rgareev/mlops-openfoodfacts,NOVA Group Prediction System,Batch,batch
 https://github.com/sergeykochetkov/mlopsproject,Stock Forecasting AI,Batch,batch
-https://github.com/PatrickCmd/mlops-project,MLOps Deployment Pipeline,Batch,batch
-https://github.com/adamgifford-behavr/exercise_prediction,Exercise Prediction Wearables,Batch,batch
+https://github.com/PatrickCmd/mlops-project,BikeShare ML Pipeline,Batch,batch
+https://github.com/adamgifford-behavr/exercise_prediction,Exercise Category Prediction,Batch,batch
 https://gitlab.com/neimv/mlops-project,Unknown,Unknown,
 https://github.com/caldasdeoliveira/mlops-zoomcamp-final-project-infra,MLOps Zoomcamp Infrastructure,Unknown,
-https://github.com/burcins/mlops-zoomcamp-main-project,Wine Quality Predictor,Web Service,web service
-https://github.com/moizsajid/mlops_zoomcamp/tree/main/project,Car Price Predictor,Unknown,
-https://github.com/WLDCH/covid19-deaths-prediction,Covid19 Death Prediction: France,Unknown,
-https://github.com/KarimLulu/mlops-loan-prediction,Loan Repayment Prediction,Web Service,flask
+https://github.com/burcins/mlops-zoomcamp-main-project,Quality Wine Classification,Web Service,web service
+https://github.com/moizsajid/mlops_zoomcamp/tree/main/project,Car Price Prediction,Unknown,
+https://github.com/WLDCH/covid19-deaths-prediction,France's Covid19 Death,Unknown,
+https://github.com/KarimLulu/mlops-loan-prediction,Loan Return Prediction,Web Service,flask
 https://github.com/brut0/mining-process-mlops-project,Silica Concentrate Prediction,Web Service,flask
-https://github.com/K0nkere/kkr-mlops-project.git,Car Price Predictor Service,Batch,batch
-https://github.com/hsuyab/project_final,Diamond Price Prediction,Web Service,flask
+https://github.com/K0nkere/kkr-mlops-project.git,Car Price Prediction,Batch,batch
+https://github.com/hsuyab/project_final,Diamond Price Prediction: Cat,Web Service,flask
 https://github.com/rizdiaprilian/MLOps_Zoomcamp/tree/master/UK_house_price,UK House Price Forecasting,Unknown,
-https://github.com/VenkatArchitect/final,Flower Type Classification,Web Service,web service
-https://github.com/MarcosMJD/mlops-chicago-taxi,Chicago Taxi Trip Prediction,Batch,batch
-https://github.com/vykuang/TO-bikeshare-membership,Bike Rider Prediction Model,Batch,batch
+https://github.com/VenkatArchitect/final,Flower Classification Solution,Web Service,web service
+https://github.com/MarcosMJD/mlops-chicago-taxi,Chicago Taxi Duration Prediction,Batch,batch
+https://github.com/vykuang/TO-bikeshare-membership,Bike Rider Classification,Batch,batch
 https://github.com/tmikolajczyk/mlops-zoomcamp-project,Flight Price Prediction,Web Service,flask
-https://github.com/dheerajkarra/MLOps_Zoomcamp/tree/main/Project,Exploring MLOps Processes,Unknown,
-https://github.com/IanVlasov/mlops_pet_project,NYC Taxi Fare Predictor,Streaming,stream
-https://github.com/vdevilliers/mlops-zoomcamp,Forecasting Weekly Oil Prices,Unknown,
-https://github.com/Purity-E/project_mlopszoomcamp,Fake News Detection AI,Batch,batch
-https://github.com/amitkml/mlops-HomeRentProcessor,ML Pipeline Deployment,Batch,batch
-https://github.com/zioalex/mlops-capstone-project,Russia's Economic Influence Forecast,Batch,batch
-https://github.com/allront/mlops_zoomcamp,Marketing Response Predictor,Web Service,flask
-https://github.com/heisguyy/mlops-capstone,House Price Predictor API,Batch,batch
-https://github.com/KeiranJOC/bikeshare-ride-duration-prediction-service,Bikeshare Trip Time Predictor,Unknown,
+https://github.com/dheerajkarra/MLOps_Zoomcamp/tree/main/Project,MLOps Pipeline Exploration,Unknown,
+https://github.com/IanVlasov/mlops_pet_project,MLOps for Taxi Fare,Streaming,stream
+https://github.com/vdevilliers/mlops-zoomcamp,Oil Price Forecasting,Unknown,
+https://github.com/Purity-E/project_mlopszoomcamp,Fake News Detector,Batch,batch
+https://github.com/amitkml/mlops-HomeRentProcessor,"MLOps Mastery
+Rent",Batch,batch
+https://github.com/zioalex/mlops-capstone-project,Russian Economic Influence Forecast,Batch,batch
+https://github.com/allront/mlops_zoomcamp,Bank Campaign Prediction,Web Service,flask
+https://github.com/heisguyy/mlops-capstone,Home Value Prediction,Batch,batch
+https://github.com/KeiranJOC/bikeshare-ride-duration-prediction-service,Bikeshare Ride Prediction,Unknown,
 https://github.com/xydo1990/mlops_zoomcamp_homework,Minifigure Classification Solution,Batch,batch
-https://github.com/ovokpus/Income-Prediction-Pipeline,Income Prediction Platform Deployment,Web Service,flask
-https://github.com/Nakulbajaj101/mlops-zoomcamp-final-project,Bikeshare Rental Predictor,Batch,batch
-https://github.com/shivkurtarkar/chat-moderation,Real-time Chat Moderation,Web Service,flask
-https://github.com/OlubiyiMosope/mlops-zoomcamp-project,Abalone Age Prediction with ML,Batch,batch
-https://github.com/varunkuntal/Crypto-prediction,Crypto Price Predictor,Web Service,flask
-https://github.com/BhuiyanMH/bixi-ride-duration-prediction,Bixi Ride Duration Predictor,Web Service,flask
-https://github.com/dr563105/mlops-project-grocery-sales,Grocery Sales Predictor,Web Service,flask
+https://github.com/ovokpus/Income-Prediction-Pipeline,Predicting Census Incomes,Web Service,flask
+https://github.com/Nakulbajaj101/mlops-zoomcamp-final-project,Bikeshare Rental Insights,Batch,batch
+https://github.com/shivkurtarkar/chat-moderation,SafeChat: Real-time,Web Service,flask
+https://github.com/OlubiyiMosope/mlops-zoomcamp-project,Abalone Age Prediction,Batch,batch
+https://github.com/varunkuntal/Crypto-prediction,Daily Crypto Forecast,Web Service,flask
+https://github.com/BhuiyanMH/bixi-ride-duration-prediction,Bixi Ride Prediction,Web Service,flask
+https://github.com/dr563105/mlops-project-grocery-sales,Grocery Sales Prediction,Web Service,flask
 https://github.com/AntonisCSt/Mlops_project_semicon/tree/main,Unknown,Web Service,fastapi
-https://github.com/emoloic/house-rent-prediction,ML Pipeline for Renting,Web Service,flask
-https://github.com/camilo-cf/mlops_car_sales,Car Loan Identification Solution,Batch,batch
-https://github.com/IremErturk/dtc-mlops-capstone-project,Poem Generator API,Web Service,fastapi
-https://github.com/eeeds/employees-attrition-mlops,Employee Attrition Prediction,Web Service,flask
+https://github.com/emoloic/house-rent-prediction,Smart Rent AI,Web Service,flask
+https://github.com/camilo-cf/mlops_car_sales,Auto Loan Targeting,Batch,batch
+https://github.com/IremErturk/dtc-mlops-capstone-project,PoemGen AI API,Web Service,fastapi
+https://github.com/eeeds/employees-attrition-mlops,Attrition Prediction,Web Service,flask
 https://github.com/lemminkainen94/mlops-project,Target Sentiment Analysis,Unknown,
 https://github.com/bryskulov/mlops-house-prices,Automated House Price Prediction,Web Service,flask
-https://github.com/OLAMIDE100/Capstone-Project-Mlops-ZoomCamp,House Price Predictor,Batch,batch
-https://github.com/npogeant/flight-delay,Flight Delay Solution Pipeline,Batch,batch
-https://github.com/vermadev54/MlopsZoomcampCourceProject,Credit Card Attrition Prediction,Batch,batch
-https://github.com/HoracioSoldman/mlops-project,Flight Delay Predictor,Web Service,flask
-https://github.com/andrecpc/mlops-zoomcamp-project,Vegetable Classifier Creation,Web Service,fastapi
-https://github.com/Vulon/pet_image_detection,Cat & Dog Segmentation,Unknown,
+https://github.com/OLAMIDE100/Capstone-Project-Mlops-ZoomCamp,Home Price Prediction,Batch,batch
+https://github.com/npogeant/flight-delay,Flight Delay Prediction,Batch,batch
+https://github.com/vermadev54/MlopsZoomcampCourceProject,Reducing Credit Card Attr,Batch,batch
+https://github.com/HoracioSoldman/mlops-project,Flight Delay Prediction,Web Service,flask
+https://github.com/andrecpc/mlops-zoomcamp-project,Veggie Classification System,Web Service,fastapi
+https://github.com/Vulon/pet_image_detection,Feline Canine Segmentation,Unknown,
 https://github.com/mharty3/energy_data_capstone/blob/master/readme.md,Unknown,Unknown,
-https://github.com/Chinemelu4/mlops-zoomcamp-project.git,Airbnb-inspired Pricing Strategy,Unknown,
-https://github.com/liartem/mlops-zoomcamp/tree/main/final_project,Car Buying Predictor Service,Unknown,
+https://github.com/Chinemelu4/mlops-zoomcamp-project.git,Airbnb Pricing Replication,Unknown,
+https://github.com/liartem/mlops-zoomcamp/tree/main/final_project,Car Buying Prediction,Unknown,
 https://github.com/deen360/mlops-project,Paris House Cost Estimator,Web Service,flask
-https://github.com/Peco602/maternal-health-risk,Pregnancy Health Prediction Pipeline,Web Service,flask
-https://github.com/jralduaveuthey/mlops-covid,COVID Predictor Implementation,Batch,batch
-https://github.com/Chrisroj/mlops-final-project,Telco Churn Predictor,Streaming,streaming
+https://github.com/Peco602/maternal-health-risk,Maternal Risk Prediction Pipeline,Web Service,flask
+https://github.com/jralduaveuthey/mlops-covid,COVID Predictions System,Batch,batch
+https://github.com/Chrisroj/mlops-final-project,Telco Churn Prediction,Streaming,streaming
 https://github.com/bijay-05/MLOPs-zoomcamp-capstone,NYC Fare Prediction,Web Service,flask
-https://github.com/ibombonato/mlops-showcase,Cloud-based MLOps Implementation,Batch,batch
-https://github.com/razorcd/mlops-training/tree/main/capstone-project,ML Automation Pipeline,Unknown,
-https://github.com/prashant-py-debug/mlops-project,ML Management Platform,Web Service,fastapi
-https://github.com/yusyel/mlops-project,CHD Risk Detection,Unknown,
-https://github.com/Ashish110110/MLOps/tree/main/Project,Red Wine Quality Prediction,Unknown,
-https://github.com/hakymulla/Diabetes-ML-ps,MLOps Zoomcamp Project Guide could be,Unknown,
-https://github.com/CodeProcessor/MLOps-Project-1,Pizza Image Classifier,Unknown,
+https://github.com/ibombonato/mlops-showcase,Cloud-based MLOps,Batch,batch
+https://github.com/razorcd/mlops-training/tree/main/capstone-project,Automated ML Pipeline,Unknown,
+https://github.com/prashant-py-debug/mlops-project,ML System Orchestration,Web Service,fastapi
+https://github.com/yusyel/mlops-project,CHD Risk Prediction,Unknown,
+https://github.com/Ashish110110/MLOps/tree/main/Project,Wine Quality Prediction,Unknown,
+https://github.com/hakymulla/Diabetes-ML-ps,Diabetes Prediction Project,Unknown,
+https://github.com/CodeProcessor/MLOps-Project-1,Pizza Prediction Model,Unknown,
 https://github.com/yalcinerbasi/mlOps,Unknown,Unknown,
-https://github.com/Qfl3x/mlops-zoomcamp-project,Telecom Churn Prediction,Unknown,
-https://github.com/yalcinerbasi/mlops-zoomcamp,Risk Prediction Analysis,Unknown,
-https://github.com/mmgxa/MLZ_P,MLOps Best Practices,Batch,batch
+https://github.com/Qfl3x/mlops-zoomcamp-project,Churn Prediction AI,Unknown,
+https://github.com/yalcinerbasi/mlops-zoomcamp,Property Hazard Prediction,Unknown,
+https://github.com/mmgxa/MLZ_P,MLOps for Imbalanced,Batch,batch
 https://github.com/instabaines/MLOps/tree/project/Project,Unknown,Unknown,

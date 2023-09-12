@@ -33,7 +33,6 @@ def main():
         if not scraped_files:
             continue
 
-        # Your existing code to read the CSVs and combine them
         subdirectory = scraper.subdirectory
         for file_name in scraped_files:
             csv_file = os.path.join(subdirectory, file_name)

@@ -2,10 +2,9 @@ import os
 
 # Define base and subdirectories
 base_path = "Data"
-course = "dezoomcamp"
-year = 2023
+course = "mlzoomcamp"
+year = 2022
 
-# Construct full paths
 subdirectory = f"{base_path}/{course}/{year}"
 base_name = f"scraped_{course}_{year}"
 output_prefix = f"projects_{course}_{year}"
@@ -17,4 +16,4 @@ if not os.path.exists(subdirectory):
 # Paths for various CSV files
 cleaned_csv_path = f"{subdirectory}/cleaned_{base_name}.csv"
 titles_csv_path = f"{subdirectory}/{output_prefix}_cleaned_titles.csv"
-deploy_csv_path = "data.csv"
+deploy_csv_path = f"{subdirectory}/data.csv"
