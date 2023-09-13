@@ -58,9 +58,7 @@ cd DataTalksClub-Projects
 
 ```bash
 pip install --upgrade pip
-pip install pipenv
-pipenv install --dev
-pipenv shell
+pip install -r requirements.txt
 ```
 
 ### Environment Variables
@@ -117,6 +115,14 @@ This command is a shortcut to run all of the above tasks in sequence. It's a qui
 
 ```bash
 make all
+```
+
+### Streamlit app
+
+Run the Streamlit app using the Makefile
+
+```bash
+make streamlit
 ```
 
 ## CI/CD Pipeline (TBD)

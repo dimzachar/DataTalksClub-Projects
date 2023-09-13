@@ -218,8 +218,6 @@ else:
 
 # Add donation links in sidebar
 st.sidebar.write("Help Keep This Service Running")
-# st.sidebar.markdown("[ERC-20 / EVM](https://etherscan.io/address/0xeB16AdBa798C64CFdb9A0A70C95e1231e4ADe124)")
-# st.sidebar.markdown("[BTC](https://blockchair.com/bitcoin/address/bc1qc0ryfatzkken7t2mx67pjreu24kj2dzu670fpg)")
 st.sidebar.markdown("<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128'></a>", unsafe_allow_html=True)
 
 
