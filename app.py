@@ -14,7 +14,12 @@ from pandas.api.types import (
 from src.eda_analysis import EDAAnalysis
 
 warnings.filterwarnings("ignore")
-st.set_page_config(page_title="DataTalksClub", page_icon=":cookie:")
+
+st.set_page_config(
+    page_title="DataTalksClub", 
+    page_icon=":cookie:",
+    initial_sidebar_state="expanded"
+    )
 
 
 # Function to load data based on selected courses and years
@@ -141,6 +146,11 @@ if selected_courses and selected_years:
             },
             hide_index=True,
         )
+        # Download button moved outside of the except block
+        if not data.empty:
+            csv = data.to_csv(index=False).encode('utf-8')
+            if st.download_button(label="Download CSV", data=csv, file_name='data.csv', mime='text/csv', key='download-csv'):
+                st.write('Download Completed!')
 
         word_freq = analysis.calculate_word_frequency(data['processed_titles'])
         # st.write('Word Frequency:', word_freq)
@@ -199,7 +209,22 @@ if selected_courses and selected_years:
                 "An error occurred while plotting the deployment type distribution."
             )
 
+        
+
     else:
         st.write("No data loaded.")
 else:
     st.write("Please select at least one course and one year to load data.")
+
+# Add donation links in sidebar
+st.sidebar.write("Help Keep This Service Running")
+# st.sidebar.markdown("[ERC-20 / EVM](https://etherscan.io/address/0xeB16AdBa798C64CFdb9A0A70C95e1231e4ADe124)")
+# st.sidebar.markdown("[BTC](https://blockchair.com/bitcoin/address/bc1qc0ryfatzkken7t2mx67pjreu24kj2dzu670fpg)")
+st.sidebar.markdown("<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128'></a>", unsafe_allow_html=True)
+
+
+st.sidebar.write("Connect with me")
+st.sidebar.markdown("<a href='https://www.linkedin.com/in/zacharenakis'><img src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png' width='32'></a>", unsafe_allow_html=True)
+st.sidebar.markdown("<a href='https://zacharenakis.super.site'><img src='https://img.icons8.com/external-vectorslab-flat-vectorslab/53/null/external-Favorite-Website-web-and-marketing-vectorslab-flat-vectorslab.png' width='32'></a>", unsafe_allow_html=True)
+
+

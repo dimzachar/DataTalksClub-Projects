@@ -1,5 +1,7 @@
 # DataTalksClub-Projects
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://datatalksclub-projects.streamlit.app/)
+
 
 ## Table of Contents
 
@@ -28,18 +30,19 @@ DataTalksClub-Projects is a Python repository aimed at automating the analysis o
 
 ```
 .
-├── Data/          # Data files
-├── src/           # Python source files
-├── tests/         # Test files (TBD)
-├── utils/         # Utility files
-├── .env           # Environment variables
-├── .gitignore     # Git ignore rules
-├── LICENSE        # License file
-├── Makefile       # Makefile for automation
-├── Pipfile        # Pipfile for dependencies
-├── Pipfile.lock   # Locked dependencies
-├── README.md      # This file
-└── pyproject.toml # Build settings
+├── Data/               # Data files
+├── src/                # Python source files
+├── tests/              # Test files (TBD)
+├── utils/              # Utility files
+├── .env                # Environment variables
+├── .gitignore          # Git ignore rules
+├── LICENSE             # License file
+├── Makefile            # Makefile for automation
+├── README.md           # This file
+├── app.py              # Streamlit app
+├── help.log            # Unknown titles
+├── pyproject.toml      # Build settings
+└── requirements.txt    # Dependency list
 ```
 
 ## Getting Started
