@@ -158,3 +158,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 For inquiries, connect with me on [Linkedin](https://www.linkedin.com/in/zacharenakis/)
 
+## Support this project
+
+[![Donate with PayPal](https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png)](https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4)

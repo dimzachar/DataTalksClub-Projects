@@ -40,6 +40,7 @@ st.title(
     'Interactive [DataTalksClub](https://github.com/DataTalksClub) Course Projects Dashboard'
 )
 
+
 course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp']
 year_options = ['2021', '2022', '2023']
 
