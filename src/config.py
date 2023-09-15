@@ -2,7 +2,7 @@ import os
 
 # Define base and subdirectories
 base_path = "Data"
-course = "mlzoomcamp"
+course = "mlopszoomcamp"
 year = 2022
 
 subdirectory = f"{base_path}/{course}/{year}"

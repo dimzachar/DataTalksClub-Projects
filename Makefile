@@ -1,21 +1,21 @@
 test:
-	pytest tests/
+	pipenv run pytest tests/
 
 quality_checks:
-	isort .
-	black .
-	pylint --recursive=y .
+	pipenv run isort .
+	pipenv run black .
+	pipenv run pylint --recursive=y .
 
 scrape: quality_checks
-	python -m src.scrape_and_clean
+	pipenv run python -m src.scrape_and_clean
 
 titles:
-	python -m src.generate_and_save_titles
+	pipenv run python -m src.generate_and_save_titles
 
 deploy:
-	python -m src.check_and_save_deployment
+	pipenv run python -m src.check_and_save_deployment
 
 streamlit:
-	streamlit run app.py
+	pipenv run streamlit run app.py
 
 all: scrape titles deploy

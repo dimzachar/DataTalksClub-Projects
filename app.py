@@ -2,6 +2,7 @@ import os
 import warnings
 
 import pandas as pd
+import seaborn as sns
 import streamlit as st
 import matplotlib.pyplot as plt
 from pandas.api.types import (
@@ -16,12 +17,26 @@ from src.eda_analysis import EDAAnalysis
 warnings.filterwarnings("ignore")
 
 st.set_page_config(
-    page_title="DataTalksClub", 
-    page_icon=":cookie:",
-    initial_sidebar_state="expanded"
-    )
+    page_title="DataTalksClub", page_icon=":cookie:", initial_sidebar_state="expanded"
+)
 
 
+def set_dark_theme_style():
+    # plt.style.use('dark_background')
+
+    plt.rcParams['figure.facecolor'] = '#323e45'
+    plt.rcParams['axes.facecolor'] = '#323e45'
+    plt.rcParams['axes.edgecolor'] = '#8FBC8F'
+    plt.rcParams['axes.labelcolor'] = '#ffffff'
+    plt.rcParams['xtick.color'] = '#ffffff'
+    plt.rcParams['ytick.color'] = '#ffffff'
+    plt.rcParams['text.color'] = '#ffffff'
+
+
+set_dark_theme_style()
+
+
+@st.cache_data
 # Function to load data based on selected courses and years
 def load_data(selected_courses, selected_years):
     dfs = []
@@ -30,7 +45,10 @@ def load_data(selected_courses, selected_years):
             path = f"./Data/{course}/{year}/data.csv"
             if os.path.exists(path):
                 print(f"Loading data from {path}")
-                dfs.append(pd.read_csv(path))
+                df = pd.read_csv(path)
+                df['Course'] = course
+                df['Year'] = year
+                dfs.append(df)
             else:
                 print(f"File not found: {path}")
     return pd.concat(dfs, ignore_index=True) if dfs else None
@@ -69,9 +87,11 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     filter_container = st.container()
 
     with filter_container:
+        available_columns = [col for col in df.columns if col not in ['Course', 'Year']]
         to_filter_columns = st.multiselect(
-            "Select columns to filter", df.columns, default=df.columns.tolist()
+            "Select columns to filter", available_columns, default=available_columns
         )
+
         df_filtered = df.copy()
 
         for column in to_filter_columns:
@@ -127,34 +147,38 @@ if selected_courses and selected_years:
 
         analysis = EDAAnalysis(data)
 
-        # Text preprocessing for project titles
         data['project_title'] = data['project_title'].astype(str)
         data['processed_titles'] = data['project_title'].apply(analysis.preprocess_text)
+
         # if search_term:
         #     data = data[data['project_title'].str.contains(search_term, case=False)]
         # else:
         #     data = data
         data = filter_dataframe(data)
-        # Display the number of projects dynamically based on the search term
+
         st.write(f"Number of projects loaded: {data.shape[0]}")
 
         st.dataframe(
             data,
             column_config={
-                "project_url": st.column_config.LinkColumn(
-                    "Project URL"
-                ),  # Assuming the column name is 'project_url'
+                "project_url": st.column_config.LinkColumn("Project URL"),
             },
             hide_index=True,
         )
-        # Download button moved outside of the except block
+
         if not data.empty:
             csv = data.to_csv(index=False).encode('utf-8')
-            if st.download_button(label="Download CSV", data=csv, file_name='data.csv', mime='text/csv', key='download-csv'):
+            if st.download_button(
+                label="Download CSV",
+                data=csv,
+                file_name='data.csv',
+                mime='text/csv',
+                key='download-csv',
+            ):
                 st.write('Download Completed!')
 
         word_freq = analysis.calculate_word_frequency(data['processed_titles'])
-        # st.write('Word Frequency:', word_freq)
+
         # Top 10 Most Frequent Project Titles
         st.header('Top 10 Most Frequent Project Titles')
         try:
@@ -186,7 +210,7 @@ if selected_courses and selected_years:
             st.write("An error occurred while plotting the most frequent words.")
 
         # Word Cloud
-        st.header('Word Cloud')
+        st.header('WordCloud')
         try:
             wordcloud = analysis.generate_wordcloud(data['processed_titles'])
             st.image(wordcloud.to_array(), use_column_width=True)
@@ -199,18 +223,89 @@ if selected_courses and selected_years:
             deployment_types = data['Deployment Type'].value_counts()
             fig, ax = plt.subplots()
             deployment_types.plot(
-                kind='bar', ax=ax, color='darkseagreen', edgecolor='black'
+                kind='barh', ax=ax, color='darkseagreen', edgecolor='black'
             )
             ax.set_title('Deployment Type Distribution')
             ax.set_xlabel('Deployment Type')
             ax.set_ylabel('Frequency')
+            ax.invert_yaxis()
             st.pyplot(fig)
         except Exception as e:
             st.write(
                 "An error occurred while plotting the deployment type distribution."
             )
 
-        
+        # Plot the distribution of cloud providers
+        st.header('Cloud Provider Distribution')
+        try:
+            cloud_provider_counts = data['Cloud'].value_counts()
+            fig, ax = plt.subplots()
+            cloud_provider_counts.plot(
+                kind='bar', ax=ax, color='darkseagreen', edgecolor='black'
+            )
+            ax.set_title('Cloud Provider Distribution')
+            ax.set_xlabel('Cloud Provider')
+            ax.set_ylabel('Frequency')
+            st.pyplot(fig)
+        except Exception as e:
+            st.write(
+                "An error occurred while plotting the cloud provider distribution."
+            )
+
+        course_counts = data['Course'].value_counts()
+
+        palette = sns.color_palette("pastel", len(course_counts.index))
+        course_order = course_counts.index.tolist()
+
+        fig, ax = plt.subplots()
+        ax.pie(
+            course_counts,
+            labels=course_counts.index,
+            startangle=90,
+            autopct='%1.1f%%',
+            wedgeprops=dict(width=0.2),
+            colors=palette,
+        )
+        ax.set_title("Distribution of Projects Across Different Courses")
+        st.pyplot(fig)
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        order_years = sorted(data['Year'].unique())
+        sns.countplot(
+            x='Year',
+            hue='Course',
+            data=data,
+            palette=palette,
+            ax=ax,
+            order=order_years,
+            hue_order=course_order,
+        )
+        ax.set_title('Distribution of Projects by Year for Each Course')
+        st.pyplot(fig)
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        sns.countplot(
+            x='Cloud',
+            hue='Course',
+            data=data,
+            palette=palette,
+            ax=ax,
+            hue_order=course_order,
+        )
+        ax.set_title('Distribution in Different Clouds by Course')
+        st.pyplot(fig)
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        sns.countplot(
+            x='Deployment Type',
+            hue='Course',
+            data=data,
+            palette=palette,
+            ax=ax,
+            hue_order=course_order,
+        )
+        ax.set_title('Distribution in Different Deployment Types by Course')
+        st.pyplot(fig)
 
     else:
         st.write("No data loaded.")
@@ -219,11 +314,18 @@ else:
 
 # Add donation links in sidebar
 st.sidebar.write("Help Keep This Service Running")
-st.sidebar.markdown("<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128'></a>", unsafe_allow_html=True)
+st.sidebar.markdown(
+    "<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128'></a>",
+    unsafe_allow_html=True,
+)
 
 
 st.sidebar.write("Connect with me")
-st.sidebar.markdown("<a href='https://www.linkedin.com/in/zacharenakis'><img src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png' width='32'></a>", unsafe_allow_html=True)
-st.sidebar.markdown("<a href='https://zacharenakis.super.site'><img src='https://img.icons8.com/external-vectorslab-flat-vectorslab/53/null/external-Favorite-Website-web-and-marketing-vectorslab-flat-vectorslab.png' width='32'></a>", unsafe_allow_html=True)
-
-
+st.sidebar.markdown(
+    "<a href='https://www.linkedin.com/in/zacharenakis'><img src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png' width='32'></a>",
+    unsafe_allow_html=True,
+)
+st.sidebar.markdown(
+    "<a href='https://zacharenakis.super.site'><img src='https://img.icons8.com/external-vectorslab-flat-vectorslab/53/null/external-Favorite-Website-web-and-marketing-vectorslab-flat-vectorslab.png' width='32'></a>",
+    unsafe_allow_html=True,
+)
