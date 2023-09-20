@@ -87,12 +87,26 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     filter_container = st.container()
 
     with filter_container:
+        
         available_columns = [col for col in df.columns if col not in ['Course', 'Year']]
         to_filter_columns = st.multiselect(
             "Select columns to filter", available_columns, default=available_columns
         )
+        col1, col2 = st.columns(2) 
+    
+        hide_unknowns = col1.checkbox("Hide Unknown Titles")
+        show_only_unknowns = col2.checkbox("Show only Unknown Titles")
+        
 
-        df_filtered = df.copy()
+        if hide_unknowns and show_only_unknowns:
+            st.warning("You cannot select both options at the same time.")
+            df_filtered = df.copy()
+        elif hide_unknowns:
+            df_filtered = df[df['project_title'] != 'Unknown']
+        elif show_only_unknowns:
+            df_filtered = df[df['project_title'] == 'Unknown']
+        else:
+            df_filtered = df.copy()
 
         for column in to_filter_columns:
             try:
