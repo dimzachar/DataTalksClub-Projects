@@ -1,10 +1,11 @@
 import os
 import warnings
 
+import numpy as np
 import pandas as pd
 import seaborn as sns
 import streamlit as st
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 from pandas.api.types import (
     is_object_dtype,
     is_numeric_dtype,
@@ -19,21 +20,6 @@ warnings.filterwarnings("ignore")
 st.set_page_config(
     page_title="DataTalksClub", page_icon=":cookie:", initial_sidebar_state="expanded"
 )
-
-
-def set_dark_theme_style():
-    # plt.style.use('dark_background')
-
-    plt.rcParams['figure.facecolor'] = '#323e45'
-    plt.rcParams['axes.facecolor'] = '#323e45'
-    plt.rcParams['axes.edgecolor'] = '#8FBC8F'
-    plt.rcParams['axes.labelcolor'] = '#ffffff'
-    plt.rcParams['xtick.color'] = '#ffffff'
-    plt.rcParams['ytick.color'] = '#ffffff'
-    plt.rcParams['text.color'] = '#ffffff'
-
-
-set_dark_theme_style()
 
 
 @st.cache_data
@@ -87,16 +73,14 @@ def filter_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     filter_container = st.container()
 
     with filter_container:
-        
         available_columns = [col for col in df.columns if col not in ['Course', 'Year']]
         to_filter_columns = st.multiselect(
             "Select columns to filter", available_columns, default=available_columns
         )
-        col1, col2 = st.columns(2) 
-    
-        hide_unknowns = col1.checkbox("Hide Unknown Titles")
+        col1, col2 = st.columns(2)
+
+        hide_unknowns = col1.checkbox("Hide Unknown Titles", value=True)
         show_only_unknowns = col2.checkbox("Show only Unknown Titles")
-        
 
         if hide_unknowns and show_only_unknowns:
             st.warning("You cannot select both options at the same time.")
@@ -191,39 +175,26 @@ if selected_courses and selected_years:
             ):
                 st.write('Download Completed!')
 
+        ########
+        # PLOT
+        #####################################################
+        # Settings
         word_freq = analysis.calculate_word_frequency(data['processed_titles'])
+        top_titles = data['project_title'].value_counts()[:10]
+        top_words = word_freq[:10]
+        course_counts = data['Course'].value_counts()
+        deployment_types = data['Deployment Type'].value_counts()
+        cloud_provider_counts = data['Cloud'].value_counts()
 
-        # Top 10 Most Frequent Project Titles
-        st.header('Top 10 Most Frequent Project Titles')
-        try:
-            top_titles = data['project_title'].value_counts()[:10]
-            fig, ax = plt.subplots()
-            top_titles.plot(kind='barh', ax=ax, color='darkseagreen', edgecolor='black')
-            ax.set_title('Top 10 Most Frequent Project Titles')
-            ax.set_xlabel('Frequency')
-            ax.set_ylabel('Project Titles')
-            ax.invert_yaxis()
-            st.pyplot(fig)
-        except Exception as e:
-            st.write(
-                "An error occurred while plotting the most frequent project titles."
-            )
+        palette = sns.color_palette("cubehelix", len(course_counts.index))
+        course_order = course_counts.index.tolist()
+        # Convert Seaborn palette to a list of colors
+        palette_colors = sns.color_palette(palette, len(course_order)).as_hex()
+        #####################################################
 
-        # Top 10 Most Frequent Words
-        st.header('Top 10 Most Frequent Words')
-        try:
-            top_words = word_freq[:10]
-            fig, ax = plt.subplots()
-            top_words.plot(kind='bar', ax=ax, color='darkseagreen', edgecolor='black')
-            ax.set_title('Top 10 Most Frequent Words in Project Titles')
-            ax.set_xlabel('Words')
-            ax.set_ylabel('Frequency')
-            ax.tick_params(axis='x', rotation=45)
-            st.pyplot(fig)
-        except Exception as e:
-            st.write("An error occurred while plotting the most frequent words.")
-
+        ################################
         # Word Cloud
+        ################################
         st.header('WordCloud')
         try:
             wordcloud = analysis.generate_wordcloud(data['processed_titles'])
@@ -231,102 +202,368 @@ if selected_courses and selected_years:
         except Exception as e:
             st.write("An error occurred while generating the word cloud.")
 
-        # Deployment Type Distribution
-        st.header('Deployment Type Distribution')
+        #################################
+        # Plot Top 10 Most Frequent Project Titles
+        ################################
+
         try:
-            deployment_types = data['Deployment Type'].value_counts()
-            fig, ax = plt.subplots()
-            deployment_types.plot(
-                kind='barh', ax=ax, color='darkseagreen', edgecolor='black'
+            # Initialize Plotly figure for the horizontal bar chart
+            fig = go.Figure()
+
+            # Add Bar chart
+            fig.add_trace(
+                go.Bar(
+                    x=top_titles,
+                    y=top_titles.index,
+                    orientation='h',
+                    marker=dict(color='#B53158', line=dict(color='black', width=1)),
+                    hoverinfo='y+x',
+                )
             )
-            ax.set_title('Deployment Type Distribution')
-            ax.set_xlabel('Deployment Type')
-            ax.set_ylabel('Frequency')
-            ax.invert_yaxis()
-            st.pyplot(fig)
+            fig.update_layout(
+                title='Top 10 Most Frequent Project Titles',
+                xaxis_title='Frequency',
+                yaxis_title='Project Titles',
+                yaxis=dict(autorange="reversed"),
+            )
+            # Show Plotly figure
+            st.plotly_chart(fig)
+        except Exception as e:
+            st.write(
+                "An error occurred while plotting the most frequent project titles."
+            )
+
+        #################################
+        # Plot Top 10 Most Frequent Words in Project Titles
+        ################################
+        try:
+            # Initialize Plotly figure for the bar chart
+            fig = go.Figure()
+
+            # Add Bar chart
+            fig.add_trace(
+                go.Bar(
+                    x=top_words.index,
+                    y=top_words,
+                    marker=dict(color='#B53158', line=dict(color='black', width=1)),
+                    hoverinfo='x+y',
+                )
+            )
+            fig.update_layout(
+                title='Top 10 Most Frequent Words in Project Titles',
+                xaxis_title='Words',
+                xaxis=dict(tickangle=-45),
+                yaxis_title='Frequency',
+            )
+            # Show Plotly figure
+            st.plotly_chart(fig)
+        except Exception as e:
+            st.write("An error occurred while plotting the most frequent words.")
+
+        #################################
+        # Plot Deployment Type Distribution
+        ################################
+        try:
+            # Initialize Plotly figure for the horizontal bar chart
+            fig = go.Figure()
+
+            # Add Horizontal Bar chart
+            fig.add_trace(
+                go.Bar(
+                    x=deployment_types,
+                    y=deployment_types.index,
+                    orientation='h',  # Horizontal orientation
+                    marker=dict(color='#B53158', line=dict(color='black', width=1)),
+                    hoverinfo='x+y',
+                )
+            )
+            fig.update_layout(
+                title='Deployment Type Distribution',
+                xaxis_title='Frequency',
+                yaxis_title='Deployment Type',
+                yaxis=dict(autorange="reversed"),  # Reverse the y-axis
+            )
+            # Show Plotly figure
+            st.plotly_chart(fig)
         except Exception as e:
             st.write(
                 "An error occurred while plotting the deployment type distribution."
             )
 
-        # Plot the distribution of cloud providers
-        st.header('Cloud Provider Distribution')
+        #################################
+        # Plot Cloud Provider Distribution
+        ################################
+
         try:
-            cloud_provider_counts = data['Cloud'].value_counts()
-            fig, ax = plt.subplots()
-            cloud_provider_counts.plot(
-                kind='bar', ax=ax, color='darkseagreen', edgecolor='black'
+            # Initialize Plotly figure for the bar chart
+            fig = go.Figure()
+
+            # Add Bar chart
+            fig.add_trace(
+                go.Bar(
+                    x=cloud_provider_counts.index,
+                    y=cloud_provider_counts,
+                    marker=dict(color='#B53158', line=dict(color='black', width=1)),
+                    hoverinfo='y+x',
+                )
             )
-            ax.set_title('Cloud Provider Distribution')
-            ax.set_xlabel('Cloud Provider')
-            ax.set_ylabel('Frequency')
-            st.pyplot(fig)
+            fig.update_layout(
+                title='Cloud Provider Distribution',
+                xaxis_title='Cloud Provider',
+                yaxis_title='Frequency',
+            )
+            # Show Plotly figure
+            st.plotly_chart(fig)
         except Exception as e:
             st.write(
                 "An error occurred while plotting the cloud provider distribution."
             )
 
-        course_counts = data['Course'].value_counts()
+        ###################################################
+        # Pie chart
+        ###################################################
 
-        palette = sns.color_palette("pastel", len(course_counts.index))
-        course_order = course_counts.index.tolist()
-
-        fig, ax = plt.subplots()
-        ax.pie(
-            course_counts,
-            labels=course_counts.index,
-            startangle=90,
-            autopct='%1.1f%%',
-            wedgeprops=dict(width=0.2),
-            colors=palette,
+        # Initialize Plotly figure
+        fig = go.Figure()
+        # Add Pie chart
+        fig.add_trace(
+            go.Pie(
+                labels=course_counts.index,
+                values=course_counts,
+                hole=0.8,
+                rotation=90,
+                marker=dict(colors=palette_colors),
+                textinfo='label+percent',
+                hoverinfo='label+value',
+                insidetextorientation='radial',
+            )
         )
-        ax.set_title("Distribution of Projects Across Different Courses")
-        st.pyplot(fig)
+        fig.update_layout(title='Distribution of Projects Across Different Courses')
+        # Show Plotly figure
+        st.plotly_chart(fig)
 
-        fig, ax = plt.subplots(figsize=(10, 6))
-        order_years = sorted(data['Year'].unique())
-        sns.countplot(
-            x='Year',
-            hue='Course',
-            data=data,
-            palette=palette,
-            ax=ax,
-            order=order_years,
-            hue_order=course_order,
-        )
-        ax.set_title('Distribution of Projects by Year for Each Course')
-        st.pyplot(fig)
+        #############################
+        # Stacked bar chart Projects by Year and Course
+        ######################
 
-        fig, ax = plt.subplots(figsize=(10, 6))
-        sns.countplot(
-            x='Cloud',
-            hue='Course',
-            data=data,
-            palette=palette,
-            ax=ax,
-            hue_order=course_order,
+        # Pivot the data to get counts for each 'Year' and 'Course' combination
+        year_course_counts = (
+            data.groupby(['Year', 'Course']).size().reset_index(name='Counts')
         )
-        ax.set_title('Distribution in Different Clouds by Course')
-        st.pyplot(fig)
+        pivot_year_course = year_course_counts.pivot(
+            index='Year', columns='Course', values='Counts'
+        ).fillna(0)
 
-        fig, ax = plt.subplots(figsize=(10, 6))
-        sns.countplot(
-            x='Deployment Type',
-            hue='Course',
-            data=data,
-            palette=palette,
-            ax=ax,
-            hue_order=course_order,
+        # Initialize Plotly figure
+        fig = go.Figure()
+        edge_color = 'black'
+        gap_height = 0.2
+        # Initialize the bottom_value to zero
+        bottom_value = np.zeros(len(pivot_year_course))
+        annotations = []
+
+        # Plotting the stacked bar chart
+        for idx, course in enumerate(course_order):
+            hover_text = [
+                f"{course}: {count}" for count in pivot_year_course[course].tolist()
+            ]
+            fig.add_trace(
+                go.Bar(
+                    x=pivot_year_course.index,
+                    y=pivot_year_course[course],
+                    base=bottom_value,
+                    name=course,
+                    hovertext=hover_text,
+                    hoverinfo="text+x",
+                    marker=dict(
+                        color=palette_colors[idx], line=dict(color=edge_color, width=1)
+                    ),
+                )
+            )
+            bottom_value = [
+                sum(x) for x in zip(bottom_value, pivot_year_course[course].tolist())
+            ]
+            bottom_value = [x + gap_height for x in bottom_value]
+
+        # Add annotations for the sum count
+        for i, x_val in enumerate(pivot_year_course.index):
+            annotations.append(
+                dict(
+                    x=x_val,
+                    y=bottom_value[i],
+                    xanchor='center',
+                    yanchor='bottom',
+                    xshift=0,
+                    yshift=4,
+                    text=str(int(bottom_value[i])),
+                    showarrow=False,
+                    font=dict(size=14),
+                )
+            )
+
+        # Update layout
+        fig.update_layout(
+            barmode='stack',
+            title='Projects by Year and Course',
+            xaxis_title='Year',
+            yaxis_title='Counts',
+            annotations=annotations,
+            xaxis=dict(
+                tickvals=pivot_year_course.index,
+                ticktext=[str(year) for year in pivot_year_course.index],
+            ),
         )
-        ax.set_title('Distribution in Different Deployment Types by Course')
-        st.pyplot(fig)
+
+        # Show Plotly figure in Streamlit
+        st.plotly_chart(fig)
+
+        #######################
+        # Stacked bar chart Distribution in Different Clouds by Course
+        ##################
+
+        # Pivot the data to get counts for each 'Cloud' and 'Course' combination
+        cloud_course_counts = (
+            data.groupby(['Cloud', 'Course']).size().reset_index(name='Counts')
+        )
+        pivot_cloud_course = cloud_course_counts.pivot(
+            index='Cloud', columns='Course', values='Counts'
+        ).fillna(0)
+
+        # Initialize Plotly figure
+        fig = go.Figure()
+        edge_color = 'black'
+        gap_height = 0.2
+        bottom_value = np.zeros(len(pivot_cloud_course))
+        annotations = []
+        # Plotting the stacked bar chart
+        for idx, course in enumerate(course_order):
+            hover_text = [
+                f"{course}: {count}" for count in pivot_cloud_course[course].tolist()
+            ]
+            fig.add_trace(
+                go.Bar(
+                    x=pivot_cloud_course.index,
+                    y=pivot_cloud_course[course],
+                    base=bottom_value,
+                    name=course,
+                    hovertext=hover_text,
+                    hoverinfo="text+x",
+                    marker=dict(
+                        color=palette_colors[idx], line=dict(color=edge_color, width=1)
+                    ),
+                )
+            )
+            bottom_value = [
+                sum(x) for x in zip(bottom_value, pivot_cloud_course[course].tolist())
+            ]
+            bottom_value = [x + gap_height for x in bottom_value]
+
+        # Add annotations
+        for i, x_val in enumerate(pivot_cloud_course.index):
+            annotations.append(
+                dict(
+                    x=x_val,
+                    y=bottom_value[i],
+                    xanchor='center',
+                    yanchor='bottom',
+                    xshift=0,
+                    yshift=4,
+                    text=str(int(bottom_value[i])),
+                    showarrow=False,
+                    font=dict(size=14),
+                )
+            )
+        fig.update_layout(
+            barmode='stack',
+            title='Distribution in Different Clouds by Course',
+            xaxis_title='Cloud',
+            yaxis_title='Counts',
+            annotations=annotations,
+        )
+
+        # Show Plotly figure
+        st.plotly_chart(fig)
+
+        ##########################
+        # Stacked bar chart Distribution in Different Deployment Types by Course
+        ###############################
+
+        # Pivot the data to get counts for each 'Deployment Type' and 'Course' combination
+        deployment_course_counts = (
+            data.groupby(['Deployment Type', 'Course'])
+            .size()
+            .reset_index(name='Counts')
+        )
+        pivot_deployment_course = deployment_course_counts.pivot(
+            index='Deployment Type', columns='Course', values='Counts'
+        ).fillna(0)
+
+        # Initialize Plotly figure
+        fig = go.Figure()
+        edge_color = 'black'
+        gap_height = 0.2
+        bottom_value = np.zeros(len(pivot_deployment_course))
+        annotations = []
+
+        # Plotting the stacked bar chart
+        for idx, course in enumerate(course_order):
+            hover_text = [
+                f"{course}: {count}"
+                for count in pivot_deployment_course[course].tolist()
+            ]
+            fig.add_trace(
+                go.Bar(
+                    x=pivot_deployment_course.index,
+                    y=pivot_deployment_course[course],
+                    base=bottom_value,
+                    name=course,
+                    hovertext=hover_text,
+                    hoverinfo="text+x",
+                    marker=dict(
+                        color=palette_colors[idx], line=dict(color=edge_color, width=1)
+                    ),
+                )
+            )
+            bottom_value = [
+                sum(x)
+                for x in zip(bottom_value, pivot_deployment_course[course].tolist())
+            ]
+            bottom_value = [x + gap_height for x in bottom_value]
+
+        # Add annotations
+        for i, x_val in enumerate(pivot_deployment_course.index):
+            annotations.append(
+                dict(
+                    x=x_val,
+                    y=bottom_value[i],
+                    xanchor='center',
+                    yanchor='bottom',
+                    xshift=0,
+                    yshift=4,
+                    text=str(int(bottom_value[i])),
+                    showarrow=False,
+                    font=dict(size=14),
+                )
+            )
+        fig.update_layout(
+            barmode='stack',
+            title='Deployment Types by Course',
+            xaxis_title='Deployment Type',
+            yaxis_title='Counts',
+            annotations=annotations,
+        )
+
+        # Show Plotly figure
+        st.plotly_chart(fig)
+
+        #############################
 
     else:
         st.write("No data loaded.")
 else:
     st.write("Please select at least one course and one year to load data.")
 
-# Add donation links in sidebar
+# Sidebar
 st.sidebar.write("Help Keep This Service Running")
 st.sidebar.markdown(
     "<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128'></a>",
