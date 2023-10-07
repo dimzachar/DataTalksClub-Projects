@@ -21,6 +21,20 @@ st.set_page_config(
     page_title="DataTalksClub", page_icon=":cookie:", initial_sidebar_state="expanded"
 )
 
+background_svg_url = "layered-waves-haikei.svg"  # replace with your SVG URL or local path
+
+css_style = f"""
+<style>
+    body {{
+        background-image: url({background_svg_url});
+        background-size: cover;
+        background-repeat: no-repeat;
+    }}
+</style>
+"""
+
+st.markdown(css_style, unsafe_allow_html=True)
+
 
 @st.cache_data
 # Function to load data based on selected courses and years
@@ -43,6 +57,7 @@ def load_data(selected_courses, selected_years):
 st.title(
     'Interactive [DataTalksClub](https://github.com/DataTalksClub) Course Projects Dashboard'
 )
+st.image("dtc_logo.png")
 
 
 course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp']
