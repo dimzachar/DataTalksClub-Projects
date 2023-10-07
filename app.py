@@ -21,11 +21,11 @@ st.set_page_config(
     page_title="DataTalksClub", page_icon=":cookie:", initial_sidebar_state="expanded"
 )
 
-background_svg_url = "layered-waves-haikei.svg"  # replace with your SVG URL or local path
+background_svg_url = "https://raw.githubusercontent.com/dimzachar/DataTalksClub-Projects/master/stacked-steps-haikei.svg?sanitize=true"
 
 css_style = f"""
 <style>
-    body {{
+    body, .fullScreenFrame, .stApp {{
         background-image: url({background_svg_url});
         background-size: cover;
         background-repeat: no-repeat;
@@ -34,6 +34,8 @@ css_style = f"""
 """
 
 st.markdown(css_style, unsafe_allow_html=True)
+
+
 
 
 @st.cache_data
