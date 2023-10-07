@@ -4,6 +4,11 @@
 
 
 
+<<<<<<< HEAD
+=======
+https://github.com/dimzachar/DataTalksClub-Projects/assets/113017737/c3c3235c-951c-47e8-aa6a-a6dffa159e46
+
+>>>>>>> 1e3235b62b8c33e2d0c7ac09f22cfdecee6eb9c0
 
 ## Table of Contents
 
