@@ -21,7 +21,7 @@ st.set_page_config(
     page_title="DataTalksClub", page_icon=":cookie:", initial_sidebar_state="expanded"
 )
 
-background_svg_url = "https://raw.githubusercontent.com/dimzachar/DataTalksClub-Projects/master/stacked-steps-haikei.svg?sanitize=true"
+background_svg_url = "https://raw.githubusercontent.com/dimzachar/DataTalksClub-Projects/master/blob-scene-haikei.svg?sanitize=true"
 
 css_style = f"""
 <style>
@@ -34,6 +34,15 @@ css_style = f"""
 """
 
 st.markdown(css_style, unsafe_allow_html=True)
+
+sidebar_css = """
+<style>
+    .sidebar .sidebar-content {
+        background-color: #001220;
+    }
+</style>
+"""
+st.markdown(sidebar_css, unsafe_allow_html=True)
 
 
 
@@ -172,9 +181,16 @@ if selected_courses and selected_years:
         data = filter_dataframe(data)
 
         st.write(f"Number of projects loaded: {data.shape[0]}")
+        # Define a function to apply the background color
+        def background_color(val):
+            return f'background-color: #001220'
 
-        st.dataframe(
-            data,
+        # Apply the background color to the DataFrame
+        styled_data = data.style.applymap(background_color)
+
+
+        # Display the styled DataFrame in Streamlit
+        st.dataframe(styled_data,
             column_config={
                 "project_url": st.column_config.LinkColumn("Project URL"),
             },
@@ -237,7 +253,11 @@ if selected_courses and selected_years:
                     hoverinfo='y+x',
                 )
             )
+      
+
             fig.update_layout(
+                plot_bgcolor="#001220",
+                paper_bgcolor="#001220",
                 title='Top 10 Most Frequent Project Titles',
                 xaxis_title='Frequency',
                 yaxis_title='Project Titles',
@@ -267,6 +287,8 @@ if selected_courses and selected_years:
                 )
             )
             fig.update_layout(
+                plot_bgcolor="#001220",
+                paper_bgcolor="#001220",
                 title='Top 10 Most Frequent Words in Project Titles',
                 xaxis_title='Words',
                 xaxis=dict(tickangle=-45),
@@ -295,6 +317,8 @@ if selected_courses and selected_years:
                 )
             )
             fig.update_layout(
+                plot_bgcolor="#001220",
+                paper_bgcolor="#001220",
                 title='Deployment Type Distribution',
                 xaxis_title='Frequency',
                 yaxis_title='Deployment Type',
@@ -325,6 +349,8 @@ if selected_courses and selected_years:
                 )
             )
             fig.update_layout(
+                plot_bgcolor="#001220",
+                paper_bgcolor="#001220",
                 title='Cloud Provider Distribution',
                 xaxis_title='Cloud Provider',
                 yaxis_title='Frequency',
@@ -355,7 +381,10 @@ if selected_courses and selected_years:
                 insidetextorientation='radial',
             )
         )
-        fig.update_layout(title='Distribution of Projects Across Different Courses')
+        fig.update_layout(
+            plot_bgcolor="#001220",
+            paper_bgcolor="#001220",
+            title='Distribution of Projects Across Different Courses')
         # Show Plotly figure
         st.plotly_chart(fig)
 
@@ -420,6 +449,8 @@ if selected_courses and selected_years:
 
         # Update layout
         fig.update_layout(
+            plot_bgcolor="#001220",
+            paper_bgcolor="#001220",
             barmode='stack',
             title='Projects by Year and Course',
             xaxis_title='Year',
@@ -491,6 +522,8 @@ if selected_courses and selected_years:
                 )
             )
         fig.update_layout(
+            plot_bgcolor="#001220",
+            paper_bgcolor="#001220",
             barmode='stack',
             title='Distribution in Different Clouds by Course',
             xaxis_title='Cloud',
@@ -563,6 +596,8 @@ if selected_courses and selected_years:
                 )
             )
         fig.update_layout(
+            plot_bgcolor="#001220",
+            paper_bgcolor="#001220",
             barmode='stack',
             title='Deployment Types by Course',
             xaxis_title='Deployment Type',
