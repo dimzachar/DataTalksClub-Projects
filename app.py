@@ -17,9 +17,11 @@ from src.eda_analysis import EDAAnalysis
 
 warnings.filterwarnings("ignore")
 
+
 st.set_page_config(
     page_title="DataTalksClub", page_icon=":cookie:", initial_sidebar_state="expanded"
 )
+
 
 background_svg_url = "https://raw.githubusercontent.com/dimzachar/DataTalksClub-Projects/master/blob-scene-haikei.svg?sanitize=true"
 
@@ -65,10 +67,13 @@ def load_data(selected_courses, selected_years):
     return pd.concat(dfs, ignore_index=True) if dfs else None
 
 
-st.title(
+st.sidebar.title(
     'Interactive [DataTalksClub](https://github.com/DataTalksClub) Course Projects Dashboard'
 )
-st.image("dtc_logo.png")
+left_co, cent_co, last_co = st.columns(3)
+with left_co:
+    st.image("dtc_logo.png", width=650)
+
 
 
 course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp']
