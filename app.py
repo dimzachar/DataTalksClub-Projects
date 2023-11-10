@@ -47,8 +47,6 @@ sidebar_css = """
 st.markdown(sidebar_css, unsafe_allow_html=True)
 
 
-
-
 @st.cache_data
 # Function to load data based on selected courses and years
 def load_data(selected_courses, selected_years):
@@ -73,7 +71,6 @@ st.sidebar.title(
 left_co, cent_co, last_co = st.columns(3)
 with left_co:
     st.image("dtc_logo.png", width=650)
-
 
 
 course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp']
@@ -186,6 +183,7 @@ if selected_courses and selected_years:
         data = filter_dataframe(data)
 
         st.write(f"Number of projects loaded: {data.shape[0]}")
+
         # Define a function to apply the background color
         def background_color(val):
             return f'background-color: #001220'
@@ -193,9 +191,9 @@ if selected_courses and selected_years:
         # Apply the background color to the DataFrame
         styled_data = data.style.applymap(background_color)
 
-
         # Display the styled DataFrame in Streamlit
-        st.dataframe(styled_data,
+        st.dataframe(
+            styled_data,
             column_config={
                 "project_url": st.column_config.LinkColumn("Project URL"),
             },
@@ -258,7 +256,6 @@ if selected_courses and selected_years:
                     hoverinfo='y+x',
                 )
             )
-      
 
             fig.update_layout(
                 plot_bgcolor="#001220",
@@ -389,7 +386,8 @@ if selected_courses and selected_years:
         fig.update_layout(
             plot_bgcolor="#001220",
             paper_bgcolor="#001220",
-            title='Distribution of Projects Across Different Courses')
+            title='Distribution of Projects Across Different Courses',
+        )
         # Show Plotly figure
         st.plotly_chart(fig)
 

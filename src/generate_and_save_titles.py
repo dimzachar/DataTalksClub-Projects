@@ -43,21 +43,25 @@ def main():
     titles = []
 
     for index, row in csv_handler.df.iterrows():
-        # logging.info(f"Debug: Index: {index}, Row Data: {row}")
+        logging.info(f"Debug: Index: {index}, Row Data: {row}")
+        project_url = row['project_url']
 
-        if '/tree/' in row['project_url']:
-            github_url = url_constructor.construct_readme_api_url(row['project_url'])
-            # logging.info(f"Constructed URL using GithubURLConstructor: {github_url}")
+        if '/tree/' in project_url:
+            project_url = url_constructor.sanitize_url(project_url)
+            github_url = url_constructor.construct_readme_api_url(project_url)
+            github_url = github_url[0]
+            logging.info(f"Constructed URL using GithubURLConstructor: {github_url}")
         else:
-            project_url = row['project_url'].split('github.com/')[-1]
+            project_url = project_url.split('github.com/')[-1]
             if project_url.endswith('.git'):
                 project_url = project_url[:-4]
             project_url = project_url.rstrip('/')
             github_url = f"https://api.github.com/repos/{project_url}/readme"
-            # logging.info(f"Constructed URL manually: {github_url}")
 
-        # logging.info(f"Original URL: {row['project_url']}")
-        # logging.info(f"Constructed URL: {github_url}")
+            logging.info(f"Constructed URL manually: {github_url}")
+
+        logging.info(f"Original URL: {row['project_url']}")
+        logging.info(f"Constructed URL: {github_url}")
 
         # print(f"Processing URL {index+1}/{len(csv_handler.df)}: {github_url}")
 
@@ -67,9 +71,9 @@ def main():
             continue
 
         readme_content = github_api.get_readme_content(github_url)
-        # logging.info(
-        #     f"GitHub API Response: {readme_content if readme_content else 'None'}"
-        # )
+        logging.info(
+            f"GitHub API Response: {readme_content if readme_content else 'None'}"
+        )
         if not readme_content:
             print(f"No README content found for {github_url}. Skipping.")
             logging.warning(f"No README content found for {github_url}. Skipping.")

@@ -2,8 +2,8 @@ import os
 
 # Define base and subdirectories
 base_path = "Data"
-course = "mlopszoomcamp"
-year = 2022
+course = "mlzoomcamp"
+year = 2023
 
 subdirectory = f"{base_path}/{course}/{year}"
 base_name = f"scraped_{course}_{year}"

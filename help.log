@@ -142,3 +142,20 @@
 2023-09-12 18:17:17,973 - WARNING - No README content found for https://api.github.com/repos/Blaqadonis/MlZoomcamp2022MidTermProject/contents/master/README.md. Skipping.
 2023-09-12 18:17:24,294 - WARNING - No README content found for https://api.github.com/repos/MekongDelta-mind/ml_zoomcamp_2022_projects/contents/gh_mid_term_branch/ml_zoomcamp_2022_mid_term/README.md. Skipping.
 2023-09-12 18:17:54,832 - WARNING - No README content found for https://api.github.com/repos/Kibzik/job-shifting-prediction#deploying-to-cloudheroku-docker-deployment/readme. Skipping.
+
+
+FIX
+1)When README.md in the end
+FIX: include logic on src/generate_and_save_titles.py - line 59
+
+2023-11-10 08:44:29,705 - WARNING - No README content found for https://api.github.com/repos/ynusinovich/machine-learning-zoomcamp-dtc/blob/main/README.md/readme. Skipping.
+2023-11-10 08:40:39,016 - WARNING - No README content found for https://api.github.com/repos/BeckMarquez/ML_zoomcamp_2023/blob/Midterm_project/README.md/readme. Skipping.
+2023-11-10 08:39:23,635 - WARNING - No README content found for https://api.github.com/repos/olgazju/ml_camp_2023/blob/main/midterm_project/README.md/readme. Skipping.
+
+2)contains a fragment (#midterm-project-binary-prediction-of-smoker-status-using-bio-signals) that should not be included in an API call. 
+The appended /readme at the end of the constructed URL is incorrect.|
+https://api.github.com/repos/ahmedokka29/Binary-Prediction-of-Smoker-Status-using-Bio-Signals/contents/README.md
+
+FIX: when manually construct the URL, remove fragment doesn't happen. src/generate_and_save_titles.py - line 59
+
+2023-11-10 08:42:39,337 - WARNING - No README content found for https://api.github.com/repos/ahmedokka29/Binary-Prediction-of-Smoker-Status-using-Bio-Signals#midterm-project-binary-prediction-of-smoker-status-using-bio-signals/readme. Skipping.

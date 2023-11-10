@@ -9,7 +9,7 @@ from utils.github_url_constructor import GithubURLConstructor
 
 logging.basicConfig(level=logging.DEBUG, filename='debug.log', filemode='a')
 
-headers = {"Authorization": f"token {os.environ.get('GITHUB_TOKEN')}"}
+headers = {"Authorization": f"token {os.environ.get('GITHUB_ACCESS_TOKEN')}"}
 
 print(headers)
 
@@ -100,7 +100,11 @@ class DeploymentChecker:
                 logging.debug("Received None URL. Skipping.")
                 return 'Unknown', 'Unknown', 'Unknown'
 
-            readme_content = self.fetch_readme_via_api(url)
+            # Sanitize the URL to remove any fragment
+            sanitized_url = self.url_constructor.sanitize_url(url)
+
+            # Now use the sanitized URL to fetch the README
+            readme_content = self.fetch_readme_via_api(sanitized_url)
             if readme_content is None:
                 logging.debug(f"No README found for URL: {url}")
                 return 'Unknown', 'Unknown', 'Unknown'

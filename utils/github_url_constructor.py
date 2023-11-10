@@ -1,14 +1,20 @@
 import os
 import logging
+from urllib.parse import urlparse
 
 import requests
 
-headers = {"Authorization": f"token {os.environ.get('GITHUB_TOKEN')}"}
+headers = {"Authorization": f"token {os.environ.get('GITHUB_ACCESS_TOKEN')}"}
+print(headers)
 
 
 class GithubURLConstructor:
     def __init__(self):
         pass
+
+    def sanitize_url(self, url):
+        parsed_url = urlparse(url)
+        return parsed_url.scheme + "://" + parsed_url.netloc + parsed_url.path
 
     def get_readme_filename(self, owner, repo, additional_path):
         """Get the actual case of the README file from the GitHub API."""
@@ -45,6 +51,7 @@ class GithubURLConstructor:
         return None
 
     def construct_readme_api_url(self, project_url):
+        project_url = self.sanitize_url(project_url)
         logging.info(f"Original URL: {project_url}")
 
         project_url = project_url.replace('https://GitHub.com/', 'https://github.com/')
@@ -74,6 +81,7 @@ class GithubURLConstructor:
             branch_index = project_url_parts.index('tree')
             branch = project_url_parts[branch_index + 1]
             additional_path_parts = project_url_parts[branch_index + 2 :]
+
         elif 'blob' in project_url_parts:
             branch_index = project_url_parts.index('blob')
             branch = project_url_parts[branch_index + 1]
