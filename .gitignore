@@ -2,5 +2,5 @@ __pycache__
 __pycache__/
 *.pyc
 *.pyo
-linkedin-share-button-icon.svg
+Pipfile.lock
 app2.py

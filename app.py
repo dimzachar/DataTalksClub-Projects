@@ -15,7 +15,7 @@ from pandas.api.types import (
 from streamlit_lottie import st_lottie
 import requests
 import urllib.parse
-
+import json
 from src.eda_analysis import EDAAnalysis
 
 warnings.filterwarnings("ignore")
@@ -621,11 +621,15 @@ if selected_courses and selected_years:
 else:
     st.write("Please select at least one course and one year to load data.")
 
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
+# def load_lottieurl(url: str):
+#     try:
+#         r = requests.get(url)
+#         r.raise_for_status()  # Raises a HTTPError if the HTTP request returned an unsuccessful status code
+#         return r.json()
+#     except requests.exceptions.RequestException as e:
+#         print(f"Error fetching Lottie URL: {e}")
+#         return None
+
 
 
 # Sidebar
@@ -635,26 +639,21 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 
+# Define the URL to share, the message, and the hashtag
 share_url = "https://datatalksclub-projects.streamlit.app/"
 message = "Check out this amazing Streamlit app I've been using! It offers great insights and tools. Explore it now and share your experience. #InnovativeAnalytics #Streamlit"
 hashtag = "#YourHashtag"
 
 # URL encode the message and hashtag to ensure it's web-safe
+import urllib.parse
 full_message = urllib.parse.quote_plus(f"{message} {hashtag}")
 
 # Create the LinkedIn share link
 linkedin_url = f"https://www.linkedin.com/sharing/share-offsite/?url={share_url}&summary={full_message}"
-
-# Lottie Animation URL for LinkedIn Share Button
-lottie_url = "https://raw.githubusercontent.com/yourusername/yourrepository/branch/yourfile.json"  # Replace with the raw URL of your Lottie file
-
-# Load and display Lottie Animation
-lottie_json = load_lottieurl(lottie_url)
-if lottie_json:
-    st.sidebar.markdown(f"<a href='{linkedin_url}' target='_blank'>", unsafe_allow_html=True)
-    st_lottie(lottie_json, width=100, height=100, key="linkedin")
-    st.sidebar.markdown("</a>", unsafe_allow_html=True)
-
+st.sidebar.markdown(
+    f"<a href='{linkedin_url}' target='_blank'><img src='https://raw.githubusercontent.com/dimzachar/DataTalksClub-Projects/master/linkedin-share-button-icon.svg' width='128'></a>",
+    unsafe_allow_html=True,
+)
 
 
 st.sidebar.write("Connect with me")
