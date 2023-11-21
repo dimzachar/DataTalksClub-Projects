@@ -630,7 +630,9 @@ else:
 #         print(f"Error fetching Lottie URL: {e}")
 #         return None
 
-
+def load_svg(url: str):
+    response = requests.get(url)
+    return response.text if response.status_code == 200 else None
 
 # Sidebar
 st.sidebar.write("Help Keep This Service Running")
@@ -645,13 +647,17 @@ message = "Check out this amazing Streamlit app I've been using! It offers great
 hashtag = "#YourHashtag"
 
 # URL encode the message and hashtag to ensure it's web-safe
-import urllib.parse
 full_message = urllib.parse.quote_plus(f"{message} {hashtag}")
+
 
 # Create the LinkedIn share link
 linkedin_url = f"https://www.linkedin.com/sharing/share-offsite/?url={share_url}&summary={full_message}"
+
+# Assuming 'linkedin-share-button.png' is in the same directory as your Streamlit app
+image_path = 'linkedin-share-button.png'
+
 st.sidebar.markdown(
-    f"<a href='{linkedin_url}' target='_blank'><img src='https://raw.githubusercontent.com/dimzachar/DataTalksClub-Projects/master/linkedin-share-button-icon.svg' width='128'></a>",
+    f"<a href='{linkedin_url}' target='_blank'><img src='{image_path}' width='128'></a>",
     unsafe_allow_html=True,
 )
 
