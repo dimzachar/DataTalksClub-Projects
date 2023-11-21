@@ -12,6 +12,9 @@ from pandas.api.types import (
     is_categorical_dtype,
     is_datetime64_any_dtype,
 )
+from streamlit_lottie import st_lottie
+import requests
+import urllib.parse
 
 from src.eda_analysis import EDAAnalysis
 
@@ -618,12 +621,40 @@ if selected_courses and selected_years:
 else:
     st.write("Please select at least one course and one year to load data.")
 
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
 # Sidebar
 st.sidebar.write("Help Keep This Service Running")
 st.sidebar.markdown(
     "<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128'></a>",
     unsafe_allow_html=True,
 )
+
+share_url = "https://datatalksclub-projects.streamlit.app/"
+message = "Check out this amazing Streamlit app I've been using! It offers great insights and tools. Explore it now and share your experience. #InnovativeAnalytics #Streamlit"
+hashtag = "#YourHashtag"
+
+# URL encode the message and hashtag to ensure it's web-safe
+full_message = urllib.parse.quote_plus(f"{message} {hashtag}")
+
+# Create the LinkedIn share link
+linkedin_url = f"https://www.linkedin.com/sharing/share-offsite/?url={share_url}&summary={full_message}"
+
+# Lottie Animation URL for LinkedIn Share Button
+lottie_url = "https://raw.githubusercontent.com/yourusername/yourrepository/branch/yourfile.json"  # Replace with the raw URL of your Lottie file
+
+# Load and display Lottie Animation
+lottie_json = load_lottieurl(lottie_url)
+if lottie_json:
+    st.sidebar.markdown(f"<a href='{linkedin_url}' target='_blank'>", unsafe_allow_html=True)
+    st_lottie(lottie_json, width=100, height=100, key="linkedin")
+    st.sidebar.markdown("</a>", unsafe_allow_html=True)
+
 
 
 st.sidebar.write("Connect with me")

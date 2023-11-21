@@ -1,6 +1,10 @@
 [theme]
-primaryColor="#B53158"
+primaryColor="#C0526A"
 base="dark"
-secondaryBackgroundColor="#001220"
+secondaryBackgroundColor="#18223C"
 textColor="#ffffff"
 font="monospace"
+
+[browser]
+gatherUsageStats = false
+
