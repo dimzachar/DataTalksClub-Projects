@@ -12,10 +12,6 @@ from pandas.api.types import (
     is_categorical_dtype,
     is_datetime64_any_dtype,
 )
-from streamlit_lottie import st_lottie
-import requests
-import urllib.parse
-import json
 from src.eda_analysis import EDAAnalysis
 
 warnings.filterwarnings("ignore")
@@ -621,18 +617,8 @@ if selected_courses and selected_years:
 else:
     st.write("Please select at least one course and one year to load data.")
 
-# def load_lottieurl(url: str):
-#     try:
-#         r = requests.get(url)
-#         r.raise_for_status()  # Raises a HTTPError if the HTTP request returned an unsuccessful status code
-#         return r.json()
-#     except requests.exceptions.RequestException as e:
-#         print(f"Error fetching Lottie URL: {e}")
-#         return None
 
-def load_svg(url: str):
-    response = requests.get(url)
-    return response.text if response.status_code == 200 else None
+
 
 # Sidebar
 st.sidebar.write("Help Keep This Service Running")
@@ -641,32 +627,13 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 
-# Define the URL to share, the message, and the hashtag
-share_url = "https://datatalksclub-projects.streamlit.app/"
-message = "Check out this amazing Streamlit app I've been using! It offers great insights and tools. Explore it now and share your experience. #InnovativeAnalytics #Streamlit"
-hashtag = "#YourHashtag"
-
-# URL encode the message and hashtag to ensure it's web-safe
-full_message = urllib.parse.quote_plus(f"{message} {hashtag}")
-
-
-# Create the LinkedIn share link
-linkedin_url = f"https://www.linkedin.com/sharing/share-offsite/?url={share_url}&summary={full_message}"
-
-# Assuming 'linkedin-share-button.png' is in the same directory as your Streamlit app
-image_path = 'linkedin-share-button.png'
-
-st.sidebar.markdown(
-    f"<a href='{linkedin_url}' target='_blank'><img src='{image_path}' width='128'></a>",
-    unsafe_allow_html=True,
-)
-
-
 st.sidebar.write("Connect with me")
 st.sidebar.markdown(
     "<a href='https://www.linkedin.com/in/zacharenakis'><img src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png' width='32'></a>",
     unsafe_allow_html=True,
 )
+
+
 st.sidebar.markdown(
     "<a href='https://zacharenakis.super.site'><img src='https://img.icons8.com/external-vectorslab-flat-vectorslab/53/null/external-Favorite-Website-web-and-marketing-vectorslab-flat-vectorslab.png' width='32'></a>",
     unsafe_allow_html=True,
