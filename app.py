@@ -12,6 +12,7 @@ from pandas.api.types import (
     is_categorical_dtype,
     is_datetime64_any_dtype,
 )
+
 from src.eda_analysis import EDAAnalysis
 
 warnings.filterwarnings("ignore")
@@ -73,7 +74,7 @@ with left_co:
 
 
 course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp']
-year_options = ['2021', '2022', '2023']
+year_options = ['2021', '2022', '2023', '2024']
 
 # Multiselect to select course(s) with all options selected by default
 selected_courses = st.multiselect(
@@ -616,8 +617,6 @@ if selected_courses and selected_years:
         st.write("No data loaded.")
 else:
     st.write("Please select at least one course and one year to load data.")
-
-
 
 
 # Sidebar

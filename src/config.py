@@ -2,18 +2,17 @@ import os
 
 # Define base and subdirectories
 base_path = "Data"
-course = "mlzoomcamp"
-year = 2023
+course = "dezoomcamp"
+year = 2024
 
-subdirectory = f"{base_path}/{course}/{year}"
+subdirectory = os.path.join(base_path, course, str(year))  # More robust path joining
+
+# Ensure the directory exists
+os.makedirs(subdirectory, exist_ok=True)  # Simplifies directory creation check
+
+# Define paths
 base_name = f"scraped_{course}_{year}"
 output_prefix = f"projects_{course}_{year}"
-
-# Create the subdirectory if it doesn't exist
-if not os.path.exists(subdirectory):
-    os.makedirs(subdirectory)
-
-# Paths for various CSV files
-cleaned_csv_path = f"{subdirectory}/cleaned_{base_name}.csv"
-titles_csv_path = f"{subdirectory}/{output_prefix}_cleaned_titles.csv"
-deploy_csv_path = f"{subdirectory}/data.csv"
+cleaned_csv_path = os.path.join(subdirectory, f"cleaned_{base_name}.csv")
+titles_csv_path = os.path.join(subdirectory, f"{output_prefix}_cleaned_titles.csv")
+deploy_csv_path = os.path.join(subdirectory, "data.csv")

@@ -6,7 +6,7 @@ quality_checks:
 	pipenv run black .
 	pipenv run pylint --recursive=y .
 
-scrape: quality_checks
+scrape:
 	pipenv run python -m src.scrape_and_clean
 
 titles:

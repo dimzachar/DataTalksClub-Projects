@@ -9,7 +9,7 @@ from utils.github_url_constructor import GithubURLConstructor
 
 logging.basicConfig(level=logging.DEBUG, filename='debug.log', filemode='a')
 
-headers = {"Authorization": f"token {os.environ.get('GITHUB_ACCESS_TOKEN')}"}
+headers = {"Authorization": f"token {os.environ.get('MY_GITHUB_TOKEN')}"}
 
 print(headers)
 

@@ -13,7 +13,7 @@ from .config import titles_csv_path, cleaned_csv_path
 
 load_dotenv()
 
-print("Debug: GITHUB_ACCESS_TOKEN:", os.environ.get('GITHUB_ACCESS_TOKEN'))
+print("Debug: MY_GITHUB_TOKEN:", os.environ.get('MY_GITHUB_TOKEN'))
 print("Debug: OPENAI_API_KEY:", os.environ.get('OPENAI_API_KEY'))
 
 logging.basicConfig(
@@ -30,7 +30,7 @@ def main():
         csv_handler.df['project_title'] = None
     print("Generating summaries and titles...")
     # Initialize APIs
-    github_api = GitHubAPI(os.environ.get('GITHUB_ACCESS_TOKEN'))
+    github_api = GitHubAPI(os.environ.get('MY_GITHUB_TOKEN'))
     openai_api = OpenAIAPI(os.environ.get('OPENAI_API_KEY'))
     print(f"Debug: Github API key is {github_api}")
     print(f"Debug: OpenAI API key is {openai_api}")

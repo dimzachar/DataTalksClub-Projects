@@ -1,0 +1,171 @@
+project_url,project_title,Deployment Type,Reason,Cloud
+https://github.com/rebekamukherjee/citibike-data-pipeline,Biking Data Insights,Unknown,Unknown,GCP
+https://github.com/RoshchinM/de_zoomcamp_2024_UCL_2016-2022,Champion Insights Dashboard,Unknown,Unknown,GCP
+https://github.com/chrisdamba/patent-analytics-pipeline,Patent Insight Analytics,Batch,batch,AWS
+https://github.com/Abubakrmali2/DE-Movies-Project,Movie Insights Pipeline,Batch,batch,GCP
+https://github.com/muhilhamfajar/youtube-analysis-de-zoomcamp,Insightful YouTube Analytics,Batch,batch,GCP
+https://github.com/demapumpum/flight-analytics,NAIA Flight Metrics,Batch,batch,GCP
+https://github.com/nyan222/roman_empire_zoomcamp,Roman Empire Sentiment Analysis,Batch,batch,GCP
+https://github.com/rafaelcuperman/de-zoomcamp-project,Mental Health Dashboard Pipeline,Unknown,Unknown,GCP
+https://github.com/stellalo/Data-Engineering-Capstone-KEGG-dataset-,Fungal Genomics Analysis,Batch,batch,GCP
+https://github.com/BrightOsas/Youtube-data-pipeline,Insights from YouTube Data,Batch,batch,AWS
+https://github.com/duythvn/duythzoomcampcapstone,Support Ticket Insights,Batch,batch,AWS
+https://github.com/GBlanch/Data-Eng-Zoomcamp-capstone/tree/main,Sleeping Disorder Professions,Batch,batch,GCP
+https://github.com/zy969/film-genre-insights,Film Genre Dashboard Insights,Batch,batch,GCP
+https://github.com/ppatrzyk/wiki-events,Wikipedia Analytics Dashboard,Unknown,Unknown,Unknown
+https://github.com/CALewis1955/Philly-Crime-Incidents,Philadelphia Crime Analysis Dashboard,Batch,batch,GCP
+https://github.com/PathornKiti/project-dezoomcamp2024,Bangkok Airbnb Dashboard,Batch,spark,GCP
+https://github.com/2000aliali/End-End-data-engineering-Project-streaming-from-random-users-API-to-cassandera,Data Pipeline Automation,Streaming,stream,Unknown
+https://github.com/gdumie01/dezc2024-proj-exoplanets,Exoplanet Dashboard Pipeline,Batch,batch,GCP
+https://github.com/caspercrause/Police-Incident-Reports/tree/master,Crime Insight SF,Unknown,Unknown,GCP
+https://github.com/FiddlerBB/de_zoomcamp/tree/main/project,Vietnam's Air Quality,Unknown,Unknown,GCP
+https://github.com/Khorjle92/DZC_Project,Global Suicide Analysis Dashboard,Unknown,Unknown,GCP
+https://github.com/el-grudge/money-diaries,Spending Insights Dashboard,Streaming,streaming,GCP
+https://github.com/Tunde338/zoomcamp/tree/zoomcamp,Based on the limited information provided,Unknown,Unknown,Unknown
+https://github.com/samsoberanis/mental_health_data_engineering_project,Insights Dashboard: Mental,Streaming,real-time,Azure
+https://github.com/iharmcd/dezoomcamp_FinalProject/,FBI Search Trends Analysis,Unknown,Unknown,GCP
+https://github.com/sarah-zhan/data_pipeline_amazon_products,Amazon Data Visualization,Batch,spark,AWS
+https://github.com/10Kang/DE_Zoomcamp2024_ZY/tree/main/project_1_coffee_shop,ZUS Coffee Sales Dashboard,Batch,batch,GCP
+https://github.com/murkenson/movies_tv_shows_data_pipeline,Streaming Service Analysis,Streaming,streaming,GCP
+https://github.com/l0ggik/de-zoomcamp-2024-weather-pipeline,Cloud Weather Visualization,Batch,batch,GCP
+https://github.com/subrockmann/farm-screener,Swiss Farm Map,Unknown,Unknown,GCP
+https://github.com/quezon/data-pipeline-OpenFoodFacts,Nutrition Data Dashboard,Unknown,Unknown,GCP
+https://github.com/gutfalla/Real-state-prices-UK,Real Estate Price Analysis,Unknown,Unknown,GCP
+https://github.com/CusiTEC/Project-Course-Data-Engineering-,Data Pipeline Creation,Unknown,Unknown,Unknown
+https://github.com/Metwaa/youtube_channels,Global YouTube Insights,Unknown,Unknown,GCP
+https://github.com/NotYetBenGan/base/blob/main/DEZoomCamp/MyProject/README.md,Unknown,Error,Error,Error
+https://github.com/Wilson2214/air-quality-analysis/tree/main,Transit Air Quality Analysis,Batch,batch,GCP
+https://github.com/hsviscarra/RealEstateAnalysis.git,Connecticut Real Estate Analysis,Batch,batch,GCP
+https://github.com/lddurbin/data-eng-project,Data Pipeline Mastery,Unknown,Unknown,Unknown
+https://github.com/nnphuyen563/Crop-Production-Pipeline-Project,Crop Insights Dashboard,Unknown,Unknown,GCP
+https://github.com/psousasa/my-street-analytics,Mobile App Data Pipeline,Batch,batch,GCP
+https://github.com/FaisalQ07/de-reddit-reports,Reddit Metrics Dashboard,Batch,spark,GCP
+https://github.com/mik19821/dezoomcamp2024-project,Polish Wildlife Visualization,Unknown,Unknown,GCP
+https://github.com/jeanpaulrd1/de-zc-final-project,FIFA World Cup Analysis,Unknown,Unknown,GCP
+https://github.com/JChz6/DE-ZCamp-Project,Peruvian Property Sales Dataset,Batch,batch,GCP
+https://github.com/kbc10/arl-parks-reservations,Arlington Reservation Dashboard,Batch,batch,GCP
+https://github.com/kiramishima/crimes_in_mexico_city_analysis,Mexico City Crime Analysis,Unknown,Unknown,GCP
+https://github.com/KevinPericart/Data-engineering-Project,Cloud Data Pipeline,Streaming,kafka,GCP
+https://github.com/endiesworld/zoomcamp_de_project,Cycling Insights 2022,Batch,batch,GCP
+https://github.com/kiliantscherny/Fun-With-LEGO-data,LEGO Data Dashboard,Batch,batch,GCP
+https://github.com/TerryLiu207/DE-homework/tree/Project,Please provide me with the topic,Unknown,Unknown,Unknown
+https://github.com/davidvanegas2/StreamSoft-Real-Time-Market-Analysis,Stock Analytics Platform,Batch,batch,AWS
+https://github.com/Siddha911/Citibike-data-project,Citibike Usage Analysis,Unknown,Unknown,GCP
+https://github.com/sl2902/retail_data_pipeline,E-commerce Data Pipeline,Batch,spark,GCP
+https://github.com/tylerlian/airbnb_etl_pipeline/tree/main,Optimal Airbnb Locations,Batch,spark,GCP
+https://github.com/andrewng88/de_zoomcamp/tree/main/project,Cloud Data Pipeline,Batch,batch,GCP
+https://github.com/ranga4all1/de-retail-sales,Montgomery County Data Pipeline,Batch,batch,GCP
+https://github.com/Ashraf1395/customer_retention_analytics,Churn Analysis Optimization,Batch,batch,GCP
+https://github.com/HangenYuu/zoomcamp-final-project,NYT Best Sellers Dashboard,Batch,batch,GCP
+https://github.com/TasneemAhmed/jobs-salary-in-data-field/tree/master,Data Salary Insights,Unknown,Unknown,GCP
+https://github.com/heman2002/data-engineering-project,Stock Metrics Visualization,Unknown,Unknown,GCP
+https://github.com/nenalukic/air-quality-project,Python Data Pipeline,Unknown,Unknown,GCP
+https://github.com/jeffCheng/TPE-Theft-Report,Taipei Theft Hotspots,Batch,batch,GCP
+https://github.com/Yifan1801/nytimes_pipeline,Bestseller Insights Dashboard,Unknown,Unknown,GCP
+https://github.com/mrdair/Movienest,Automated Movie Data Pipeline,Unknown,Unknown,Azure
+https://github.com/Cbas12/LA_CRIMES_zoomcamp_2024.git,LA Crime Insights,Batch,spark,GCP
+https://github.com/Hari-cbe/Used-Car-Price-data-analysiss.git,Used Car Price Factors,Unknown,Unknown,GCP
+https://github.com/paddelcourt/berlin_airport_datapipeline_project,Berlin Airport Flight Insights,Batch,spark,GCP
+https://github.com/cch0/data-engineering-zoomcamp-2024-project,Real-Time Weather Analytics,Batch,batch,GCP
+https://github.com/yh2527/github_daily_activities_dashboard,GitHub Activity Tracker,Batch,batch,GCP
+https://github.com/Shivakumar-Guhesh/nse-data-engineering,NSE Data Analytics Dashboard,Unknown,Unknown,GCP
+https://github.com/abhi-kr12/de-zoomcamp-playstore,Google Play Insights,Batch,batch,GCP
+https://github.com/adityachaudhary99/dataengineering-motor-vehicles-collision-analysis-project,NY Collision Risk Analysis,Batch,batch,GCP
+https://github.com/sadiatibrahim/NY-Citi-Bike-Rides/tree/main,Citi Bike Insights,Batch,batch,GCP
+https://github.com/zhou1925/zoomcamp-project-2024,Real-time Data Insights,Streaming,kafka,GCP
+https://github.com/MaundoJako/Global-Emissions-Data-2024/tree/main,Global Emissions Dashboard,Unknown,Unknown,GCP
+https://github.com/cncPomper/Covid-19-impact-dashboard/tree/master,Covid Data Visualization,Unknown,Unknown,GCP
+https://github.com/doughnut2002/realtime_SuppyChain_analytics,Real-time Finance Platform,Batch,batch,GCP
+https://github.com/asm-abed/nba-player-analytics-dashboard.git,NBA Stats Dashboard,Batch,spark,GCP
+https://github.com/sunshineshaman/Cardiovascular_Health_Monitoring_DEzoomcampSP2024.git,US Cardiovascular Trends,Batch,batch,GCP
+https://github.com/mraabhijit/european-football-leagues/tree/main,European Football Analysis,Batch,batch,GCP
+https://github.com/yuxiangl6/zoomcamp24/tree/main/de-zoomcamp-project_Canada_Employment_Analysis,Canadian Employment Dashboard,Unknown,Unknown,GCP
+https://github.com/hwchua0209/Retail_Sales_Analysis,Retail Sales Dashboard Automation,Batch,spark,GCP
+https://github.com/jackv-murray/lastfm-scrobble-analysis,Last.fm Listening Insights,Batch,batch,GCP
+https://github.com/suparshukov/earthquake-analytics-dashboard,Quake Analytics Dashboard,Batch,batch,GCP
+https://github.com/khalileldoau/global-news-engagement-on-social-media,News Engagement Dashboard,Batch,batch,GCP
+https://github.com/addy024/DEZOOMCAMP_Chicago_Crash_Project,Chicago Crash Trends,Batch,spark,GCP
+https://github.com/MohammmadAnas/brazilian-data-project,Retail Delivery Insights,Batch,spark,AWS
+https://github.com/benitomartin/de-ch-weather,Swiss Air Quality Analysis,Batch,batch,GCP
+https://github.com/DrewDimas/olympic-data-pipeline,Olympic Data Analysis,Batch,batch,GCP
+https://github.com/grozwalker/de-zoomcamp-meterorite-landings,Meteorite Insights Dashboard,Batch,spark,GCP
+https://github.com/ManosPra/ecommerce_marketplace_data_pipeline/tree/main,Ecommerce Data Pipeline,Batch,batch,GCP
+https://github.com/marliyehez/earthquake-zoomcamp,Indonesia's Seismic,Batch,batch,GCP
+https://github.com/bryanoli/FIFA_Analysis,Top Striker Visualizer,Batch,spark,GCP
+https://github.com/pardub/archive_github/tree/main,GitHub Insights Dashboard,Batch,batch,GCP
+https://github.com/SofyanAkbar94/Project-DE-Zoomcamp-2024,Spotify Insights Unlocked,Streaming,streaming,GCP
+https://github.com/bardeke/DTC_zoomcamp_project,Cycling Insights Dashboard,Batch,batch,GCP
+https://github.com/bhumit204/YouTube-Trending-Video-Dashboard,Youtube Analytics Dashboard,Unknown,Unknown,GCP
+https://github.com/Feanaur/marine-species-analytics,Biodiversity Insights Dashboard,Batch,spark,GCP
+https://github.com/Josh-Murunga/Youtube-Analytics,Regional YouTube Trends Analysis,Batch,batch,GCP
+https://github.com/peter716/data_engineering_credit_fraud_project,Streamlined Fraud Prediction,Streaming,stream,Unknown
+https://github.com/adamElh3/Data-Engineering-Project-Amesterdam--Airbnb,Amsterdam Airbnb Analytics Dashboard,Batch,batch,AWS
+https://github.com/skihumba/data-engineering-project,Hotel Sales Insights,Batch,batch,GCP
+https://github.com/mrcos-mrtinelli/dezoomcamp-project,Business Listings Visualization,Unknown,Unknown,GCP
+https://github.com/abhirup-ghosh/e2e-data-pipeline,Football Player Analytics,Batch,spark,GCP
+https://github.com/kennethchinedu/bootcamp_DE_project_2024,Netflix Movie Analysis 202,Unknown,Unknown,AWS
+https://github.com/Muhammadatef/ArsenalFC-Data-Pipeline-Project,Gunners Data Insights,Batch,spark,Unknown
+https://github.com/Johnyckot/github_events_analytics,GitHub Analytics Insights,Batch,batch,GCP
+https://github.com/SS279/de-zoomcamp2024-finalproject,Data Pipeline Mastery,Unknown,Unknown,GCP
+https://github.com/iamraphson/DE-2024-project-book-recommendation,Book Data Analysis Pipeline,Unknown,Unknown,GCP
+https://github.com/bdatkins/de-2024-macoviddata,COVID Wastewater Cor,Batch,batch,GCP
+https://github.com/itssnowing/dog-adoption-simple-data-analysis/tree/main,Pup Adoption Trends,Batch,batch,GCP
+https://github.com/pavlokurochka/data-engineering-zoomcamp2024-project,California Tax Analytics,Batch,batch,GCP
+https://github.com/aytechz/capital_bikeshare_zoomcamp_data_project.git,Capital Bike Insights,Unknown,Unknown,GCP
+https://github.com/TOmelchenko/LifeExpectancyProject,World Health Dashboard,Batch,batch,GCP
+https://github.com/MhmedRjb/MillionSonganalysis/tree/main,Music Industry Insights,Batch,spark,GCP
+https://github.com/anandaiml19/Data-Engineering-Zoomcamp-Project1,Pizza Sales Analytics,Unknown,Unknown,Azure
+https://github.com/tanhtra/aligulac_analytics,Starcraft Analytics Pipeline,Unknown,Unknown,GCP
+https://github.com/Ethan-Peterson33/PredictIt,PredictIt Market Tracker,Unknown,Unknown,GCP
+https://github.com/alewieland/smart-meter-data,Swiss Energy Insights,Streaming,streaming,GCP
+https://github.com/insantr/shark-trendz,Shark Attack Insights,Unknown,Unknown,GCP
+https://github.com/cmcrawford2/voter-data,Non-Dem-Rep,Unknown,Unknown,GCP
+https://github.com/lagvier/datatalks_project,Air Quality Mapping Nairobi,Unknown,Unknown,GCP
+https://github.com/antfneves/spotify_top_songs_project,Spotify's Portugal Dashboard,Batch,batch,GCP
+https://github.com/NgocHueLy/data_eng_keeb_finder/tree/main,Keyboard Trends Uncovered,Unknown,Unknown,GCP
+https://github.com/flpmonteiro/weather-dashboard,Climate Trends Dashboard,Unknown,Unknown,GCP
+https://github.com/johansd1994/oil_production_colombia,Colombia's Oil,Unknown,Unknown,GCP
+https://github.com/hekmatullah-sajid/EcoEnergy-Germany,Renewable Energy Analysis,Unknown,Unknown,GCP
+https://github.com/faranbutt/Data-Engineering-Capstone-Project,COVID Data Engineering Capstone,Unknown,Unknown,Unknown
+https://github.com/mihir-chhatre/netflix-stream-pulse,Netflix Data Insights,Streaming,stream,GCP
+https://github.com/KevsDe/de_aoe2_games_data_pipeline,Empires Analytics Dashboard,Batch,batch,GCP
+https://github.com/addenergyx/cashback-data-pipeline,Reward Analytics Pipeline,Batch,batch,AWS
+https://github.com/rickyltwong/azure-data-engineering-yelp-dataset,Yelp Analytics Insights,Batch,batch,Azure
+https://github.com/ArbenKqiku/streaming-pipeline/tree/main,Zoom Pipeline Dashboard,Streaming,kafka,Unknown
+https://github.com/alexdegg/IMDb-Analysis,Genre and Rating Analytics,Unknown,Unknown,GCP
+https://github.com/KonuTech/data-engineering-zoomcamp-capstone-01,QuakeFlow Integration,Batch,batch,Unknown
+https://github.com/xiangivyli/data-science-portfolio/tree/main/part_a_job_posting_linkedin_pipeline,Job Market Insights,Batch,spark,GCP
+https://github.com/1yardie/us-accidents-project/,US Accidents Dashboard,Batch,spark,GCP
+https://github.com/FranciscoOrtizTena/de_zoomcamp_project_01/,Formula 1 Data Analysis,Streaming,real-time,GCP
+https://github.com/amitkooner/project1,NFL Insights Dashboard,Unknown,Unknown,GCP
+https://github.com/Phil-Grim/london_properties_analysis,London Property Price Factors,Unknown,Unknown,GCP
+https://github.com/cubargh/buenos-aires-subway-passengers-flow,Buenos Aires Data Pipeline,Unknown,Unknown,GCP
+https://github.com/dylanprole/formula-one-analytics.git,F1 Data Pipeline,Batch,batch,GCP
+https://github.com/zukui1984/electric-vehicle-population-project.git,Washington EV Pipeline,Unknown,Unknown,GCP
+https://github.com/drux31/capstone-dezoomcamp,France's Deadly Car Cr,Batch,batch,GCP
+https://github.com/youssefekhattab/DE-ZoomCamp-Youssef-Khattab/tree/main/project,Retail Sales Analysis Dashboard,Batch,spark,GCP
+https://github.com/Ajied21/Data-Engineering-Zoomcamp-2024,Zoomcamp Data Architecture,Unknown,Unknown,Unknown
+https://github.com/abelbg/AI-Research-Publications-Trends,AI Research Trends Analysis,Batch,hadoop,Azure
+https://github.com/JorgeAbrego/capital_bikeshare_project,Bike Data Processing,Unknown,Unknown,GCP
+https://gitlab.com/mosesafrawles/aquiferguard-monitoring-alerting,Unknown,Unknown,Unknown,Unknown
+https://github.com/kenanarslanbay/Employee-Compensation-Project,Streamlined Data Pipeline,Unknown,Unknown,GCP
+https://github.com/max-lutz/nyt_articles_analytics_dashboard,NYT Data Visualization Pipeline,Unknown,Unknown,GCP
+https://github.com/nishiikata/de-zoomcamp-2024-mage-capstone,Anime Analytics Dashboard,Batch,hadoop,GCP
+https://github.com/pilanpra/DE-Projects/blob/main/Bootcamp2024Project/,Unknown,Unknown,Unknown,Unknown
+https://github.com/emilianolel/dez-project-emi,Mexican Crime Dashboard,Batch,spark,GCP
+https://github.com/EdidiongEsu/capital_bikeshare,Bike Data Insights,Unknown,Unknown,GCP
+https://github.com/voduyquoc/air_pollution_tracking,German Air Quality Dashboard,Batch,batch,GCP
+https://github.com/jgalcantara/nikkei-225-automotive,Auto Stock Analysis,Unknown,Unknown,GCP
+https://github.com/ramazanabylkassov/aviation_stack_project,Kazakhstan's Flight,Batch,batch,GCP
+https://github.com/exequiel-santucho/dez-world-energy-dams,Hydro Energy Insights,Batch,batch,GCP
+https://github.com/dgkertsos/car-sales,US Car Sales Analysis,Unknown,Unknown,GCP
+https://github.com/lilychau1/uk-power-analytics,UK Electricity Analysis Pipeline,Batch,batch,GCP
+https://github.com/shayansm2/tech-career-explorer/tree/de-zoomcamp-project,Tech Job Insights,Batch,batch,Unknown
+https://github.com/Yokanisha/generatedAmusementPark,German Theme Park Analytics,Batch,batch,GCP
+https://github.com/PietroRuffo/Lazio-Car-Sales-Performance-Emissions-Dashboard,Lazio Car Insights Dashboard,Batch,batch,GCP
+https://github.com/garjita63/dezoomcamp2024-project1,Streamlined E-commerce Analysis,Batch,batch,GCP
+https://github.com/edumunozsala/GDELT-Events-Data-Eng-Project,Global Human Behavior Graph,Batch,spark,GCP
+https://github.com/prantoran/METER-Weather-reports,METAR Weather Variability,Batch,batch,GCP
+https://github.com/dieegogutierrez/Data-Engineering-Capstone-Project,Truck Logistics Dashboard,Unknown,Unknown,GCP
+https://github.com/ichsanulamal/pcompare,Indonesian E-,Unknown,Unknown,GCP
+https://github.com/alangan17/video-game-analysis,Game Data Insights,Batch,batch,GCP

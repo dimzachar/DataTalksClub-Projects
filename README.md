@@ -64,7 +64,7 @@ pip install -r requirements.txt
 
 ### Environment Variables
 
-To run this project, you'll need to add a `.env` file in your project root. Replace `your_openai_api_key_here` and `your_github_access_token_here` with your actual OpenAI API key and GitHub access token, respectively.
+<!-- To run this project, you'll need to add a `.env` file in your project root. -->
 
 ## Makefile Usage
 

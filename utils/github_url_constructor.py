@@ -4,7 +4,7 @@ from urllib.parse import urlparse
 
 import requests
 
-headers = {"Authorization": f"token {os.environ.get('GITHUB_ACCESS_TOKEN')}"}
+headers = {"Authorization": f"token {os.environ.get('MY_GITHUB_TOKEN')}"}
 print(headers)
 
 
