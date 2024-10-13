@@ -1,21 +1,32 @@
+# Variables
+COURSE ?= dezoomcamp
+YEAR ?= 2024
+BASE_PATH ?= Data
+
+# Common arguments for Python scripts
+PY_ARGS = --course $(COURSE) --year $(YEAR) --base_path $(BASE_PATH)
+
+combine:
+	python -m src.combine_csvs $(PY_ARGS)
+
 test:
-	pipenv run pytest tests/
+	python -m pytest tests/
 
 quality_checks:
-	pipenv run isort .
-	pipenv run black .
-	pipenv run pylint --recursive=y .
+	isort .
+	black .
+	pylint --recursive=y .
 
 scrape:
-	pipenv run python -m src.scrape_and_clean
+	python -m src.scrape_and_clean $(PY_ARGS)
 
 titles:
-	pipenv run python -m src.generate_and_save_titles
+	python -m src.generate_and_save_titles $(PY_ARGS)
 
 deploy:
-	pipenv run python -m src.check_and_save_deployment
+	python -m src.check_and_save_deployment $(PY_ARGS)
 
 streamlit:
-	pipenv run streamlit run app.py
+	streamlit run app.py
 
 all: scrape titles deploy

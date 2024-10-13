@@ -9,7 +9,7 @@ from utils.openai_api import OpenAIAPI
 from utils.csv_handler import CSVHandler
 from utils.github_url_constructor import GithubURLConstructor
 
-from .config import titles_csv_path, cleaned_csv_path
+from .config import get_config
 
 load_dotenv()
 
@@ -24,6 +24,10 @@ logging.basicConfig(
 
 
 def main():
+    config = get_config()
+    cleaned_csv_path = config['cleaned_csv_path']
+    titles_csv_path = config['titles_csv_path']
+
     csv_handler = CSVHandler(cleaned_csv_path)
 
     if 'project_title' not in csv_handler.df.columns:
@@ -84,11 +88,13 @@ def main():
         readme_content = truncate_text(readme_content)
         summary = openai_api.generate_summary(readme_content)
         # Generate multiple titles
-        multiple_titles = openai_api.generate_multiple_titles(summary)
+        multiple_titles = openai_api.generate_multiple_titles(project_url, summary)
         print(f"Generated multiple titles for {row['project_url']}: {multiple_titles}")
 
         # Evaluate and revise titles
-        feedback, best_title = openai_api.evaluate_and_revise_titles(multiple_titles)
+        feedback, best_title = openai_api.evaluate_and_revise_titles(
+            multiple_titles, project_url, summary
+        )
         print(f"Evaluation Feedback: {feedback}")
         print(f"Best Revised Title: {best_title}")
 

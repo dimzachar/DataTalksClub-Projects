@@ -73,7 +73,7 @@ with left_co:
     st.image("dtc_logo.png", width=650)
 
 
-course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp']
+course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp', 'llmzoomcamp']
 year_options = ['2021', '2022', '2023', '2024']
 
 # Multiselect to select course(s) with all options selected by default

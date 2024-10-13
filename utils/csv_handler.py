@@ -2,8 +2,13 @@ import pandas as pd
 
 
 class CSVHandler:
-    def __init__(self, csv_path):
-        self.df = pd.read_csv(csv_path)
+    def __init__(self, data):
+        if isinstance(data, str):
+            self.df = pd.read_csv(data)
+        elif isinstance(data, pd.DataFrame):
+            self.df = data
+        else:
+            raise ValueError("Input must be either a file path or a pandas DataFrame")
 
     def update_titles(self, titles):
         print(f"Debug: Updating titles in CSVHandler with {titles}")
@@ -13,10 +18,8 @@ class CSVHandler:
         self.df.to_csv(new_path, index=False)
 
     def clean_and_deduplicate(self, column_name='project_url'):
-        # Drop rows where all elements are NaN
         self.df = self.df.dropna(how='all')
 
-        # Keep only the relevant column and copy it to a new DataFrame
         if column_name in self.df.columns:
             self.df = self.df[[column_name]].copy()
         else:

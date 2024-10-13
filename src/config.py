@@ -1,18 +1,40 @@
 import os
+import argparse
 
-# Define base and subdirectories
-base_path = "Data"
-course = "dezoomcamp"
-year = 2024
 
-subdirectory = os.path.join(base_path, course, str(year))  # More robust path joining
+def get_config():
+    parser = argparse.ArgumentParser(
+        description='Process course and year for data analysis.'
+    )
+    parser.add_argument(
+        '--course', type=str, required=True, help='Course name (e.g., dezoomcamp)'
+    )
+    parser.add_argument('--year', type=int, required=True, help='Year of the course')
+    parser.add_argument(
+        '--base_path', type=str, default='Data', help='Base path for data storage'
+    )
 
-# Ensure the directory exists
-os.makedirs(subdirectory, exist_ok=True)  # Simplifies directory creation check
+    args = parser.parse_args()
 
-# Define paths
-base_name = f"scraped_{course}_{year}"
-output_prefix = f"projects_{course}_{year}"
-cleaned_csv_path = os.path.join(subdirectory, f"cleaned_{base_name}.csv")
-titles_csv_path = os.path.join(subdirectory, f"{output_prefix}_cleaned_titles.csv")
-deploy_csv_path = os.path.join(subdirectory, "data.csv")
+    course = args.course
+    year = args.year
+    base_path = args.base_path
+
+    subdirectory = os.path.join(base_path, course, str(year))
+    os.makedirs(subdirectory, exist_ok=True)
+
+    output_prefix = f"projects_{course}_{year}"
+
+    return {
+        "base_path": base_path,
+        "course": course,
+        "year": year,
+        "subdirectory": subdirectory,
+        "cleaned_csv_path": os.path.join(
+            subdirectory, f"cleaned_scraped_{course}_{year}.csv"
+        ),
+        "titles_csv_path": os.path.join(
+            subdirectory, f"{output_prefix}_cleaned_titles.csv"
+        ),
+        "deploy_csv_path": os.path.join(subdirectory, "data.csv"),
+    }
