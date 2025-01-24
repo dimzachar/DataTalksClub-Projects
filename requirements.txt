@@ -102,7 +102,7 @@ tzdata==2023.3
 tzlocal==4.3.1
 urllib3==2.0.7
 validators==0.22.0
-virtualenv==20.24.5
+virtualenv==20.26.6
 watchdog==3.0.0
 wordcloud==1.9.2
 wrapt==1.15.0
