@@ -6,12 +6,7 @@ import pandas as pd
 import seaborn as sns
 import streamlit as st
 import plotly.graph_objects as go
-from pandas.api.types import (
-    is_object_dtype,
-    is_numeric_dtype,
-    is_categorical_dtype,
-    is_datetime64_any_dtype,
-)
+from pandas.api.types import is_numeric_dtype, is_categorical_dtype
 
 from src.eda_analysis import EDAAnalysis
 
@@ -74,7 +69,21 @@ with left_co:
 
 
 course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp', 'llmzoomcamp']
-year_options = ['2021', '2022', '2023', '2024']
+
+
+# Dynamically discover available years from Data folder
+def get_available_years():
+    years = set()
+    for course in course_options:
+        course_path = f"./Data/{course}"
+        if os.path.exists(course_path):
+            for item in os.listdir(course_path):
+                if item.isdigit() and os.path.isdir(os.path.join(course_path, item)):
+                    years.add(item)
+    return sorted(years) if years else ['2021', '2022', '2023', '2024', '2025']
+
+
+year_options = get_available_years()
 
 # Multiselect to select course(s) with all options selected by default
 selected_courses = st.multiselect(
@@ -189,7 +198,7 @@ if selected_courses and selected_years:
             return f'background-color: #001220'
 
         # Apply the background color to the DataFrame
-        styled_data = data.style.applymap(background_color)
+        styled_data = data.style.map(background_color)
 
         # Display the styled DataFrame in Streamlit
         st.dataframe(
@@ -413,6 +422,8 @@ if selected_courses and selected_years:
 
         # Plotting the stacked bar chart
         for idx, course in enumerate(course_order):
+            if course not in pivot_year_course.columns:
+                continue
             hover_text = [
                 f"{course}: {count}" for count in pivot_year_course[course].tolist()
             ]
@@ -488,6 +499,8 @@ if selected_courses and selected_years:
         annotations = []
         # Plotting the stacked bar chart
         for idx, course in enumerate(course_order):
+            if course not in pivot_cloud_course.columns:
+                continue
             hover_text = [
                 f"{course}: {count}" for count in pivot_cloud_course[course].tolist()
             ]
@@ -560,6 +573,8 @@ if selected_courses and selected_years:
 
         # Plotting the stacked bar chart
         for idx, course in enumerate(course_order):
+            if course not in pivot_deployment_course.columns:
+                continue
             hover_text = [
                 f"{course}: {count}"
                 for count in pivot_deployment_course[course].tolist()

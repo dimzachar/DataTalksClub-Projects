@@ -11,8 +11,6 @@ logging.basicConfig(level=logging.DEBUG, filename='debug.log', filemode='a')
 
 headers = {"Authorization": f"token {os.environ.get('MY_GITHUB_TOKEN')}"}
 
-print(headers)
-
 
 class DeploymentChecker:
     def __init__(

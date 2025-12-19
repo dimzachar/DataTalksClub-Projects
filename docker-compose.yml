@@ -1,0 +1,10 @@
+services:
+  pipeline:
+    build: .
+    volumes:
+      # Mount Data folder so results persist on your machine
+      - ./Data:/app/Data
+    environment:
+      - MY_GITHUB_TOKEN=${MY_GITHUB_TOKEN}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+    # Override command as needed (see Makefile for shortcuts)

@@ -66,7 +66,7 @@ def main():
             'AWS Glue',
             'AWS Step Functions',
             'AWS Batch',
-            'Amazon OpenSearch Service',  
+            'Amazon OpenSearch Service',
         ],
         'GCP': [
             'GCP',

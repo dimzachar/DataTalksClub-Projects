@@ -7,157 +7,268 @@ https://github.com/dimzachar/DataTalksClub-Projects/assets/113017737/c3c3235c-95
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Folder Structure](#folder-structure)
+- [Architecture](#architecture)
+- [How It Works](#how-it-works)
 - [Getting Started](#getting-started)
-    - [Clone the Repository](#clone-the-repository)
-    - [Environment Setup](#environment-setup)
-    - [Environment Variables](#environment-variables)
-- [Makefile Usage](#makefile-usage)
-- [CI/CD Pipeline](#cicd-pipeline)
-- [Configuration Files](#configuration-files)
+- [Pipeline Commands](#pipeline-commands)
+- [Makefile Commands](#makefile-commands)
+- [Output Data](#output-data)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
 ## Introduction
 
-DataTalksClub-Projects is a Python repository aimed at automating the analysis of projects from [DataTalksClub](https://github.com/DataTalksClub) courses. It focuses on data from [ML Zoomcamp](https://github.com/DataTalksClub/machine-learning-zoomcamp), [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) and [DE Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) for the years of 2021-2023. The repository includes Python scripts for tasks like web scraping, data handling, and API interactions. The `Data/` folder contains all the datasets I have generated for the courses. It also aims to implement comprehensive tests and data visualizations.
+DataTalksClub-Projects automates the analysis of projects from [DataTalksClub](https://github.com/DataTalksClub) courses. It scrapes project submissions, generates descriptive titles using LLMs, and classifies deployment types (Batch/Streaming) and cloud providers (GCP/AWS/Azure).
 
+**Supported courses:**
+- [DE Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) (dezoomcamp) → Batch, Streaming
+- [ML Zoomcamp](https://github.com/DataTalksClub/machine-learning-zoomcamp) (mlzoomcamp) → Batch, Web Service
+- [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) (mlopszoomcamp) → Batch, Web Service
+- [LLM Zoomcamp](https://github.com/DataTalksClub/llm-zoomcamp) (llmzoomcamp) → Batch, Web Service
 
-> **Note**: Titles for projects are generated using OpenAI and may require refinement. Future course iterations should include project titles for easier processing.
-
-
-## Folder Structure
+## Architecture
 
 ```
-.
-├── Data/               # Data files
-├── src/                # Python source files
-├── tests/              # Test files (TBD)
-├── utils/              # Utility files
-├── .env                # Environment variables
-├── .gitignore          # Git ignore rules
-├── LICENSE             # License file
-├── Makefile            # Makefile for automation
-├── README.md           # This file
-├── app.py              # Streamlit app
-├── help.log            # Unknown titles
-├── pyproject.toml      # Build settings
-└── requirements.txt    # Dependency list
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           DataTalksClub Website                              │
+│                    courses.datatalks.club/*/projects                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         1. SCRAPE & DISCOVER                                 │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│  │ Course Discovery │───▶│  Web Scraping   │───▶│  CSV Generation │          │
+│  │ (Auto-detect new │    │ (BeautifulSoup) │    │ (project URLs)  │          │
+│  │  finished courses)│    └─────────────────┘    └─────────────────┘          │
+│  └─────────────────┘                                                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         2. MULTI-FILE FETCHING                               │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│  │   GitHub API    │───▶│  Repo Analyzer  │───▶│  Key Files:     │          │
+│  │  (Tree + Files) │    │ (Prioritization)│    │  • README.md    │          │
+│  └─────────────────┘    └─────────────────┘    │  • docker-compose│          │
+│                                                 │  • *.tf (Terraform)│        │
+│         Parallel fetching with ThreadPool       │  • requirements.txt│        │
+│         (5 workers default, configurable)       │  • Dockerfile    │          │
+│                                                 │  • dags/*.py     │          │
+│                                                 └─────────────────┘          │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                      3. LLM CLASSIFICATION & TITLE GEN                       │
+│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐          │
+│  │  OpenRouter API │───▶│ Classification  │───▶│ Title Generation│          │
+│  │ (Free LLM tier) │    │ • Deployment    │    │ (Domain-focused,│          │
+│  └─────────────────┘    │   Type          │    │  tech-accurate) │          │
+│                         │ • Cloud Provider│    └─────────────────┘          │
+│                         └─────────────────┘                                  │
+│                                                                              │
+│  Classification runs FIRST → Title uses deployment context                   │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            4. OUTPUT                                         │
+│  ┌─────────────────────────────────────────────────────────────┐            │
+│  │  Data/{course}/{year}/data.csv                               │            │
+│  │  ├── project_url                                             │            │
+│  │  ├── project_title    (LLM-generated, domain-specific)       │            │
+│  │  ├── Deployment Type  (Batch, Streaming, Web Service)        │            │
+│  │  ├── Reason           (Evidence from code files)             │            │
+│  │  └── Cloud            (GCP, AWS, Azure, Other, Unknown)      │            │
+│  └─────────────────────────────────────────────────────────────┘            │
+└─────────────────────────────────────────────────────────────────────────────┘
 ```
+
+## How It Works
+
+### Pipeline Steps
+
+1. **Course Discovery** - Automatically detects finished courses from DataTalksClub website
+2. **Web Scraping** - Extracts project submission URLs from course pages
+3. **Multi-File Fetching** - For each GitHub repo, fetches 10 key files (not just README):
+   - `docker-compose.yml` → Shows Kafka, Spark, orchestrators
+   - `*.tf` files → Definitive cloud provider indicator
+   - `dags/*.py` → Airflow = Batch
+   - `requirements.txt` → Dependencies
+   - `Dockerfile`, `Makefile`, etc.
+4. **LLM Classification** - Analyzes actual code to determine:
+   - **Deployment Type**: Batch (Airflow, Kestra, Mage) or Streaming (Kafka, Flink)
+   - **Cloud Provider**: GCP, AWS, Azure based on Terraform/SDK usage
+5. **Title Generation** - Creates descriptive titles based on:
+   - Actual project functionality (not repo name)
+   - Deployment type context (no "Real-Time" for Batch projects)
+   - Domain focus (e.g., "NYC Taxi Analytics Pipeline")
+
+### Key Features
+
+- **Parallel Processing**: 5-10x faster with configurable workers
+- **Smart Skipping**: Only processes new courses by default
+- **Multi-File Context**: Better accuracy than README-only analysis
+- **Course-Specific Types**: Each course has valid deployment types
+- **Nested Project Support**: Handles `/tree/main/project` URLs correctly
+
+### Performance
+
+| Metric | Before (Sequential) | After (Parallel, 5 workers) |
+|--------|--------------------|-----------------------------|
+| 381 projects | ~60 minutes | ~12-15 minutes |
+| Throughput | ~0.1 proj/sec | ~0.5 proj/sec |
 
 ## Getting Started
 
-### Clone the Repository
+### Prerequisites
+
+- Docker and Docker Compose
+- GitHub Personal Access Token ([create one](https://github.com/settings/tokens))
+- OpenRouter API Key ([get free tier](https://openrouter.ai/))
+
+### Setup
 
 ```bash
-git clone https://github.com/yourusername/DataTalksClub-Projects.git
+# Clone the repository
+git clone https://github.com/dimzachar/DataTalksClub-Projects.git
 cd DataTalksClub-Projects
+
+# Create .env file
+cat > .env << EOF
+MY_GITHUB_TOKEN=your_github_token_here
+OPENROUTER_API_KEY=your_openrouter_key_here
+EOF
+
+# Build Docker image
+make docker-build
 ```
 
-### Environment Setup
+## Pipeline Commands
+
+### Docker Commands (Recommended)
 
 ```bash
-pip install --upgrade pip
-pip install -r requirements.txt
+# See available courses and status
+make docker-discover
+
+# Process only NEW courses (skips existing data.csv)
+make docker-pipeline
+
+# Reprocess ALL courses (overwrites existing data)
+make docker-pipeline-all
+
+# Process specific course
+make docker-pipeline-single COURSE=dezoomcamp YEAR=2025
+
+# Test with limited projects
+make docker-pipeline-test COURSE=dezoomcamp YEAR=2025 LIMIT=10
 ```
 
-### Environment Variables
-
-<!-- To run this project, you'll need to add a `.env` file in your project root. -->
-
-## Makefile Usage
-
-The Makefile included in this repository provides a convenient way to run various tasks. Below are the commands you can use:
-
-### Run tests (TBD)
-
-This command will run all the unit tests and integration tests for the project.
+### Direct Docker Commands
 
 ```bash
-make test
+# Discover courses
+docker-compose run --rm pipeline python -m src.pipeline_runner --discover
+
+# Process new courses only
+docker-compose run --rm pipeline python -m src.pipeline_runner
+
+# Reprocess all
+docker-compose run --rm pipeline python -m src.pipeline_runner --all
+
+# Specific course with options
+docker-compose run --rm pipeline python -m src.pipeline_runner \
+    --course dezoomcamp --year 2025 --limit 20 --workers 8
 ```
 
-### Quality Checks
+### Command Options
 
-Run this command to perform code quality checks. It includes isort, black and pylint.
+| Option | Description |
+|--------|-------------|
+| `--discover` | List available courses and their status |
+| `--all` | Reprocess all courses (overwrites existing) |
+| `--course NAME` | Process specific course |
+| `--year YEAR` | Process specific year |
+| `--limit N` | Limit to N projects (for testing) |
+| `--workers N` | Parallel workers (default: 5) |
 
-```bash
-make quality_checks
-```
+## Makefile Commands
 
-### Scrape Data
+### Docker Pipeline (No Local Install)
 
-Use this command to scrape data from specified sources. The data will be saved in the appropriate format and location.
+| Command | Description |
+|---------|-------------|
+| `make docker-build` | Build Docker image (run once) |
+| `make docker-discover` | Show available courses |
+| `make docker-pipeline` | Process new courses only |
+| `make docker-pipeline-all` | Reprocess all courses |
+| `make docker-pipeline-single` | Process single course |
+| `make docker-pipeline-test` | Test with limited projects |
 
-```bash
-make scrape
-```
+### Testing
 
-### Generate Titles
+| Command | Description |
+|---------|-------------|
+| `make docker-test` | Run all tests in Docker |
+| `make docker-test-cov` | Run tests with coverage in Docker |
+| `make test` | Run all tests locally |
+| `make test-cov` | Run tests with coverage locally |
+| `make test-unit` | Run unit tests only |
+| `make test-e2e` | Run E2E/integration tests only |
 
-This command will generate titles for the projects using OpenAI's API.
+### Local Pipeline (Requires `pip install -r requirements.txt`)
 
-```bash
-make titles
-```
+| Command | Description |
+|---------|-------------|
+| `make pipeline` | Process new courses |
+| `make pipeline-all` | Reprocess all courses |
+| `make pipeline-discover` | Show available courses |
+| `make pipeline-single` | Process single course |
 
-### Check Deployments
+### Utilities
 
-Run this command to check the deployment status of project services such as web, batch or streaming.
+| Command | Description |
+|---------|-------------|
+| `make quality_checks` | Run isort, black, pylint |
+| `make streamlit` | Run Streamlit app locally |
 
-```bash
-make deploy
-```
+## Output Data
 
-### Run All Tasks
+Generated data is saved to `Data/{course}/{year}/data.csv`:
 
-This command is a shortcut to run all of the above tasks in sequence. It's a quick way to ensure that everything is set up correctly.
+| Column | Description | Example |
+|--------|-------------|---------|
+| `project_url` | GitHub repository URL | `https://github.com/user/repo` |
+| `project_title` | LLM-generated title | `NYC Taxi Fare Analytics Pipeline` |
+| `Deployment Type` | Pipeline type | `Batch`, `Streaming`, `Batch, Streaming` |
+| `Reason` | Classification evidence | `Found Airflow DAG in dags/pipeline.py` |
+| `Cloud` | Cloud provider | `GCP`, `AWS`, `Azure`, `Other`, `Unknown` |
 
-```bash
-make all
-```
+## Contributing
 
-### Streamlit app
+1. Fork the repository
+2. Create a feature branch
+3. Make changes
+4. Run tests: `make docker-test`
+5. Run `make quality_checks`
+6. Submit a pull request
 
-Run the Streamlit app using the Makefile
+### CI/CD
 
-```bash
-make streamlit
-```
-
-## CI/CD Pipeline (TBD)
-
-This repository includes a Continuous Integration (CI) workflow that automatically builds and tests the Python project upon each push or pull request. This ensures that the codebase remains stable and free of errors as new changes are integrated.
-
-The CI workflow is configured to perform the following tasks:
-
-- Code quality checks
-- Unit tests
-- Integration tests
-
-## Configuration Files
-
-- `.gitignore`: Specifies files and folders to ignore in Git.
-- `LICENSE`: Contains the license information.
-- `Pipfile` & `Pipfile.lock`: Manage project dependencies.
-- `pyproject.toml`: Contains build-related settings.
-
-## Contributing (Coming soon)
-
-1. Fork the repository.
-2. Create a new feature branch.
-3. Make changes.
-4. Run tests (TBD).
-5. Submit a pull request.
+- **Tests**: Run automatically on every PR and push to main
+- **Pipeline**: Runs quarterly (Jan, Apr, Jul, Oct) to update course data
+- **Coverage**: Minimum 80% required for pipeline files
 
 ## License
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+MIT License - see `LICENSE` file.
 
 ## Contact
 
-For inquiries, connect with me on [Linkedin](https://www.linkedin.com/in/zacharenakis/)
+Connect on [LinkedIn](https://www.linkedin.com/in/zacharenakis/)
 
 ## Support this project
 

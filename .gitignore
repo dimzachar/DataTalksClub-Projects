@@ -5,7 +5,10 @@ __pycache__/
 Pipfile.lock
 app2.py
 .env
-.github/workflows/
 convert.py
 debug.log
 your_log_file.log
+unified_pipeline.log
+*.log
+docs/*
+test_fetch_speed.py

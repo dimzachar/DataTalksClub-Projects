@@ -9,9 +9,22 @@ from wordcloud import WordCloud
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
+
+# Download NLTK data only if not already present
+def _ensure_nltk_data():
+    """Download NLTK data only if not already available."""
+    for resource in ['punkt', 'stopwords', 'wordnet']:
+        try:
+            nltk.data.find(
+                f'tokenizers/{resource}'
+                if resource == 'punkt'
+                else f'corpora/{resource}'
+            )
+        except LookupError:
+            nltk.download(resource, quiet=True)
+
+
+_ensure_nltk_data()
 
 
 class EDAAnalysis:

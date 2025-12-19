@@ -1,0 +1,92 @@
+name: Quarterly Data Pipeline
+
+on:
+  schedule:
+    # Runs at midnight UTC on the 1st of January, April, July, October (every 3 months)
+    - cron: "0 0 1 1,4,7,10 *"
+  workflow_dispatch:
+    # Allows manual trigger from GitHub UI
+
+concurrency:
+  group: pipeline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          echo "🧪 Running tests..."
+          python -m pytest tests/ -v --tb=short
+
+      - name: Run tests with coverage
+        run: |
+          echo "📊 Running tests with coverage..."
+          python -m pytest tests/ --cov=src.config --cov=src.combine_csvs --cov=src.generate_titles_and_classify --cov=src.pipeline_runner --cov=utils.csv_handler --cov=utils.course_discovery --cov=utils.scraping_handler --cov=utils.repo_analyzer --cov=utils.openai_api --cov-report=term-missing --cov-fail-under=80
+
+  update-data:
+    runs-on: ubuntu-latest
+    needs: test  # Only run if tests pass
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Discover available courses
+        run: |
+          echo "🔍 Discovering available courses..."
+          python -m src.pipeline_runner --discover
+
+      - name: Process new courses
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          echo "🚀 Processing new courses only..."
+          python -m src.pipeline_runner
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet Data/; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "✓ No new data to commit"
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📦 New data files detected"
+            git diff --stat Data/
+          fi
+
+      - name: Commit and push new data
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add Data/
+          git commit -m "🔄 Auto-update: New course data [$(date +'%Y-%m-%d')]"
+          git push
+          echo "✅ New data committed! Streamlit will auto-redeploy."
