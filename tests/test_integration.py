@@ -567,6 +567,7 @@ class TestDataIntegrity:
 class TestGenerateTitlesAndClassifyMain:
     """Integration tests for generate_titles_and_classify main function."""
 
+    @patch('src.generate_titles_and_classify._check_env_vars')
     @patch('src.generate_titles_and_classify.RepoAnalyzer')
     @patch('src.generate_titles_and_classify.OpenAIAPI')
     @patch('src.generate_titles_and_classify.CSVHandler')
@@ -577,6 +578,7 @@ class TestGenerateTitlesAndClassifyMain:
         mock_csv_class,
         mock_openai_class,
         mock_analyzer_class,
+        mock_check_env,
         tmp_path,
     ):
         """Test the main function orchestration."""
@@ -645,8 +647,9 @@ class TestGenerateTitlesAndClassifyMain:
         # Verify save was called
         mock_handler.save.assert_called_once()
 
+    @patch('src.generate_titles_and_classify._check_env_vars')
     @patch('src.generate_titles_and_classify.get_config')
-    def test_main_with_limit(self, mock_config, tmp_path):
+    def test_main_with_limit(self, mock_config, mock_check_env, tmp_path):
         """Test main function respects limit parameter."""
         from utils.csv_handler import CSVHandler
         from src.generate_titles_and_classify import main
