@@ -14,7 +14,24 @@ warnings.filterwarnings("ignore")
 
 
 st.set_page_config(
-    page_title="DataTalksClub", page_icon=":cookie:", initial_sidebar_state="expanded"
+    page_title="DataTalksClub Zoomcamp Projects Gallery | Data Engineering, ML, MLOps Course Projects",
+    page_icon=":cookie:",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'About': """
+        # DataTalksClub Zoomcamp Projects Gallery
+        
+        Browse and explore past student projects from DataTalksClub courses:
+        - Data Engineering Zoomcamp (dezoomcamp)
+        - Machine Learning Zoomcamp (mlzoomcamp)  
+        - MLOps Zoomcamp (mlopszoomcamp)
+        - LLM Zoomcamp (llmzoomcamp)
+        
+        Find inspiration for your own capstone projects!
+        
+        Created by [Dimitris Zacharenakis](https://www.linkedin.com/in/zacharenakis)
+        """
+    }
 )
 
 

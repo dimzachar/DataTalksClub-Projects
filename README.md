@@ -10,8 +10,11 @@ https://github.com/dimzachar/DataTalksClub-Projects/assets/113017737/c3c3235c-95
 - [Architecture](#architecture)
 - [How It Works](#how-it-works)
 - [Getting Started](#getting-started)
-- [Pipeline Commands](#pipeline-commands)
-- [Makefile Commands](#makefile-commands)
+- [View the Dashboard](#view-the-dashboard)
+- [Run the Data Pipeline](#run-the-data-pipeline)
+- [Testing](#testing)
+- [Quality Checks](#quality-checks)
+- [Local Development](#local-development-without-docker)
 - [Output Data](#output-data)
 - [Contributing](#contributing)
 - [License](#license)
@@ -126,65 +129,52 @@ DataTalksClub-Projects automates the analysis of projects from [DataTalksClub](h
 ### Prerequisites
 
 - Docker and Docker Compose
-- GitHub Personal Access Token ([create one](https://github.com/settings/tokens))
-- OpenRouter API Key ([get free tier](https://openrouter.ai/))
+- GitHub Personal Access Token ([create one](https://github.com/settings/tokens)) - for pipeline
+- OpenRouter API Key ([get free tier](https://openrouter.ai/)) - for pipeline
 
 ### Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/dimzachar/DataTalksClub-Projects.git
 cd DataTalksClub-Projects
 
-# Create .env file
-cat > .env << EOF
-MY_GITHUB_TOKEN=your_github_token_here
-OPENROUTER_API_KEY=your_openrouter_key_here
-EOF
+# For pipeline: copy and edit .env
+cp .env.example .env
 
 # Build Docker image
 make docker-build
 ```
 
-## Pipeline Commands
+---
+
+## View the Dashboard
+
+The easiest way - just visit the live app: **[datatalksclub-projects.streamlit.app](https://datatalksclub-projects.streamlit.app/)**
+
+Or run locally with Docker:
+
+| Make Command | Direct Docker Command |
+|--------------|----------------------|
+| `docker-compose up streamlit` | Same |
+
+Then open http://localhost:8501
+
+---
+
+## Run the Data Pipeline
 
 ### Docker Commands (Recommended)
 
-```bash
-# See available courses and status
-make docker-discover
+| Make Command | Direct Docker Command | Description |
+|--------------|----------------------|-------------|
+| `make docker-build` | `docker-compose build` | Build Docker image (run once) |
+| `make docker-discover` | `docker-compose run --rm pipeline python -m src.pipeline_runner --discover` | See available courses |
+| `make docker-pipeline` | `docker-compose run --rm pipeline python -m src.pipeline_runner` | Process new courses only |
+| `make docker-pipeline-all` | `docker-compose run --rm pipeline python -m src.pipeline_runner --all` | Reprocess all courses |
+| `make docker-pipeline-single COURSE=dezoomcamp YEAR=2025` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025` | Process specific course |
+| `make docker-pipeline-test COURSE=dezoomcamp YEAR=2025 LIMIT=10` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025 --limit 10` | Test with limited projects |
 
-# Process only NEW courses (skips existing data.csv)
-make docker-pipeline
-
-# Reprocess ALL courses (overwrites existing data)
-make docker-pipeline-all
-
-# Process specific course
-make docker-pipeline-single COURSE=dezoomcamp YEAR=2025
-
-# Test with limited projects
-make docker-pipeline-test COURSE=dezoomcamp YEAR=2025 LIMIT=10
-```
-
-### Direct Docker Commands
-
-```bash
-# Discover courses
-docker-compose run --rm pipeline python -m src.pipeline_runner --discover
-
-# Process new courses only
-docker-compose run --rm pipeline python -m src.pipeline_runner
-
-# Reprocess all
-docker-compose run --rm pipeline python -m src.pipeline_runner --all
-
-# Specific course with options
-docker-compose run --rm pipeline python -m src.pipeline_runner \
-    --course dezoomcamp --year 2025 --limit 20 --workers 8
-```
-
-### Command Options
+### Pipeline Options
 
 | Option | Description |
 |--------|-------------|
@@ -195,45 +185,61 @@ docker-compose run --rm pipeline python -m src.pipeline_runner \
 | `--limit N` | Limit to N projects (for testing) |
 | `--workers N` | Parallel workers (default: 5) |
 
-## Makefile Commands
+---
 
-### Docker Pipeline (No Local Install)
+## Testing
 
-| Command | Description |
-|---------|-------------|
-| `make docker-build` | Build Docker image (run once) |
-| `make docker-discover` | Show available courses |
-| `make docker-pipeline` | Process new courses only |
-| `make docker-pipeline-all` | Reprocess all courses |
-| `make docker-pipeline-single` | Process single course |
-| `make docker-pipeline-test` | Test with limited projects |
+| Make Command | Direct Docker Command | Description |
+|--------------|----------------------|-------------|
+| `make docker-test` | `docker-compose run --rm pipeline python -m pytest tests/ -v` | Run all tests in Docker |
+| `make docker-test-cov` | `docker-compose run --rm pipeline python -m pytest tests/ -v --cov=...` | Run tests with coverage in Docker |
+| `make test` | `python -m pytest tests/ -v` | Run all tests locally |
+| `make test-cov` | `python -m pytest tests/ -v --cov=...` | Run tests with coverage locally |
+| `make test-unit` | - | Run unit tests only |
+| `make test-e2e` | - | Run E2E/integration tests only |
 
-### Testing
+---
 
-| Command | Description |
-|---------|-------------|
-| `make docker-test` | Run all tests in Docker |
-| `make docker-test-cov` | Run tests with coverage in Docker |
-| `make test` | Run all tests locally |
-| `make test-cov` | Run tests with coverage locally |
-| `make test-unit` | Run unit tests only |
-| `make test-e2e` | Run E2E/integration tests only |
+## Quality Checks
 
-### Local Pipeline (Requires `pip install -r requirements.txt`)
+| Make Command | Direct Docker Command | Description |
+|--------------|----------------------|-------------|
+| `make quality_checks` | - | Run isort, black, pylint locally |
+| `make docker-quality-checks` | `docker-compose run --rm pipeline python -m isort . && ...` | Run isort, black, pylint in Docker |
 
-| Command | Description |
-|---------|-------------|
+---
+
+## Local Development (without Docker)
+
+> Requires Python 3.11. Python 3.12+ has dependency issues.
+
+### Setup with uv
+
+```bash
+uv venv --python 3.11
+.venv\Scripts\activate      # Windows
+source .venv/bin/activate   # Linux/Mac
+uv pip install -r requirements.txt
+```
+
+### Setup with pip
+
+```bash
+python3.11 -m venv .venv
+.venv\Scripts\activate      # Windows
+source .venv/bin/activate   # Linux/Mac
+pip install -r requirements.txt
+```
+
+### Local Commands
+
+| Make Command | Description |
+|--------------|-------------|
+| `make streamlit` | Run Streamlit dashboard |
 | `make pipeline` | Process new courses |
 | `make pipeline-all` | Reprocess all courses |
 | `make pipeline-discover` | Show available courses |
-| `make pipeline-single` | Process single course |
-
-### Utilities
-
-| Command | Description |
-|---------|-------------|
-| `make quality_checks` | Run isort, black, pylint |
-| `make streamlit` | Run Streamlit app locally |
+| `make pipeline-single COURSE=dezoomcamp YEAR=2025` | Process single course |
 
 ## Output Data
 
