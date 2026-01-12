@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTalksClub Zoomcamp Projects Gallery | Data Engineering, ML, MLOps Course Projects</title>
+    <meta name="description" content="Browse 1000+ past student projects from DataTalksClub courses. Find inspiration for your Data Engineering Zoomcamp, ML Zoomcamp, MLOps Zoomcamp, and LLM Zoomcamp capstone projects.">
+    <meta name="keywords" content="DataTalksClub, data engineering zoomcamp, zoomcamp projects, ML zoomcamp, MLOps zoomcamp, LLM zoomcamp, capstone projects, project gallery, data engineering portfolio, DE zoomcamp, zoomcamp project ideas, data engineering course projects">
+    <meta name="author" content="Dimitris Zacharenakis">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://datatalksclub-projects.streamlit.app/">
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="DataTalksClub Zoomcamp Projects Gallery">
+    <meta property="og:description" content="Browse 1000+ past student projects from DataTalksClub courses. Find capstone project inspiration!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://datatalksclub-projects.streamlit.app/">
+    <meta property="og:site_name" content="DataTalksClub Projects Gallery">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DataTalksClub Zoomcamp Projects Gallery">
+    <meta name="twitter:description" content="Browse 1000+ past student projects from DataTalksClub courses">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "DataTalksClub Zoomcamp Projects Gallery",
+      "description": "Interactive dashboard to browse past student projects from DataTalksClub Data Engineering, ML, MLOps, and LLM Zoomcamp courses",
+      "url": "https://datatalksclub-projects.streamlit.app/",
+      "applicationCategory": "Education",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Dimitris Zacharenakis",
+        "url": "https://www.linkedin.com/in/zacharenakis"
+      }
+    }
+    </script>
+    
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            background: linear-gradient(135deg, #001220 0%, #18223C 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        h1 { 
+            color: #C0526A; 
+            font-size: 2.5rem; 
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2 { color: #C0526A; margin: 30px 0 15px; font-size: 1.5rem; }
+        p { margin-bottom: 15px; color: #e0e0e0; }
+        ul { margin-left: 25px; margin-bottom: 20px; }
+        li { margin-bottom: 8px; color: #e0e0e0; }
+        a { color: #C0526A; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .cta-button {
+            display: inline-block;
+            background: #C0526A;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 5px 20px rgba(192, 82, 106, 0.4);
+            text-decoration: none;
+        }
+        .hero { text-align: center; padding: 40px 0; }
+        .stats { 
+            display: flex; 
+            justify-content: center; 
+            gap: 40px; 
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .stat { text-align: center; }
+        .stat-number { font-size: 2.5rem; color: #C0526A; font-weight: bold; }
+        .stat-label { color: #a0a0a0; font-size: 0.9rem; }
+        .courses { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px; 
+            margin: 30px 0;
+        }
+        .course-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .course-card h3 { color: #C0526A; margin-bottom: 10px; font-size: 1.1rem; }
+        .features { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 10px; margin: 30px 0; }
+        footer { 
+            text-align: center; 
+            padding: 40px 0; 
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+        }
+        .keywords { font-size: 0.85rem; color: #666; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>🎓 DataTalksClub Zoomcamp Projects Gallery</h1>
+            <p style="font-size: 1.2rem;">Browse past student projects from DataTalksClub courses.<br>Find inspiration for your capstone project!</p>
+            
+            <a href="https://datatalksclub-projects.streamlit.app/" class="cta-button">
+                🚀 Open Interactive Dashboard
+            </a>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Student Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Zoomcamp Courses</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Years of Data</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>📚 Browse Projects From These Courses</h2>
+        <div class="courses">
+            <div class="course-card">
+                <h3>Data Engineering Zoomcamp</h3>
+                <p>Batch & streaming data pipelines with Airflow, Kafka, Spark, dbt</p>
+            </div>
+            <div class="course-card">
+                <h3>Machine Learning Zoomcamp</h3>
+                <p>ML models, deployments, and web services</p>
+            </div>
+            <div class="course-card">
+                <h3>MLOps Zoomcamp</h3>
+                <p>ML operations, automation, and monitoring</p>
+            </div>
+            <div class="course-card">
+                <h3>LLM Zoomcamp</h3>
+                <p>Large language model applications and RAG systems</p>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>✨ What You Can Do</h2>
+            <ul>
+                <li><strong>Filter by course and year</strong> - Find projects from specific cohorts</li>
+                <li><strong>Search by cloud provider</strong> - AWS, GCP, Azure projects</li>
+                <li><strong>See deployment types</strong> - Batch, Streaming, Web Service</li>
+                <li><strong>Download as CSV</strong> - Export project data for analysis</li>
+                <li><strong>View analytics</strong> - Word clouds, charts, and trends</li>
+            </ul>
+        </div>
+
+        <h2>🔍 Looking for Capstone Project Ideas?</h2>
+        <p>If you're taking a DataTalksClub course and need inspiration for your capstone project, this gallery shows what past students have built. Search by technology, cloud provider, or deployment type to find projects similar to what you want to create.</p>
+        
+        <h2>Popular Searches</h2>
+        <ul>
+            <li>Data Engineering Zoomcamp past projects</li>
+            <li>Zoomcamp capstone project examples</li>
+            <li>DE Zoomcamp portfolio projects</li>
+            <li>MLOps Zoomcamp project ideas</li>
+            <li>DataTalksClub student projects</li>
+        </ul>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="https://datatalksclub-projects.streamlit.app/" class="cta-button">
+                Browse All Projects →
+            </a>
+        </div>
+
+        <footer>
+            <p>Created by <a href="https://www.linkedin.com/in/zacharenakis">Dimitris Zacharenakis</a></p>
+            <p><a href="https://github.com/dimzachar/DataTalksClub-Projects">View on GitHub</a> | 
+            <a href="https://datatalks.club">DataTalksClub</a></p>
+            
+            <p class="keywords">
+                Keywords: DataTalksClub projects, data engineering zoomcamp projects, zoomcamp project gallery, 
+                DE zoomcamp capstone, ML zoomcamp projects, MLOps zoomcamp examples, LLM zoomcamp projects,
+                data engineering portfolio, zoomcamp student projects, DataTalksClub course projects
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
