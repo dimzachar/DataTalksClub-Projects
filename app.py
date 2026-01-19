@@ -77,12 +77,18 @@ def load_data(selected_courses, selected_years):
     return pd.concat(dfs, ignore_index=True) if dfs else None
 
 
+# Main H1 heading for SEO
+st.markdown("""
+<h1 style='text-align: center; color: #C0526A;'>DataTalksClub Zoomcamp Projects Gallery</h1>
+<p style='text-align: center; color: #e0e0e0;'>Browse 2000+ past student projects from Data Engineering, ML, MLOps, and LLM Zoomcamp courses</p>
+""", unsafe_allow_html=True)
+
 st.sidebar.title(
     'Interactive [DataTalksClub](https://github.com/DataTalksClub) Course Projects Dashboard'
 )
 left_co, cent_co, last_co = st.columns(3)
-with left_co:
-    st.image("dtc_logo.png", width=650)
+# with left_co:
+#     st.image("dtc_logo.webp", width=650)
 
 
 course_options = ['dezoomcamp', 'mlopszoomcamp', 'mlzoomcamp', 'llmzoomcamp']
@@ -654,18 +660,18 @@ else:
 # Sidebar
 st.sidebar.write("Help Keep This Service Running")
 st.sidebar.markdown(
-    "<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128'></a>",
+    "<a href='https://www.paypal.com/donate/?hosted_button_id=LR3PQYHZY4CJ4' target='_blank' rel='noopener noreferrer'><img src='https://www.paypalobjects.com/digitalassets/c/website/marketing/apac/C2/logos-buttons/optimize/26_Yellow_PayPal_Pill_Button.png' width='128' alt='Donate via PayPal'></a>",
     unsafe_allow_html=True,
 )
 
 st.sidebar.write("Connect with me")
 st.sidebar.markdown(
-    "<a href='https://www.linkedin.com/in/zacharenakis'><img src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png' width='32'></a>",
+    "<a href='https://www.linkedin.com/in/zacharenakis' target='_blank' rel='noopener noreferrer'><img src='https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png' width='32' alt='LinkedIn Profile'></a>",
     unsafe_allow_html=True,
 )
 
 
 st.sidebar.markdown(
-    "<a href='https://zacharenakis.super.site'><img src='https://img.icons8.com/external-vectorslab-flat-vectorslab/53/null/external-Favorite-Website-web-and-marketing-vectorslab-flat-vectorslab.png' width='32'></a>",
+    "<a href='https://zacharenakis.super.site' target='_blank' rel='noopener noreferrer'><img src='https://img.icons8.com/external-vectorslab-flat-vectorslab/53/null/external-Favorite-Website-web-and-marketing-vectorslab-flat-vectorslab.png' width='32' alt='Personal Website'></a>",
     unsafe_allow_html=True,
 )

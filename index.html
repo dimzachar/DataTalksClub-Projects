@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DataTalksClub Zoomcamp Projects Gallery | Data Engineering, ML, MLOps Course Projects</title>
-    <meta name="description" content="Browse 1000+ past student projects from DataTalksClub courses. Find inspiration for your Data Engineering Zoomcamp, ML Zoomcamp, MLOps Zoomcamp, and LLM Zoomcamp capstone projects.">
-    <meta name="keywords" content="DataTalksClub, data engineering zoomcamp, zoomcamp projects, ML zoomcamp, MLOps zoomcamp, LLM zoomcamp, capstone projects, project gallery, data engineering portfolio, DE zoomcamp, zoomcamp project ideas, data engineering course projects">
+    <meta name="description" content="Browse 2000+ capstone project examples from DataTalksClub Zoomcamp courses. Find data engineering zoomcamp project ideas, ML zoomcamp examples, and MLOps pipeline tutorials.">
+    <meta name="keywords" content="DataTalksClub, data engineering zoomcamp project examples, zoomcamp projects, ML zoomcamp projects, MLOps zoomcamp project ideas, mlops pipeline tutorial, LLM zoomcamp, capstone projects, DE zoomcamp examples, zoomcamp project ideas">
     <meta name="author" content="Dimitris Zacharenakis">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://datatalksclub-projects.streamlit.app/">
+    <link rel="canonical" href="https://dimzachar.github.io/DataTalksClub-Projects/">
     
     <!-- Open Graph for social sharing -->
     <meta property="og:title" content="DataTalksClub Zoomcamp Projects Gallery">
-    <meta property="og:description" content="Browse 1000+ past student projects from DataTalksClub courses. Find capstone project inspiration!">
+    <meta property="og:description" content="Browse 2000+ past student projects from DataTalksClub courses. Find capstone project inspiration!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://datatalksclub-projects.streamlit.app/">
     <meta property="og:site_name" content="DataTalksClub Projects Gallery">
@@ -20,7 +20,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DataTalksClub Zoomcamp Projects Gallery">
-    <meta name="twitter:description" content="Browse 1000+ past student projects from DataTalksClub courses">
+    <meta name="twitter:description" content="Browse 2000+ past student projects from DataTalksClub courses">
     
     <!-- Schema.org markup -->
     <script type="application/ld+json">
@@ -41,7 +41,55 @@
         "@type": "Person",
         "name": "Dimitris Zacharenakis",
         "url": "https://www.linkedin.com/in/zacharenakis"
+      },
+      "about": {
+        "@type": "Organization",
+        "name": "DataTalksClub",
+        "url": "https://datatalks.club",
+        "description": "Community offering free online courses in data engineering, machine learning, and MLOps"
       }
+    }
+    </script>
+    
+    <!-- FAQ Schema for LLM SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the DataTalksClub Zoomcamp Projects Gallery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It's a free, searchable database of 2000+ capstone projects submitted by students who completed DataTalksClub's online courses including Data Engineering Zoomcamp, ML Zoomcamp, MLOps Zoomcamp, and LLM Zoomcamp. Students use it to find inspiration for their own projects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I find Data Engineering Zoomcamp project ideas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Visit the interactive dashboard at datatalksclub-projects.streamlit.app, select 'dezoomcamp' from the course filter, and browse hundreds of past student projects. You can filter by year, cloud provider (AWS, GCP, Azure), and deployment type (batch, streaming)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What technologies are used in DataTalksClub projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Projects commonly use Apache Airflow, Apache Kafka, Apache Spark, dbt, Docker, Terraform, Google BigQuery, AWS, GCP, Azure, scikit-learn, TensorFlow, MLflow, Prefect, and various LLM frameworks depending on the course."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is DataTalksClub free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all DataTalksClub courses are completely free. They offer self-paced learning with cohort-based deadlines for capstone projects. Visit datatalks.club to enroll."
+          }
+        }
+      ]
     }
     </script>
     
@@ -116,6 +164,9 @@
             margin-top: 40px;
         }
         .keywords { font-size: 0.85rem; color: #666; margin-top: 30px; }
+        details { margin-bottom: 15px; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 8px; }
+        details summary { cursor: pointer; color: #e0e0e0; }
+        details p { margin-top: 10px; margin-bottom: 0; padding-left: 10px; }
     </style>
 </head>
 <body>
@@ -130,7 +181,7 @@
             
             <div class="stats">
                 <div class="stat">
-                    <div class="stat-number">1000+</div>
+                    <div class="stat-number">2000+</div>
                     <div class="stat-label">Student Projects</div>
                 </div>
                 <div class="stat">
@@ -186,6 +237,24 @@
             <li>MLOps Zoomcamp project ideas</li>
             <li>DataTalksClub student projects</li>
         </ul>
+
+        <h2>❓ Frequently Asked Questions</h2>
+        <details>
+            <summary><strong>What is the DataTalksClub Zoomcamp Projects Gallery?</strong></summary>
+            <p>It's a free, searchable database of 2000+ capstone projects submitted by students who completed DataTalksClub's online courses. Students use it to find inspiration for their own Data Engineering, ML, MLOps, and LLM projects.</p>
+        </details>
+        <details>
+            <summary><strong>How can I find Data Engineering Zoomcamp project ideas?</strong></summary>
+            <p>Visit the interactive dashboard, select "dezoomcamp" from the course filter, and browse hundreds of past student projects. You can filter by year, cloud provider (AWS, GCP, Azure), and deployment type (batch, streaming).</p>
+        </details>
+        <details>
+            <summary><strong>What technologies are used in these projects?</strong></summary>
+            <p>Projects commonly use Apache Airflow, Apache Kafka, Apache Spark, dbt, Docker, Terraform, Google BigQuery, AWS, GCP, Azure, scikit-learn, TensorFlow, MLflow, Prefect, and various LLM frameworks.</p>
+        </details>
+        <details>
+            <summary><strong>Is DataTalksClub free?</strong></summary>
+            <p>Yes, all DataTalksClub courses are completely free. They offer self-paced learning with cohort-based deadlines for capstone projects. Visit <a href="https://datatalks.club">datatalks.club</a> to enroll.</p>
+        </details>
 
         <div style="text-align: center; margin: 40px 0;">
             <a href="https://datatalksclub-projects.streamlit.app/" class="cta-button">

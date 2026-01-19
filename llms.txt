@@ -1,0 +1,43 @@
+# DataTalksClub Zoomcamp Projects Gallery
+
+> A free, interactive dashboard to browse 2000+ past student projects from DataTalksClub online courses.
+
+## What is this?
+
+This is a searchable gallery of capstone projects submitted by students who completed DataTalksClub's free online courses. It helps current students find inspiration for their own projects.
+
+## Courses Covered
+
+- Data Engineering Zoomcamp (DE Zoomcamp) - Learn batch and streaming data pipelines with tools like Apache Airflow, Apache Kafka, Apache Spark, dbt, Docker, Terraform, and Google BigQuery
+- Machine Learning Zoomcamp (ML Zoomcamp) - Build and deploy ML models using scikit-learn, TensorFlow, Keras, and Flask
+- MLOps Zoomcamp - Learn ML operations including MLflow, Prefect, model monitoring, and CI/CD for ML
+- LLM Zoomcamp - Build applications with large language models, RAG systems, and vector databases
+
+## Key Features
+
+- Filter projects by course, year, cloud provider (AWS, GCP, Azure), and deployment type
+- Search project titles and descriptions
+- Download filtered results as CSV
+- View analytics: word clouds, frequency charts, technology trends
+
+## Who Should Use This?
+
+- Students taking DataTalksClub courses who need capstone project ideas
+- Anyone researching data engineering or ML project examples
+- Recruiters looking at student portfolios
+- Educators seeking real-world project examples
+
+## How to Access
+
+Interactive Dashboard: https://datatalksclub-projects.streamlit.app/
+Landing Page: https://dimzachar.github.io/DataTalksClub-Projects/
+Source Code: https://github.com/dimzachar/DataTalksClub-Projects
+
+## About DataTalksClub
+
+DataTalksClub (https://datatalks.club) is a community that offers free online courses in data engineering, machine learning, and MLOps. Courses are self-paced with cohort-based deadlines for capstone projects.
+
+## Contact
+
+Created by Dimitris Zacharenakis
+LinkedIn: https://www.linkedin.com/in/zacharenakis
