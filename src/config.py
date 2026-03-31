@@ -34,6 +34,14 @@ def get_config():
     parser.add_argument(
         '--workers', type=int, default=5, help='Number of parallel workers (default: 5)'
     )
+    parser.add_argument(
+        '--project-url',
+        '--project_url',
+        dest='project_url',
+        type=str,
+        default=None,
+        help='Process only this project URL within the selected course/year',
+    )
 
     args = parser.parse_args()
 
@@ -57,6 +65,7 @@ def get_config():
         "year": year,
         "limit": args.limit,
         "max_workers": args.workers,
+        "project_url": args.project_url,
         "valid_deployment_types": valid_deployment_types,
         "subdirectory": subdirectory,
         "cleaned_csv_path": os.path.join(

@@ -172,6 +172,7 @@ Then open http://localhost:8501
 | `make docker-pipeline` | `docker-compose run --rm pipeline python -m src.pipeline_runner` | Process new courses only |
 | `make docker-pipeline-all` | `docker-compose run --rm pipeline python -m src.pipeline_runner --all` | Reprocess all courses |
 | `make docker-pipeline-single COURSE=dezoomcamp YEAR=2025` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025` | Process specific course |
+| `make docker-pipeline-project COURSE=dezoomcamp YEAR=2025 PROJECT_URL=https://github.com/example-org/example-de-project` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025 --project-url https://github.com/example-org/example-de-project` | Process only one project URL |
 | `make docker-pipeline-test COURSE=dezoomcamp YEAR=2025 LIMIT=10` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025 --limit 10` | Test with limited projects |
 
 ### Pipeline Options
@@ -182,6 +183,7 @@ Then open http://localhost:8501
 | `--all` | Reprocess all courses (overwrites existing) |
 | `--course NAME` | Process specific course |
 | `--year YEAR` | Process specific year |
+| `--project-url URL` | Process only one repo URL (requires `--course` and `--year`) |
 | `--limit N` | Limit to N projects (for testing) |
 | `--workers N` | Parallel workers (default: 5) |
 
@@ -240,6 +242,7 @@ pip install -r requirements.txt
 | `make pipeline-all` | Reprocess all courses |
 | `make pipeline-discover` | Show available courses |
 | `make pipeline-single COURSE=dezoomcamp YEAR=2025` | Process single course |
+| `make pipeline-project COURSE=dezoomcamp YEAR=2025 PROJECT_URL=https://github.com/example-org/example-de-project` | Process single project URL |
 
 ## Output Data
 

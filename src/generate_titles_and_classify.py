@@ -92,7 +92,18 @@ def process_single_project(args):
     Returns:
         tuple: (index, result_dict) where result_dict contains all fields to update
     """
-    index, row, repo_analyzer, openai_api, valid_deployment_types = args
+    if len(args) == 6:
+        (
+            index,
+            row,
+            repo_analyzer,
+            openai_api,
+            valid_deployment_types,
+            force_reprocess,
+        ) = args
+    else:
+        index, row, repo_analyzer, openai_api, valid_deployment_types = args
+        force_reprocess = False
     project_url = row['project_url']
 
     result = {
@@ -100,6 +111,8 @@ def process_single_project(args):
         'Deployment Type': row.get('Deployment Type'),
         'Reason': row.get('Reason'),
         'Cloud': row.get('Cloud'),
+        'readme_path': None,
+        'readme_preview': None,
         'status': 'success',
     }
 
@@ -107,7 +120,8 @@ def process_single_project(args):
     existing_title = row.get('project_title')
     existing_deployment = row.get('Deployment Type')
     if (
-        pd.notnull(existing_title)
+        not force_reprocess
+        and pd.notnull(existing_title)
         and existing_title != 'Unknown'
         and existing_title != 'Error'
         and pd.notnull(existing_deployment)
@@ -131,9 +145,25 @@ def process_single_project(args):
             result['status'] = 'skip'
             return index, result
 
+        # In single-project debug mode, expose which README was fetched.
+        if force_reprocess:
+            readme_candidates = []
+            for path, content in files_content.items():
+                filename = path.split('/')[-1].lower()
+                if filename in ('readme.md', 'readme'):
+                    readme_candidates.append((path, content))
+
+            if readme_candidates:
+                # Prefer top-level README for quick verification in logs.
+                readme_candidates.sort(key=lambda item: item[0].count('/'))
+                chosen_path, chosen_content = readme_candidates[0]
+                preview = chosen_content[:700].replace('\n', ' ').strip()
+                result['readme_path'] = chosen_path
+                result['readme_preview'] = preview
+
         # Step 2: Classify deployment type and cloud FIRST (needed for title generation)
         deployment_type = row.get('Deployment Type')
-        if pd.isnull(deployment_type) or deployment_type == 'Unknown':
+        if force_reprocess or pd.isnull(deployment_type) or deployment_type == 'Unknown':
             classification = openai_api.classify_deployment_and_cloud(
                 project_url, files_content, valid_deployment_types
             )
@@ -144,7 +174,7 @@ def process_single_project(args):
             result['Cloud'] = classification['cloud_provider']
 
         # Step 3: Generate title using deployment type context
-        if pd.isnull(row.get('project_title')):
+        if force_reprocess or pd.isnull(row.get('project_title')):
             combined_content = ""
             for filepath, content in files_content.items():
                 combined_content += f"\n=== {filepath} ===\n"
@@ -197,14 +227,53 @@ def main():
 
     csv_handler = CSVHandler(cleaned_csv_path)
 
+    # Preserve existing enrichment from data.csv (if present), so targeted reruns
+    # update rows instead of replacing the whole output with a filtered subset.
+    result_columns = ['project_title', 'Deployment Type', 'Reason', 'Cloud']
+    if os.path.exists(output_csv_path):
+        try:
+            existing_df = pd.read_csv(output_csv_path)
+            if 'project_url' in existing_df.columns:
+                existing_df = existing_df.drop_duplicates(subset=['project_url'])
+                existing_df = existing_df.set_index('project_url')
+                for col in result_columns:
+                    if col in existing_df.columns:
+                        csv_handler.df[col] = csv_handler.df['project_url'].map(
+                            existing_df[col]
+                        )
+        except Exception as e:
+            logger.warning(f"Could not load existing output CSV {output_csv_path}: {e}")
+
+    # Optional: process just one repo URL
+    old_target_row = None
+    project_url = config.get('project_url')
+    process_df = csv_handler.df
+    if project_url:
+        normalized_target = project_url.rstrip('/')
+        normalized_series = csv_handler.df['project_url'].astype(str).str.rstrip('/')
+        process_df = csv_handler.df[normalized_series == normalized_target]
+        if process_df.empty:
+            raise ValueError(
+                f"Project URL not found in {cleaned_csv_path}: {project_url}"
+            )
+        print(f"🎯 Filtered to project: {project_url}")
+        print("🔁 Force reprocessing enabled for this project URL")
+        output_columns = ['project_url', 'project_title', 'Deployment Type', 'Reason', 'Cloud']
+        available_columns = [c for c in output_columns if c in csv_handler.df.columns]
+        old_target_row = (
+            csv_handler.df.loc[normalized_series == normalized_target, available_columns]
+            .iloc[0]
+            .to_dict()
+        )
+
     # Apply limit if specified
     limit = config.get('limit', 0)
     if limit > 0:
-        csv_handler.df = csv_handler.df.head(limit)
+        process_df = process_df.head(limit)
         print(f"⚠️  Limited to {limit} projects for testing")
 
     # Initialize columns
-    for col in ['project_title', 'Deployment Type', 'Reason', 'Cloud']:
+    for col in result_columns:
         if col not in csv_handler.df.columns:
             csv_handler.df[col] = None
 
@@ -212,7 +281,7 @@ def main():
     repo_analyzer = RepoAnalyzer(os.environ.get('MY_GITHUB_TOKEN'))
     openai_api = OpenAIAPI(os.environ.get('OPENROUTER_API_KEY'))
 
-    total = len(csv_handler.df)
+    total = len(process_df)
     print(f"🚀 Processing {total} projects with {max_workers} parallel workers...")
     print("=" * 60)
 
@@ -227,8 +296,15 @@ def main():
 
     # Prepare work items
     work_items = [
-        (idx, row, repo_analyzer, openai_api, valid_deployment_types)
-        for idx, row in csv_handler.df.iterrows()
+        (
+            idx,
+            row,
+            repo_analyzer,
+            openai_api,
+            valid_deployment_types,
+            bool(project_url),
+        )
+        for idx, row in process_df.iterrows()
     ]
 
     # Process in parallel with progress bar
@@ -292,6 +368,41 @@ def main():
 
     # Save results
     csv_handler.save(output_csv_path)
+
+    if project_url:
+        normalized_series = csv_handler.df['project_url'].astype(str).str.rstrip('/')
+        normalized_target = project_url.rstrip('/')
+        target_rows = csv_handler.df[normalized_series == normalized_target]
+        if not target_rows.empty:
+            output_columns = ['project_url', 'project_title', 'Deployment Type', 'Reason', 'Cloud']
+            available_columns = [c for c in output_columns if c in csv_handler.df.columns]
+            target_row = target_rows.iloc[0][available_columns].to_dict()
+            print("\n🎯 Single project result:")
+            print(f"   URL: {project_url}")
+            print(f"   Title: {target_row.get('project_title', 'Unknown')}")
+            print(f"   Deployment: {target_row.get('Deployment Type', 'Unknown')}")
+            print(f"   Cloud: {target_row.get('Cloud', 'Unknown')}")
+            debug_result = None
+            for future in futures:
+                try:
+                    _, res = future.result()
+                    debug_result = res
+                    break
+                except Exception:
+                    continue
+
+            if debug_result:
+                if debug_result.get('readme_path'):
+                    print("\n📄 README preview (truncated):")
+                    print(f"   Path: {debug_result['readme_path']}")
+                    print(f"   Text: {debug_result.get('readme_preview', '')}")
+                else:
+                    print("\n📄 README preview (truncated):")
+                    print("   README file not found in fetched key files.")
+            if old_target_row is not None:
+                print("\n📝 Full row diff:")
+                print(f"   OLD: {old_target_row}")
+                print(f"   NEW: {target_row}")
 
     print("\n" + "=" * 60)
     rate = total / elapsed if elapsed > 0 else 0

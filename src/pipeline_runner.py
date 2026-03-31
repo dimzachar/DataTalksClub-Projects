@@ -6,6 +6,7 @@ Usage:
     python -m src.pipeline_runner --all        # Reprocess everything
     python -m src.pipeline_runner --discover   # Just show what's available
     python -m src.pipeline_runner --course dezoomcamp --year 2025  # Single course
+    python -m src.pipeline_runner --course dezoomcamp --year 2025 --project-url https://github.com/user/repo  # Single project
 """
 
 import os
@@ -19,10 +20,11 @@ from utils.scraping_handler import ScrapingError, ScrapingHandler
 
 
 class PipelineRunner:
-    def __init__(self, data_path="Data", limit=0):
+    def __init__(self, data_path="Data", limit=0, project_url=None):
         self.data_path = Path(data_path)
         self.discovery = CourseDiscovery(data_path)
         self.limit = limit  # Limit projects for testing
+        self.project_url = project_url
 
     def discover(self):
         """Show all available courses and their status."""
@@ -129,6 +131,9 @@ class PipelineRunner:
         # Add limit if specified
         if self.limit > 0:
             cmd.extend(["--limit", str(self.limit)])
+        # Optionally process just one project URL
+        if self.project_url and module == "src.generate_titles_and_classify":
+            cmd.extend(["--project-url", self.project_url])
 
         # Stream output in real-time (no capture)
         result = subprocess.run(cmd)
@@ -154,7 +159,16 @@ def main():
     parser.add_argument(
         "--limit", type=int, default=0, help="Limit projects to process (for testing)"
     )
+    parser.add_argument(
+        "--project-url",
+        "--project_url",
+        dest="project_url",
+        type=str,
+        help="Process only this project URL within the selected course/year",
+    )
     args = parser.parse_args()
+    if args.project_url and not (args.course and args.year):
+        parser.error("--project-url requires --course and --year")
 
     # Check for required environment variables
     if not args.discover:
@@ -171,7 +185,7 @@ def main():
             print("   export OPENROUTER_API_KEY='your_key'")
             sys.exit(1)
 
-    runner = PipelineRunner(limit=args.limit)
+    runner = PipelineRunner(limit=args.limit, project_url=args.project_url)
 
     if args.discover:
         runner.discover()

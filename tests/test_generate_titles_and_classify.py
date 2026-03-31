@@ -232,6 +232,37 @@ class TestProcessSingleProject:
         # Should not call classify since deployment already set
         mock_openai.classify_deployment_and_cloud.assert_not_called()
 
+    def test_force_reprocess_ignores_skip_logic(self):
+        row = pd.Series(
+            {
+                'project_url': 'https://github.com/user/repo',
+                'project_title': 'Existing Title',
+                'Deployment Type': 'Batch',
+                'Reason': 'Existing reason',
+                'Cloud': 'GCP',
+            }
+        )
+
+        mock_analyzer = Mock()
+        mock_analyzer.analyze_repo.return_value = {'files': {'README.md': '# Test'}}
+
+        mock_openai = Mock()
+        mock_openai.classify_deployment_and_cloud.return_value = {
+            'deployment_type': 'Batch',
+            'deployment_reason': 'Uses orchestrator',
+            'cloud_provider': 'GCP',
+        }
+        mock_openai.generate_summary.return_value = "Summary"
+        mock_openai.generate_multiple_titles.return_value = ['Title']
+        mock_openai.evaluate_and_revise_titles.return_value = ('fb', 'New Title')
+
+        args = (0, row, mock_analyzer, mock_openai, ['Batch'], True)
+        index, result = process_single_project(args)
+
+        assert result['status'] == 'success'
+        assert result['project_title'] == 'New Title'
+        mock_analyzer.analyze_repo.assert_called_once()
+
 
 class TestMojibakeFix:
     """Tests for mojibake fix in main function."""

@@ -7,7 +7,7 @@ from openai import OpenAI
 class OpenAIAPI:
     """
     LLM API client using OpenRouter (compatible with OpenAI SDK).
-    Uses free model by default: z-ai/glm-4.5-air:free
+    Uses a free OpenRouter model by default.
     """
 
     def __init__(self, api_key=None):
@@ -18,7 +18,7 @@ class OpenAIAPI:
             timeout=60.0,  # 60 second timeout for API calls
         )
         # Free model from OpenRouter
-        self.default_model = "kwaipilot/kat-coder-pro:free"
+        self.default_model = "qwen/qwen3.6-plus-preview:free"
 
     def build_prompt(self, project_url, summary, deployment_type=None):
         # Determine what tech terms are allowed based on deployment type
@@ -37,12 +37,16 @@ Generate 5 unique titles for this data engineering project. Guidelines:
 3. NEVER include: "zoomcamp", "bootcamp", "final project", "course", "curriculum", "assignment", "homework".
 4. Focus on the DATA DOMAIN (e.g., "NYC Taxi Analytics", "Weather Data Pipeline", "Stock Market Dashboard").
 5. Do NOT invent or assume specific technologies (Kafka, Spark, etc.) - only mention tech if it's clearly in the summary.
+6. Prefer specific domain nouns from the summary (for example: air quality, taxi, sales, weather, trips).
+7. Avoid generic/vague titles like "Cloud Storage Data Integration", "Data Platform Pipeline", or "Data Processing System".
+8. Keep title-case style and avoid filler words.
 
 {tech_guidance}
 
 BAD titles:
 - "DE Zoomcamp 2025 Project" (generic)
 - "Kafka-Powered Data Pipeline" (inventing tech not mentioned)
+- "Cloud Storage Data Integration" (generic and vague)
 
 GOOD titles (domain-specific):
 - "NYC Taxi Fare Analytics"
@@ -109,15 +113,42 @@ Generate 5 distinct domain-focused titles, each on a new line:
         elif word_count < 3 or word_count > 5:
             score -= 1
 
-        keywords = re.findall(r'\w+', project_url.lower() + ' ' + summary.lower())
+        generic_core = {
+            'cloud',
+            'integration',
+            'processing',
+            'system',
+            'storage',
+        }
+        keywords = [
+            word
+            for word in re.findall(r'\w+', project_url.lower() + ' ' + summary.lower())
+            if word not in generic_core and len(word) > 2
+        ]
         for word in title.lower().split():
             if word in keywords:
                 score += 1
 
-        generic_terms = ['smart', 'intelligent', 'assistant', 'hub', 'companion']
+        generic_terms = [
+            'smart',
+            'intelligent',
+            'assistant',
+            'hub',
+            'companion',
+            'generic',
+            'solution',
+            'system',
+        ]
         for term in generic_terms:
             if term in title.lower():
                 score -= 1
+
+        title_words = re.findall(r'\w+', title.lower())
+        non_generic_words = [w for w in title_words if w not in generic_core]
+        if len(non_generic_words) < 2:
+            score -= 2
+        if title_words and title_words[0] in generic_core:
+            score -= 1
 
         if ':' in title or '-' in title:
             score += 1

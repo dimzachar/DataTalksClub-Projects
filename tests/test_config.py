@@ -107,6 +107,25 @@ class TestGetConfig:
 
         assert config['max_workers'] == 8
 
+    @patch(
+        'sys.argv',
+        [
+            'test',
+            '--course',
+            'dezoomcamp',
+            '--year',
+            '2025',
+            '--project-url',
+            'https://github.com/user/repo',
+        ],
+    )
+    def test_project_url_option(self):
+        from src.config import get_config
+
+        config = get_config()
+
+        assert config['project_url'] == 'https://github.com/user/repo'
+
     @patch('sys.argv', ['test', '--course', 'dezoomcamp', '--year', '2025'])
     def test_paths_generated_correctly(self):
         from src.config import get_config

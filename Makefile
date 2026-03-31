@@ -2,6 +2,7 @@
 COURSE ?= dezoomcamp
 YEAR ?= 2024
 BASE_PATH ?= Data
+PROJECT_URL ?=
 
 # Common arguments for Python scripts
 PY_ARGS = --course $(COURSE) --year $(YEAR) --base_path $(BASE_PATH)
@@ -68,6 +69,10 @@ docker-pipeline-all:
 docker-pipeline-single:
 	docker-compose run --rm pipeline python -m src.pipeline_runner --course $(COURSE) --year $(YEAR)
 
+# Process a single specific project URL within a course/year
+docker-pipeline-project:
+	docker-compose run --rm pipeline python -m src.pipeline_runner --course $(COURSE) --year $(YEAR) --project-url $(PROJECT_URL)
+
 # Test pipeline with limited projects (default 5)
 LIMIT ?= 5
 docker-pipeline-test:
@@ -96,6 +101,10 @@ pipeline-discover:
 # Process a single specific course
 pipeline-single:
 	python -m src.pipeline_runner --course $(COURSE) --year $(YEAR)
+
+# Process a single specific project URL within a course/year
+pipeline-project:
+	python -m src.pipeline_runner --course $(COURSE) --year $(YEAR) --project-url $(PROJECT_URL)
 
 # =============================================================================
 # LEGACY COMMANDS (manual step-by-step)

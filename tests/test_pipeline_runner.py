@@ -275,6 +275,34 @@ class TestRunStep:
         assert '--limit' in call_args
         assert '5' in call_args
 
+    @patch('src.pipeline_runner.subprocess.run')
+    def test_run_step_includes_project_url_for_generate(self, mock_subprocess):
+        from src.pipeline_runner import PipelineRunner
+
+        mock_subprocess.return_value = Mock(returncode=0)
+        project_url = 'https://github.com/user/repo'
+        runner = PipelineRunner(project_url=project_url)
+        course = {'name': 'dezoomcamp', 'year': 2024}
+
+        runner._run_step('src.generate_titles_and_classify', course)
+
+        call_args = mock_subprocess.call_args[0][0]
+        assert '--project-url' in call_args
+        assert project_url in call_args
+
+    @patch('src.pipeline_runner.subprocess.run')
+    def test_run_step_excludes_project_url_for_non_generate(self, mock_subprocess):
+        from src.pipeline_runner import PipelineRunner
+
+        mock_subprocess.return_value = Mock(returncode=0)
+        runner = PipelineRunner(project_url='https://github.com/user/repo')
+        course = {'name': 'dezoomcamp', 'year': 2024}
+
+        runner._run_step('src.combine_csvs', course)
+
+        call_args = mock_subprocess.call_args[0][0]
+        assert '--project-url' not in call_args
+
 
 class TestMainFunction:
     """Tests for main function argument parsing."""
@@ -305,3 +333,18 @@ class TestMainFunction:
 
             # Should exit with error
             assert exc_info.value.code == 1
+
+    @patch('src.pipeline_runner.PipelineRunner')
+    @patch('src.pipeline_runner.os.environ.get')
+    def test_main_project_url_requires_course_and_year(
+        self, mock_env, mock_runner_class
+    ):
+        from src.pipeline_runner import main
+
+        mock_env.return_value = 'value'
+
+        with patch.object(sys, 'argv', ['pipeline_runner', '--project-url', 'url']):
+            with pytest.raises(SystemExit) as exc_info:
+                main()
+
+        assert exc_info.value.code == 2
