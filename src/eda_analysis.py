@@ -24,11 +24,13 @@ def _ensure_nltk_data():
             nltk.download(resource, quiet=True)
 
 
-_ensure_nltk_data()
-
-
 class EDAAnalysis:
+    _nltk_ready = False
+
     def __init__(self, data):
+        if not EDAAnalysis._nltk_ready:
+            _ensure_nltk_data()
+            EDAAnalysis._nltk_ready = True
         self.data = data
 
     def preprocess_text(self, text):

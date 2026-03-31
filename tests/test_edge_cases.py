@@ -1,6 +1,7 @@
 """Tests for edge cases and bug fixes."""
 
 import os
+from unittest.mock import patch
 
 import pandas as pd
 import pytest
@@ -86,6 +87,17 @@ class TestNLTKDataDownload:
         from src.eda_analysis import EDAAnalysis
 
         assert EDAAnalysis is not None
+
+    def test_eda_analysis_init_triggers_nltk_setup_once(self):
+        """Test that NLTK setup runs lazily on first EDAAnalysis initialization."""
+        from src.eda_analysis import EDAAnalysis
+
+        EDAAnalysis._nltk_ready = False
+        with patch('src.eda_analysis._ensure_nltk_data') as mock_ensure:
+            EDAAnalysis(pd.DataFrame({'project_title': ['a']}))
+            EDAAnalysis(pd.DataFrame({'project_title': ['b']}))
+
+            assert mock_ensure.call_count == 1
 
 
 class TestPandasMapMethod:
