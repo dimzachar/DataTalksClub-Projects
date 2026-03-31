@@ -1,6 +1,7 @@
 """Tests for edge cases and bug fixes."""
 
 import os
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import pandas as pd
@@ -90,14 +91,42 @@ class TestNLTKDataDownload:
 
     def test_eda_analysis_init_triggers_nltk_setup_once(self):
         """Test that NLTK setup runs lazily on first EDAAnalysis initialization."""
-        from src.eda_analysis import EDAAnalysis
+        import src.eda_analysis as eda_mod
 
-        EDAAnalysis._nltk_ready = False
-        with patch('src.eda_analysis._ensure_nltk_data') as mock_ensure:
-            EDAAnalysis(pd.DataFrame({'project_title': ['a']}))
-            EDAAnalysis(pd.DataFrame({'project_title': ['b']}))
+        eda_mod.EDAAnalysis._nltk_ready = False
+        mock_wn = SimpleNamespace(ensure_loaded=lambda: None)
+        mock_stopwords = SimpleNamespace(words=lambda _: [])
+        with patch.object(eda_mod, '_ensure_nltk_data') as mock_ensure:
+            with patch.object(eda_mod, 'wn', mock_wn):
+                with patch.object(eda_mod, 'stopwords', mock_stopwords):
+                    with patch.object(eda_mod, 'WordNetLemmatizer') as mock_lemma_cls:
+                        eda_mod.EDAAnalysis(pd.DataFrame({'project_title': ['a']}))
+                        eda_mod.EDAAnalysis(pd.DataFrame({'project_title': ['b']}))
 
-            assert mock_ensure.call_count == 1
+                        assert mock_ensure.call_count == 1
+                        mock_lemma_cls.assert_called()
+
+    def test_preprocess_text_uses_initialized_resources(self):
+        """Test preprocess_text uses cached lemmatizer/stopwords from __init__."""
+        import src.eda_analysis as eda_mod
+
+        eda_mod.EDAAnalysis._nltk_ready = True  # Skip external NLTK setup in this unit test
+        mock_stopwords = SimpleNamespace(words=lambda _: ['the'])
+        with patch.object(eda_mod, 'stopwords', mock_stopwords):
+            with patch.object(eda_mod, 'word_tokenize', return_value=['cats', 'the']):
+                with patch.object(eda_mod, 'WordNetLemmatizer') as mock_lemma_cls:
+                    mock_lemma = mock_lemma_cls.return_value
+                    mock_lemma.lemmatize.side_effect = (
+                        lambda word: word[:-1] if word.endswith('s') else word
+                    )
+
+                    analysis = eda_mod.EDAAnalysis(
+                        pd.DataFrame({'project_title': ['cats the']})
+                    )
+                    result = analysis.preprocess_text("Cats the")
+
+                    assert result == ['cat']
+                    mock_lemma_cls.assert_called_once()
 
 
 class TestPandasMapMethod:

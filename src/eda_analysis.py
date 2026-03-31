@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 from nltk.stem import WordNetLemmatizer
 from wordcloud import WordCloud
 from nltk.corpus import stopwords
+from nltk.corpus import wordnet as wn
 from nltk.tokenize import word_tokenize
 
 
@@ -30,19 +31,22 @@ class EDAAnalysis:
     def __init__(self, data):
         if not EDAAnalysis._nltk_ready:
             _ensure_nltk_data()
+            # Force-load corpora once to avoid LazyCorpusLoader race issues.
+            wn.ensure_loaded()
             EDAAnalysis._nltk_ready = True
         self.data = data
+        self.lemmatizer = WordNetLemmatizer()
+        self.stop_words = set(stopwords.words('english'))
 
     def preprocess_text(self, text):
-        lemmatizer = WordNetLemmatizer()
-        stop_words = set(stopwords.words('english'))
-
         text = text.lower()
         text = text.translate(str.maketrans('', '', string.punctuation))
         word_tokens = word_tokenize(text)
 
         return [
-            lemmatizer.lemmatize(word) for word in word_tokens if word not in stop_words
+            self.lemmatizer.lemmatize(word)
+            for word in word_tokens
+            if word not in self.stop_words
         ]
 
     def calculate_word_frequency(self, processed_titles):
