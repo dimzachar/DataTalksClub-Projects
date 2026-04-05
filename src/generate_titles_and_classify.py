@@ -196,10 +196,13 @@ def process_single_project(args):
                         result['project_title'] = best_title
                     else:
                         result['project_title'] = "Unknown"
+                        result['Reason'] = result.get('Reason', '') + " | Title: LLM returned no titles"
                 else:
                     result['project_title'] = "Unknown"
+                    result['Reason'] = result.get('Reason', '') + " | Title: LLM summary failed"
             else:
                 result['project_title'] = "Unknown"
+                result['Reason'] = result.get('Reason', '') + " | Title: No content to summarize"
 
         result['status'] = 'success'
         return index, result
@@ -212,6 +215,47 @@ def process_single_project(args):
         result['Cloud'] = "Error"
         result['status'] = 'error'
         return index, result
+
+
+def run_parallel(work_items, max_workers, csv_handler, counter, failed_urls):
+    """Run work_items in parallel, update csv_handler.df, and collect failed URLs."""
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(process_single_project, item): item[0]
+            for item in work_items
+        }
+
+        with tqdm(total=len(work_items), desc="Processing", unit="project") as pbar:
+            for future in as_completed(futures):
+                try:
+                    index, result = future.result()
+
+                    with _df_lock:
+                        csv_handler.df.at[index, 'project_title'] = result['project_title']
+                        csv_handler.df.at[index, 'Deployment Type'] = result['Deployment Type']
+                        csv_handler.df.at[index, 'Reason'] = result['Reason']
+                        csv_handler.df.at[index, 'Cloud'] = result['Cloud']
+
+                    if result['status'] == 'success':
+                        counter.inc_success()
+                    elif result['status'] == 'skip':
+                        counter.inc_skip()
+                    else:
+                        counter.inc_error()
+                        with _df_lock:
+                            url = csv_handler.df.at[index, 'project_url']
+                        failed_urls.append((index, url))
+
+                    pbar.set_postfix(
+                        {"✓": counter.success, "skip": counter.skip, "err": counter.error},
+                        refresh=True,
+                    )
+                    pbar.update(1)
+
+                except Exception as e:
+                    logger.error(f"Future failed: {e}")
+                    counter.inc_error()
+                    pbar.update(1)
 
 
 def main():
@@ -307,51 +351,35 @@ def main():
         for idx, row in process_df.iterrows()
     ]
 
+    failed_urls = []
+
     # Process in parallel with progress bar
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {
-            executor.submit(process_single_project, item): item[0]
-            for item in work_items
-        }
+    run_parallel(work_items, max_workers, csv_handler, counter, failed_urls)
 
-        with tqdm(total=total, desc="Processing", unit="project") as pbar:
-            for future in as_completed(futures):
-                try:
-                    index, result = future.result()
+    # Retry failed projects once
+    if failed_urls:
+        print(f"\n⚠️  Retrying {len(failed_urls)} failed projects...")
+        retry_items = [
+            (
+                idx,
+                csv_handler.df.loc[idx],
+                repo_analyzer,
+                openai_api,
+                valid_deployment_types,
+                True,  # force_reprocess
+            )
+            for idx, _ in failed_urls
+        ]
+        retry_counter = Counter()
+        retry_failed = []
+        run_parallel(retry_items, max_workers, csv_handler, retry_counter, retry_failed)
+        counter.success += retry_counter.success
+        counter.error = len(retry_failed)
 
-                    # Update dataframe with lock for thread safety
-                    with _df_lock:
-                        csv_handler.df.at[index, 'project_title'] = result[
-                            'project_title'
-                        ]
-                        csv_handler.df.at[index, 'Deployment Type'] = result[
-                            'Deployment Type'
-                        ]
-                        csv_handler.df.at[index, 'Reason'] = result['Reason']
-                        csv_handler.df.at[index, 'Cloud'] = result['Cloud']
-
-                    # Update counters
-                    if result['status'] == 'success':
-                        counter.inc_success()
-                    elif result['status'] == 'skip':
-                        counter.inc_skip()
-                    else:
-                        counter.inc_error()
-
-                    pbar.set_postfix(
-                        {
-                            "✓": counter.success,
-                            "skip": counter.skip,
-                            "err": counter.error,
-                        },
-                        refresh=True,
-                    )
-                    pbar.update(1)
-
-                except Exception as e:
-                    logger.error(f"Future failed: {e}")
-                    counter.inc_error()
-                    pbar.update(1)
+        if retry_failed:
+            print(f"\n❌ {len(retry_failed)} projects still failed after retry:")
+            for _, url in retry_failed:
+                print(f"   {url}")
 
     elapsed = time.time() - start_time
 
@@ -383,13 +411,6 @@ def main():
             print(f"   Deployment: {target_row.get('Deployment Type', 'Unknown')}")
             print(f"   Cloud: {target_row.get('Cloud', 'Unknown')}")
             debug_result = None
-            for future in futures:
-                try:
-                    _, res = future.result()
-                    debug_result = res
-                    break
-                except Exception:
-                    continue
 
             if debug_result:
                 if debug_result.get('readme_path'):

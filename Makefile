@@ -3,6 +3,7 @@ COURSE ?= dezoomcamp
 YEAR ?= 2024
 BASE_PATH ?= Data
 PROJECT_URL ?=
+WORKERS ?= 5
 
 # Common arguments for Python scripts
 PY_ARGS = --course $(COURSE) --year $(YEAR) --base_path $(BASE_PATH)
@@ -59,15 +60,15 @@ docker-discover:
 
 # Process only new/missing courses
 docker-pipeline:
-	docker-compose run --rm pipeline python -m src.pipeline_runner
+	docker-compose run --rm pipeline python -m src.pipeline_runner --workers $(WORKERS)
 
 # Force reprocess ALL courses
 docker-pipeline-all:
-	docker-compose run --rm pipeline python -m src.pipeline_runner --all
+	docker-compose run --rm pipeline python -m src.pipeline_runner --all --workers $(WORKERS)
 
 # Process a single specific course
 docker-pipeline-single:
-	docker-compose run --rm pipeline python -m src.pipeline_runner --course $(COURSE) --year $(YEAR)
+	docker-compose run --rm pipeline python -m src.pipeline_runner --course $(COURSE) --year $(YEAR) --workers $(WORKERS)
 
 # Process a single specific project URL within a course/year
 docker-pipeline-project:
@@ -76,7 +77,7 @@ docker-pipeline-project:
 # Test pipeline with limited projects (default 5)
 LIMIT ?= 5
 docker-pipeline-test:
-	docker-compose run --rm pipeline python -m src.pipeline_runner --course $(COURSE) --year $(YEAR) --limit $(LIMIT)
+	docker-compose run --rm pipeline python -m src.pipeline_runner --course $(COURSE) --year $(YEAR) --limit $(LIMIT) --workers $(WORKERS)
 
 # Run Streamlit dashboard in Docker
 docker-streamlit:

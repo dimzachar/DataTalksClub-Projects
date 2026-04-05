@@ -1,85 +1,85 @@
 project_url,project_title,Deployment Type,Reason,Cloud
-https://github.com/rebekamukherjee/citibike-data-pipeline,Biking Data Insights,Unknown,Unknown,GCP
-https://github.com/RoshchinM/de_zoomcamp_2024_UCL_2016-2022,Champion Insights Dashboard,Unknown,Unknown,GCP
+https://github.com/rebekamukherjee/citibike-data-pipeline,Biking Data Insights,Batch,"Uses Mage workflow orchestrator to process historical trip data in periodic ETL jobs, with data partitioned by date and no real-time/streaming components like Kafka or Flink.",GCP
+https://github.com/RoshchinM/de_zoomcamp_2024_UCL_2016-2022,Champion Insights Dashboard,Batch,"Uses Mage as a workflow orchestrator to run scheduled ETL jobs that extract data from an Excel file, export it to cloud storage, and load it into BigQuery for dbt transformations. No real-time streaming components (Kafka, Flink, etc.) are present.",GCP
 https://github.com/chrisdamba/patent-analytics-pipeline,Patent Insight Analytics,Batch,batch,AWS
 https://github.com/Abubakrmali2/DE-Movies-Project,Movie Insights Pipeline,Batch,batch,GCP
 https://github.com/muhilhamfajar/youtube-analysis-de-zoomcamp,Insightful YouTube Analytics,Batch,batch,GCP
 https://github.com/demapumpum/flight-analytics,NAIA Flight Metrics,Batch,batch,GCP
 https://github.com/nyan222/roman_empire_zoomcamp,Roman Empire Sentiment Analysis,Batch,batch,GCP
-https://github.com/rafaelcuperman/de-zoomcamp-project,Mental Health Dashboard Pipeline,Unknown,Unknown,GCP
+https://github.com/rafaelcuperman/de-zoomcamp-project,Mental Health Dashboard Pipeline,Batch,"Pipeline uses Mage for scheduled workflow orchestration to extract, load, and transform data via dbt, with no real-time or streaming components.",GCP
 https://github.com/stellalo/Data-Engineering-Capstone-KEGG-dataset-,Fungal Genomics Analysis,Batch,batch,GCP
 https://github.com/BrightOsas/Youtube-data-pipeline,Insights from YouTube Data,Batch,batch,AWS
 https://github.com/duythvn/duythzoomcampcapstone,Support Ticket Insights,Batch,batch,AWS
 https://github.com/GBlanch/Data-Eng-Zoomcamp-capstone/tree/main,Sleeping Disorder Professions,Batch,batch,GCP
 https://github.com/zy969/film-genre-insights,Film Genre Dashboard Insights,Batch,batch,GCP
-https://github.com/ppatrzyk/wiki-events,Wikipedia Analytics Dashboard,Unknown,Unknown,Unknown
+https://github.com/ppatrzyk/wiki-events,Wikipedia Analytics Dashboard,Unknown,LLM returned no response,Unknown
 https://github.com/CALewis1955/Philly-Crime-Incidents,Philadelphia Crime Analysis Dashboard,Batch,batch,GCP
 https://github.com/PathornKiti/project-dezoomcamp2024,Bangkok Airbnb Dashboard,Batch,spark,GCP
 https://github.com/2000aliali/End-End-data-engineering-Project-streaming-from-random-users-API-to-cassandera,Data Pipeline Automation,Streaming,stream,Unknown
 https://github.com/gdumie01/dezc2024-proj-exoplanets,Exoplanet Dashboard Pipeline,Batch,batch,GCP
-https://github.com/caspercrause/Police-Incident-Reports/tree/master,Crime Insight SF,Unknown,Unknown,GCP
-https://github.com/FiddlerBB/de_zoomcamp/tree/main/project,Vietnam's Air Quality,Unknown,Unknown,GCP
-https://github.com/Khorjle92/DZC_Project,Global Suicide Analysis Dashboard,Unknown,Unknown,GCP
+https://github.com/caspercrause/Police-Incident-Reports/tree/master,Crime Insight SF,Batch,"Uses cron for scheduled periodic execution of Python scripts to extract data from an API and load it to storage, with no real-time streaming components.",GCP
+https://github.com/FiddlerBB/de_zoomcamp/tree/main/project,Vietnam's Air Quality,Batch,"Uses Mage orchestrator to run scheduled daily ETL jobs that pull API data, store it in GCS, and load it into BigQuery for dbt transformations. No message brokers or real-time processing components are present.",GCP
+https://github.com/Khorjle92/DZC_Project,Global Suicide Analysis Dashboard,Batch,"Uses Mage as a workflow orchestrator to run ETL pipelines (CSV to Parquet to GCS to BigQuery) and dbt for batch data transformations, with no real-time or streaming components.",GCP
 https://github.com/el-grudge/money-diaries,Spending Insights Dashboard,Streaming,streaming,GCP
-https://github.com/Tunde338/zoomcamp/tree/zoomcamp,Based on the limited information provided,Unknown,Unknown,Unknown
+https://github.com/Tunde338/zoomcamp/tree/zoomcamp,Based on the limited information provided,Unknown,"Only a minimal README.md is provided with no code, configuration files, DAGs, or pipeline definitions to determine batch or streaming architecture.",Unknown
 https://github.com/samsoberanis/mental_health_data_engineering_project,Insights Dashboard: Mental,Streaming,real-time,Azure
-https://github.com/iharmcd/dezoomcamp_FinalProject/,FBI Search Trends Analysis,Unknown,Unknown,GCP
+https://github.com/iharmcd/dezoomcamp_FinalProject/,FBI Search Trends Analysis,Batch,"The project uses the Mage orchestrator to run scheduled daily ETL jobs that periodically pull data from an external API, transform it, and load it into a data warehouse, with no real-time or streaming components present.",GCP
 https://github.com/sarah-zhan/data_pipeline_amazon_products,Amazon Data Visualization,Batch,spark,AWS
 https://github.com/10Kang/DE_Zoomcamp2024_ZY/tree/main/project_1_coffee_shop,ZUS Coffee Sales Dashboard,Batch,batch,GCP
 https://github.com/murkenson/movies_tv_shows_data_pipeline,Streaming Service Analysis,Streaming,streaming,GCP
 https://github.com/l0ggik/de-zoomcamp-2024-weather-pipeline,Cloud Weather Visualization,Batch,batch,GCP
-https://github.com/subrockmann/farm-screener,Swiss Farm Map,Unknown,Unknown,GCP
-https://github.com/quezon/data-pipeline-OpenFoodFacts,Nutrition Data Dashboard,Unknown,Unknown,GCP
-https://github.com/gutfalla/Real-state-prices-UK,Real Estate Price Analysis,Unknown,Unknown,GCP
-https://github.com/CusiTEC/Project-Course-Data-Engineering-,Data Pipeline Creation,Unknown,Unknown,Unknown
-https://github.com/Metwaa/youtube_channels,Global YouTube Insights,Unknown,Unknown,GCP
+https://github.com/subrockmann/farm-screener,Swiss Farm Map,Batch,"Uses Mage for data collection, parsing, and transformation into Parquet files before loading into GCS and BigQuery, indicating a scheduled/triggered ETL pipeline rather than continuous real-time processing.",GCP
+https://github.com/quezon/data-pipeline-OpenFoodFacts,Nutrition Data Dashboard,Batch,"Uses Prefect Cloud for workflow orchestration and Dataform for SQL transformations, indicating scheduled/periodic ETL jobs rather than real-time streaming.",GCP
+https://github.com/gutfalla/Real-state-prices-UK,Real Estate Price Analysis,Batch,"Uses Mage for orchestration with monthly scheduled triggers to extract, transform, and load data, indicating a periodic batch ETL workflow with no real-time or streaming components.",GCP
+https://github.com/CusiTEC/Project-Course-Data-Engineering-,Data Pipeline Creation,Batch,"The project uses Mage to orchestrate scheduled ETL jobs for data ingestion into GCS, followed by batch transformations via PySpark notebooks in Databricks, and final loading into BigQuery. There are no message brokers, real-time consumers, or streaming frameworks mentioned.",GCP
+https://github.com/Metwaa/youtube_channels,Global YouTube Insights,Batch,"The project uses Mage as a workflow orchestrator and dbt for scheduled data transformations, processing data in periodic ETL jobs from a static CSV source to cloud storage and a data warehouse without any real-time streaming components.",GCP
 https://github.com/NotYetBenGan/base/blob/main/DEZoomCamp/MyProject/README.md,Unknown,Error,Error,Error
 https://github.com/Wilson2214/air-quality-analysis/tree/main,Transit Air Quality Analysis,Batch,batch,GCP
 https://github.com/hsviscarra/RealEstateAnalysis.git,Connecticut Real Estate Analysis,Batch,batch,GCP
-https://github.com/lddurbin/data-eng-project,Data Pipeline Mastery,Unknown,Unknown,Unknown
-https://github.com/nnphuyen563/Crop-Production-Pipeline-Project,Crop Insights Dashboard,Unknown,Unknown,GCP
+https://github.com/lddurbin/data-eng-project,Data Pipeline Mastery,Unknown,LLM returned no response,Unknown
+https://github.com/nnphuyen563/Crop-Production-Pipeline-Project,Crop Insights Dashboard,Batch,"Uses Mage orchestrator to run scheduled ETL jobs, dbt for transformations, and loads data to BigQuery warehouse",GCP
 https://github.com/psousasa/my-street-analytics,Mobile App Data Pipeline,Batch,batch,GCP
 https://github.com/FaisalQ07/de-reddit-reports,Reddit Metrics Dashboard,Batch,spark,GCP
-https://github.com/mik19821/dezoomcamp2024-project,Polish Wildlife Visualization,Unknown,Unknown,GCP
-https://github.com/jeanpaulrd1/de-zc-final-project,FIFA World Cup Analysis,Unknown,Unknown,GCP
+https://github.com/mik19821/dezoomcamp2024-project,Polish Wildlife Visualization,Batch,"Uses Mage AI to orchestrate discrete ETL pipelines (load CSV, transform, export to PostgreSQL/Parquet) with no real-time or streaming frameworks present.",GCP
+https://github.com/jeanpaulrd1/de-zc-final-project,FIFA World Cup Analysis,Batch,"Uses Mage AI as a workflow orchestrator to run ETL jobs that pull data from an API, stage it in cloud storage, transform it, and load it into a data warehouse. No real-time streaming components (Kafka, Flink, etc.) are present.",GCP
 https://github.com/JChz6/DE-ZCamp-Project,Peruvian Property Sales Dataset,Batch,batch,GCP
 https://github.com/kbc10/arl-parks-reservations,Arlington Reservation Dashboard,Batch,batch,GCP
-https://github.com/kiramishima/crimes_in_mexico_city_analysis,Mexico City Crime Analysis,Unknown,Unknown,GCP
+https://github.com/kiramishima/crimes_in_mexico_city_analysis,Mexico City Crime Analysis,Batch,"Uses Mage AI for workflow orchestration and dbt for data transformations, indicating scheduled, periodic ETL/ELT jobs. No streaming frameworks or message brokers are present.",GCP
 https://github.com/KevinPericart/Data-engineering-Project,Cloud Data Pipeline,Streaming,kafka,GCP
 https://github.com/endiesworld/zoomcamp_de_project,Cycling Insights 2022,Batch,batch,GCP
 https://github.com/kiliantscherny/Fun-With-LEGO-data,LEGO Data Dashboard,Batch,batch,GCP
-https://github.com/TerryLiu207/DE-homework/tree/Project,Please provide me with the topic,Unknown,Unknown,Unknown
+https://github.com/TerryLiu207/DE-homework/tree/Project,Please provide me with the topic,Unknown,"No code, configuration files, DAGs, or pipeline definitions were provided to determine the data processing architecture.",Unknown
 https://github.com/davidvanegas2/StreamSoft-Real-Time-Market-Analysis,Stock Analytics Platform,Batch,batch,AWS
-https://github.com/Siddha911/Citibike-data-project,Citibike Usage Analysis,Unknown,Unknown,GCP
+https://github.com/Siddha911/Citibike-data-project,Citibike Usage Analysis,Unknown,LLM returned no response,Unknown
 https://github.com/sl2902/retail_data_pipeline,E-commerce Data Pipeline,Batch,spark,GCP
 https://github.com/tylerlian/airbnb_etl_pipeline/tree/main,Optimal Airbnb Locations,Batch,spark,GCP
 https://github.com/andrewng88/de_zoomcamp/tree/main/project,Cloud Data Pipeline,Batch,batch,GCP
 https://github.com/ranga4all1/de-retail-sales,Montgomery County Data Pipeline,Batch,batch,GCP
 https://github.com/Ashraf1395/customer_retention_analytics,Churn Analysis Optimization,Batch,batch,GCP
 https://github.com/HangenYuu/zoomcamp-final-project,NYT Best Sellers Dashboard,Batch,batch,GCP
-https://github.com/TasneemAhmed/jobs-salary-in-data-field/tree/master,Data Salary Insights,Unknown,Unknown,GCP
-https://github.com/heman2002/data-engineering-project,Stock Metrics Visualization,Unknown,Unknown,GCP
-https://github.com/nenalukic/air-quality-project,Python Data Pipeline,Unknown,Unknown,GCP
+https://github.com/TasneemAhmed/jobs-salary-in-data-field/tree/master,Data Salary Insights,Batch,"Uses Mage orchestrator for a scheduled ETL workflow that reads CSV data, transforms it via PySpark on Dataproc, and loads it to BigQuery for SQL aggregations, representing a classic batch processing pipeline.",GCP
+https://github.com/heman2002/data-engineering-project,Stock Metrics Visualization,Batch,"Orchestrated by Mage AI to run sequential ETL/ELT blocks (Yahoo Finance API -> GCS -> BigQuery -> dbt transformations) on-demand or scheduled, with no real-time streaming or message broker components present.",GCP
+https://github.com/nenalukic/air-quality-project,Python Data Pipeline,Batch,"The project uses Mage as a workflow orchestrator to periodically fetch, transform, and load data from external APIs into GCS and BigQuery, which is a standard batch ETL pattern. No real-time or streaming infrastructure (e.g., Kafka, Flink) is present.",GCP
 https://github.com/jeffCheng/TPE-Theft-Report,Taipei Theft Hotspots,Batch,batch,GCP
-https://github.com/Yifan1801/nytimes_pipeline,Bestseller Insights Dashboard,Unknown,Unknown,GCP
-https://github.com/mrdair/Movienest,Automated Movie Data Pipeline,Unknown,Unknown,Azure
+https://github.com/Yifan1801/nytimes_pipeline,Bestseller Insights Dashboard,Batch,"Uses Mage as a workflow orchestrator to schedule periodic ETL jobs that extract data from the NYT API, load it to GCS/BigQuery, and transform it with dbt. No streaming or real-time processing components are present.",GCP
+https://github.com/mrdair/Movienest,Automated Movie Data Pipeline,Batch,"Uses Apache Airflow DAGs to orchestrate scheduled ELT jobs for data ingestion, storage, and warehouse loading, with no real-time streaming components present.",Azure
 https://github.com/Cbas12/LA_CRIMES_zoomcamp_2024.git,LA Crime Insights,Batch,spark,GCP
-https://github.com/Hari-cbe/Used-Car-Price-data-analysiss.git,Used Car Price Factors,Unknown,Unknown,GCP
+https://github.com/Hari-cbe/Used-Car-Price-data-analysiss.git,Used Car Price Factors,Batch,"Uses Apache Airflow with a `@daily` schedule to periodically extract data, upload it to GCS, and load it into BigQuery, followed by dbt transformations. No real-time or streaming components are present.",GCP
 https://github.com/paddelcourt/berlin_airport_datapipeline_project,Berlin Airport Flight Insights,Batch,spark,GCP
 https://github.com/cch0/data-engineering-zoomcamp-2024-project,Real-Time Weather Analytics,Batch,batch,GCP
 https://github.com/yh2527/github_daily_activities_dashboard,GitHub Activity Tracker,Batch,batch,GCP
-https://github.com/Shivakumar-Guhesh/nse-data-engineering,NSE Data Analytics Dashboard,Unknown,Unknown,GCP
+https://github.com/Shivakumar-Guhesh/nse-data-engineering,NSE Data Analytics Dashboard,Batch,"Uses Mage orchestrator with daily scheduled ETL pipelines (equity_daily_run, index_daily_run) for periodic data extraction, transformation, and loading.",GCP
 https://github.com/abhi-kr12/de-zoomcamp-playstore,Google Play Insights,Batch,batch,GCP
 https://github.com/adityachaudhary99/dataengineering-motor-vehicles-collision-analysis-project,NY Collision Risk Analysis,Batch,batch,GCP
 https://github.com/sadiatibrahim/NY-Citi-Bike-Rides/tree/main,Citi Bike Insights,Batch,batch,GCP
 https://github.com/zhou1925/zoomcamp-project-2024,Real-time Data Insights,Streaming,kafka,GCP
-https://github.com/MaundoJako/Global-Emissions-Data-2024/tree/main,Global Emissions Dashboard,Unknown,Unknown,GCP
-https://github.com/cncPomper/Covid-19-impact-dashboard/tree/master,Covid Data Visualization,Unknown,Unknown,GCP
+https://github.com/MaundoJako/Global-Emissions-Data-2024/tree/main,Global Emissions Dashboard,Batch,"The project uses Apache Airflow DAGs with a `@monthly` schedule to periodically extract data from Kaggle, upload it to cloud storage, and transform it via dbt into BigQuery, which is a standard batch ETL/ELT workflow.",GCP
+https://github.com/cncPomper/Covid-19-impact-dashboard/tree/master,Covid Data Visualization,Batch,"The project implements a traditional ETL/ELT pipeline (datalake to data warehouse) using dbt for transformations, with no message brokers or real-time processing components, indicating scheduled batch processing.",GCP
 https://github.com/doughnut2002/realtime_SuppyChain_analytics,Real-time Finance Platform,Batch,batch,GCP
 https://github.com/asm-abed/nba-player-analytics-dashboard.git,NBA Stats Dashboard,Batch,spark,GCP
 https://github.com/sunshineshaman/Cardiovascular_Health_Monitoring_DEzoomcampSP2024.git,US Cardiovascular Trends,Batch,batch,GCP
 https://github.com/mraabhijit/european-football-leagues/tree/main,European Football Analysis,Batch,batch,GCP
-https://github.com/yuxiangl6/zoomcamp24/tree/main/de-zoomcamp-project_Canada_Employment_Analysis,Canadian Employment Dashboard,Unknown,Unknown,GCP
+https://github.com/yuxiangl6/zoomcamp24/tree/main/de-zoomcamp-project_Canada_Employment_Analysis,Canadian Employment Dashboard,Batch,"The pipeline is orchestrated using Mage with explicitly scheduled periodic runs (e.g., ""1st calendar day of every year"") and is explicitly labeled as ""batch processing"" in the documentation. It follows a standard ETL pattern with no streaming frameworks or real-time ingestion components.",GCP
 https://github.com/hwchua0209/Retail_Sales_Analysis,Retail Sales Dashboard Automation,Batch,spark,GCP
 https://github.com/jackv-murray/lastfm-scrobble-analysis,Last.fm Listening Insights,Batch,batch,GCP
 https://github.com/suparshukov/earthquake-analytics-dashboard,Quake Analytics Dashboard,Batch,batch,GCP
@@ -95,70 +95,70 @@ https://github.com/bryanoli/FIFA_Analysis,Top Striker Visualizer,Batch,spark,GCP
 https://github.com/pardub/archive_github/tree/main,GitHub Insights Dashboard,Batch,batch,GCP
 https://github.com/SofyanAkbar94/Project-DE-Zoomcamp-2024,Spotify Insights Unlocked,Streaming,streaming,GCP
 https://github.com/bardeke/DTC_zoomcamp_project,Cycling Insights Dashboard,Batch,batch,GCP
-https://github.com/bhumit204/YouTube-Trending-Video-Dashboard,Youtube Analytics Dashboard,Unknown,Unknown,GCP
+https://github.com/bhumit204/YouTube-Trending-Video-Dashboard,Youtube Analytics Dashboard,Batch,"Uses Apache Airflow DAGs to schedule periodic data extraction, CSV/JSON processing, Parquet conversion, and loading into GCS/BigQuery, with dbt for transformations, which is a classic scheduled batch ETL workflow.",GCP
 https://github.com/Feanaur/marine-species-analytics,Biodiversity Insights Dashboard,Batch,spark,GCP
 https://github.com/Josh-Murunga/Youtube-Analytics,Regional YouTube Trends Analysis,Batch,batch,GCP
 https://github.com/peter716/data_engineering_credit_fraud_project,Streamlined Fraud Prediction,Streaming,stream,Unknown
 https://github.com/adamElh3/Data-Engineering-Project-Amesterdam--Airbnb,Amsterdam Airbnb Analytics Dashboard,Batch,batch,AWS
 https://github.com/skihumba/data-engineering-project,Hotel Sales Insights,Batch,batch,GCP
-https://github.com/mrcos-mrtinelli/dezoomcamp-project,Business Listings Visualization,Unknown,Unknown,GCP
+https://github.com/mrcos-mrtinelli/dezoomcamp-project,Business Listings Visualization,Batch,"Uses Mage AI as a workflow orchestrator and dbt for data transformations, with data pulled in chunks and loaded to a warehouse. No streaming brokers (Kafka, Flink, etc.) or real-time processing components are present.",GCP
 https://github.com/abhirup-ghosh/e2e-data-pipeline,Football Player Analytics,Batch,spark,GCP
-https://github.com/kennethchinedu/bootcamp_DE_project_2024,Netflix Movie Analysis 202,Unknown,Unknown,AWS
+https://github.com/kennethchinedu/bootcamp_DE_project_2024,Netflix Movie Analysis 202,Batch,"Uses Apache Airflow DAGs to schedule and orchestrate periodic ETL jobs, including API data extraction, S3 uploads, and dbt transformations.",AWS
 https://github.com/Muhammadatef/ArsenalFC-Data-Pipeline-Project,Gunners Data Insights,Batch,spark,Unknown
 https://github.com/Johnyckot/github_events_analytics,GitHub Analytics Insights,Batch,batch,GCP
-https://github.com/SS279/de-zoomcamp2024-finalproject,Data Pipeline Mastery,Unknown,Unknown,GCP
-https://github.com/iamraphson/DE-2024-project-book-recommendation,Book Data Analysis Pipeline,Unknown,Unknown,GCP
+https://github.com/SS279/de-zoomcamp2024-finalproject,Data Pipeline Mastery,Batch,"Uses Mage as a workflow orchestrator to run scheduled ETL/ELT jobs (API extraction -> GCS staging -> BigQuery ingestion -> dbt transformation), with no streaming components or message brokers present.",GCP
+https://github.com/iamraphson/DE-2024-project-book-recommendation,Book Data Analysis Pipeline,Batch,"Uses Apache Airflow DAGs to orchestrate a one-time/scheduled ETL pipeline that downloads static data, processes it, and loads it into BigQuery. No streaming components are present.",GCP
 https://github.com/bdatkins/de-2024-macoviddata,COVID Wastewater Cor,Batch,batch,GCP
 https://github.com/itssnowing/dog-adoption-simple-data-analysis/tree/main,Pup Adoption Trends,Batch,batch,GCP
 https://github.com/pavlokurochka/data-engineering-zoomcamp2024-project,California Tax Analytics,Batch,batch,GCP
-https://github.com/aytechz/capital_bikeshare_zoomcamp_data_project.git,Capital Bike Insights,Unknown,Unknown,GCP
+https://github.com/aytechz/capital_bikeshare_zoomcamp_data_project.git,Capital Bike Insights,Unknown,LLM returned no response,Unknown
 https://github.com/TOmelchenko/LifeExpectancyProject,World Health Dashboard,Batch,batch,GCP
 https://github.com/MhmedRjb/MillionSonganalysis/tree/main,Music Industry Insights,Batch,spark,GCP
-https://github.com/anandaiml19/Data-Engineering-Zoomcamp-Project1,Pizza Sales Analytics,Unknown,Unknown,Azure
-https://github.com/tanhtra/aligulac_analytics,Starcraft Analytics Pipeline,Unknown,Unknown,GCP
-https://github.com/Ethan-Peterson33/PredictIt,PredictIt Market Tracker,Unknown,Unknown,GCP
+https://github.com/anandaiml19/Data-Engineering-Zoomcamp-Project1,Pizza Sales Analytics,Batch,"The pipeline uses Azure Data Factory for data ingestion and Databricks/PySpark for transformation, which are standard batch ETL components. There is no mention of message brokers, real-time processing, or streaming frameworks.",Azure
+https://github.com/tanhtra/aligulac_analytics,Starcraft Analytics Pipeline,Batch,"The pipeline uses Mage.AI as a workflow orchestrator and dbt for data transformation in a medallion architecture (Raw/Bronze/Silver/Gold), indicating scheduled/periodic ETL/ELT jobs. No streaming frameworks or real-time processing components are present.",GCP
+https://github.com/Ethan-Peterson33/PredictIt,PredictIt Market Tracker,Batch,"The pipeline periodically pulls data from an external API (""twice a day"") and loads it into a warehouse using a standalone Python script, which aligns with batch processing rather than continuous real-time streaming.",GCP
 https://github.com/alewieland/smart-meter-data,Swiss Energy Insights,Streaming,streaming,GCP
-https://github.com/insantr/shark-trendz,Shark Attack Insights,Unknown,Unknown,GCP
-https://github.com/cmcrawford2/voter-data,Non-Dem-Rep,Unknown,Unknown,GCP
-https://github.com/lagvier/datatalks_project,Air Quality Mapping Nairobi,Unknown,Unknown,GCP
+https://github.com/insantr/shark-trendz,Shark Attack Insights,Batch,"The project uses MageAI as a workflow orchestrator to schedule and manage ETL jobs, with data stored in GCS and BigQuery, which is characteristic of a batch data pipeline.",GCP
+https://github.com/cmcrawford2/voter-data,Non-Dem-Rep,Batch,"The pipeline processes static historical data using Jupyter notebooks to create Parquet files, loads them into BigQuery, and uses dbt for transformations, representing a standard batch ETL/ELT workflow with no real-time streaming components.",GCP
+https://github.com/lagvier/datatalks_project,Air Quality Mapping Nairobi,Batch,"Uses Mage orchestrator with a monthly trigger for scheduled ETL jobs (downloading CSVs, transforming with pandas, and loading to BigQuery).",GCP
 https://github.com/antfneves/spotify_top_songs_project,Spotify's Portugal Dashboard,Batch,batch,GCP
-https://github.com/NgocHueLy/data_eng_keeb_finder/tree/main,Keyboard Trends Uncovered,Unknown,Unknown,GCP
-https://github.com/flpmonteiro/weather-dashboard,Climate Trends Dashboard,Unknown,Unknown,GCP
-https://github.com/johansd1994/oil_production_colombia,Colombia's Oil,Unknown,Unknown,GCP
-https://github.com/hekmatullah-sajid/EcoEnergy-Germany,Renewable Energy Analysis,Unknown,Unknown,GCP
-https://github.com/faranbutt/Data-Engineering-Capstone-Project,COVID Data Engineering Capstone,Unknown,Unknown,Unknown
+https://github.com/NgocHueLy/data_eng_keeb_finder/tree/main,Keyboard Trends Uncovered,Batch,"Uses Mage for workflow orchestration and dbt for transformations to periodically scrape, load, and process data into a warehouse, with no real-time streaming components.",GCP
+https://github.com/flpmonteiro/weather-dashboard,Climate Trends Dashboard,Batch,"Uses Mage.ai for pipeline orchestration and dbt for data transformation to process historical climate data on a scheduled/periodic basis, with no real-time streaming components or message brokers present.",GCP
+https://github.com/johansd1994/oil_production_colombia,Colombia's Oil,Batch,"The project uses Mage to define and execute daily scheduled ETL workflows for data ingestion, transformation, and loading, which is characteristic of batch processing.",GCP
+https://github.com/hekmatullah-sajid/EcoEnergy-Germany,Renewable Energy Analysis,Batch,"Uses Mage as a workflow orchestrator to run ELT pipelines that extract static CSV data, load it into cloud storage/warehouse, and transform it with dbt. No message brokers or real-time streaming components are present.",GCP
+https://github.com/faranbutt/Data-Engineering-Capstone-Project,COVID Data Engineering Capstone,"Batch, Streaming","The repository implements Kafka producers and consumers for continuous real-time data ingestion (streaming), alongside Mage.ai workflow scripts and dbt for scheduled batch processing and data transformation.",GCP
 https://github.com/mihir-chhatre/netflix-stream-pulse,Netflix Data Insights,Streaming,stream,GCP
 https://github.com/KevsDe/de_aoe2_games_data_pipeline,Empires Analytics Dashboard,Batch,batch,GCP
 https://github.com/addenergyx/cashback-data-pipeline,Reward Analytics Pipeline,Batch,batch,AWS
 https://github.com/rickyltwong/azure-data-engineering-yelp-dataset,Yelp Analytics Insights,Batch,batch,Azure
 https://github.com/ArbenKqiku/streaming-pipeline/tree/main,Zoom Pipeline Dashboard,Streaming,kafka,Unknown
-https://github.com/alexdegg/IMDb-Analysis,Genre and Rating Analytics,Unknown,Unknown,GCP
+https://github.com/alexdegg/IMDb-Analysis,Genre and Rating Analytics,Batch,"Uses Mage AI for daily scheduled data ingestion and dbt for transformations, indicating periodic batch ETL workflows rather than continuous real-time processing.",GCP
 https://github.com/KonuTech/data-engineering-zoomcamp-capstone-01,QuakeFlow Integration,Batch,batch,Unknown
 https://github.com/xiangivyli/data-science-portfolio/tree/main/part_a_job_posting_linkedin_pipeline,Job Market Insights,Batch,spark,GCP
 https://github.com/1yardie/us-accidents-project/,US Accidents Dashboard,Batch,spark,GCP
 https://github.com/FranciscoOrtizTena/de_zoomcamp_project_01/,Formula 1 Data Analysis,Streaming,real-time,GCP
-https://github.com/amitkooner/project1,NFL Insights Dashboard,Unknown,Unknown,GCP
-https://github.com/Phil-Grim/london_properties_analysis,London Property Price Factors,Unknown,Unknown,GCP
-https://github.com/cubargh/buenos-aires-subway-passengers-flow,Buenos Aires Data Pipeline,Unknown,Unknown,GCP
+https://github.com/amitkooner/project1,NFL Insights Dashboard,Batch,"Uses Airflow to orchestrate scheduled ETL jobs for ingesting historical NFL data into GCS and BigQuery, followed by dbt transformations.",GCP
+https://github.com/Phil-Grim/london_properties_analysis,London Property Price Factors,Batch,"Uses Prefect and GitHub Actions to orchestrate scheduled ETL workflows for web scraping, data cleaning, and warehouse loading, with no real-time streaming components.",GCP
+https://github.com/cubargh/buenos-aires-subway-passengers-flow,Unknown,Unknown,No files fetched,Unknown
 https://github.com/dylanprole/formula-one-analytics.git,F1 Data Pipeline,Batch,batch,GCP
-https://github.com/zukui1984/electric-vehicle-population-project.git,Washington EV Pipeline,Unknown,Unknown,GCP
+https://github.com/zukui1984/electric-vehicle-population-project.git,Washington EV Pipeline,Unknown,LLM returned no response,Unknown
 https://github.com/drux31/capstone-dezoomcamp,France's Deadly Car Cr,Batch,batch,GCP
 https://github.com/youssefekhattab/DE-ZoomCamp-Youssef-Khattab/tree/main/project,Retail Sales Analysis Dashboard,Batch,spark,GCP
-https://github.com/Ajied21/Data-Engineering-Zoomcamp-2024,Zoomcamp Data Architecture,Unknown,Unknown,Unknown
+https://github.com/Ajied21/Data-Engineering-Zoomcamp-2024,Unknown,Unknown,No files fetched,Unknown
 https://github.com/abelbg/AI-Research-Publications-Trends,AI Research Trends Analysis,Batch,hadoop,Azure
-https://github.com/JorgeAbrego/capital_bikeshare_project,Bike Data Processing,Unknown,Unknown,GCP
-https://gitlab.com/mosesafrawles/aquiferguard-monitoring-alerting,Unknown,Unknown,Unknown,Unknown
-https://github.com/kenanarslanbay/Employee-Compensation-Project,Streamlined Data Pipeline,Unknown,Unknown,GCP
-https://github.com/max-lutz/nyt_articles_analytics_dashboard,NYT Data Visualization Pipeline,Unknown,Unknown,GCP
+https://github.com/JorgeAbrego/capital_bikeshare_project,Bike Data Processing,Batch,"The project uses Apache Airflow to orchestrate scheduled data extraction and loading tasks, combined with dbt for data warehouse transformations, which are standard batch ETL/ELT patterns. No streaming frameworks or real-time processing components are present.",GCP
+https://gitlab.com/mosesafrawles/aquiferguard-monitoring-alerting,Unknown,Unknown,No files fetched,Unknown
+https://github.com/kenanarslanbay/Employee-Compensation-Project,Streamlined Data Pipeline,Batch,"Uses Mage as a workflow orchestrator to run scheduled ETL pipelines that periodically extract data from an API, transform it, and load it into GCS and BigQuery. No streaming or real-time processing components are present.",GCP
+https://github.com/max-lutz/nyt_articles_analytics_dashboard,NYT Data Visualization Pipeline,Unknown,LLM returned no response,Unknown
 https://github.com/nishiikata/de-zoomcamp-2024-mage-capstone,Anime Analytics Dashboard,Batch,hadoop,GCP
-https://github.com/pilanpra/DE-Projects/blob/main/Bootcamp2024Project/,Unknown,Unknown,Unknown,Unknown
+https://github.com/pilanpra/DE-Projects/blob/main/Bootcamp2024Project/,Unknown,Batch,"The project uses Apache Airflow DAGs to orchestrate discrete, periodic ETL tasks (downloading, transforming, and loading data) rather than continuous real-time processing.",GCP
 https://github.com/emilianolel/dez-project-emi,Mexican Crime Dashboard,Batch,spark,GCP
-https://github.com/EdidiongEsu/capital_bikeshare,Bike Data Insights,Unknown,Unknown,GCP
+https://github.com/EdidiongEsu/capital_bikeshare,Bike Data Insights,Batch,"The project uses Mage AI as an orchestrator to periodically extract, load, and transform data in batches to BigQuery, as explicitly stated in the README (""move data by batching"") and evidenced by the Mage/docker-compose setup and dbt transformation layer. No streaming components are present.",GCP
 https://github.com/voduyquoc/air_pollution_tracking,German Air Quality Dashboard,Batch,batch,GCP
-https://github.com/jgalcantara/nikkei-225-automotive,Auto Stock Analysis,Unknown,Unknown,GCP
+https://github.com/jgalcantara/nikkei-225-automotive,Auto Stock Analysis,Batch,"Uses Apache Airflow DAGs to orchestrate scheduled data ingestion and dbt for batch data transformation, with no real-time streaming components.",GCP
 https://github.com/ramazanabylkassov/aviation_stack_project,Kazakhstan's Flight,Batch,batch,GCP
 https://github.com/exequiel-santucho/dez-world-energy-dams,Hydro Energy Insights,Batch,batch,GCP
-https://github.com/dgkertsos/car-sales,US Car Sales Analysis,Unknown,Unknown,GCP
+https://github.com/dgkertsos/car-sales,US Car Sales Analysis,Batch,Uses Mage AI as a workflow orchestrator to run periodic ETL pipelines (CSV to GCS to BigQuery) with no real-time or streaming components.,GCP
 https://github.com/lilychau1/uk-power-analytics,UK Electricity Analysis Pipeline,Batch,batch,GCP
 https://github.com/shayansm2/tech-career-explorer/tree/de-zoomcamp-project,Tech Job Insights,Batch,batch,Unknown
 https://github.com/Yokanisha/generatedAmusementPark,German Theme Park Analytics,Batch,batch,GCP
@@ -166,6 +166,6 @@ https://github.com/PietroRuffo/Lazio-Car-Sales-Performance-Emissions-Dashboard,L
 https://github.com/garjita63/dezoomcamp2024-project1,Streamlined E-commerce Analysis,Batch,batch,GCP
 https://github.com/edumunozsala/GDELT-Events-Data-Eng-Project,Global Human Behavior Graph,Batch,spark,GCP
 https://github.com/prantoran/METER-Weather-reports,METAR Weather Variability,Batch,batch,GCP
-https://github.com/dieegogutierrez/Data-Engineering-Capstone-Project,Truck Logistics Dashboard,Unknown,Unknown,GCP
-https://github.com/ichsanulamal/pcompare,Indonesian E-,Unknown,Unknown,GCP
+https://github.com/dieegogutierrez/Data-Engineering-Capstone-Project,Truck Logistics Dashboard,Batch,"Uses Mage orchestrator to run scheduled ETL jobs that extract CSV data, transform it to Parquet, and load it into cloud storage/warehouse. No streaming components or message brokers are present.",GCP
+https://github.com/ichsanulamal/pcompare,Unknown,Unknown,No files fetched,Unknown
 https://github.com/alangan17/video-game-analysis,Game Data Insights,Batch,batch,GCP

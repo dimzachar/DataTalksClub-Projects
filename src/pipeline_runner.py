@@ -20,11 +20,12 @@ from utils.scraping_handler import ScrapingError, ScrapingHandler
 
 
 class PipelineRunner:
-    def __init__(self, data_path="Data", limit=0, project_url=None):
+    def __init__(self, data_path="Data", limit=0, project_url=None, workers=5):
         self.data_path = Path(data_path)
         self.discovery = CourseDiscovery(data_path)
-        self.limit = limit  # Limit projects for testing
+        self.limit = limit
         self.project_url = project_url
+        self.workers = workers
 
     def discover(self):
         """Show all available courses and their status."""
@@ -45,7 +46,18 @@ class PipelineRunner:
             f"\n  Total: {len(status)} | Have: {have_count} | Missing: {missing_count}"
         )
 
-    def run(self, force_all=False, course=None, year=None):
+    def run(self, force_all=False, course=None, year=None, retry_unknowns=False):
+        """Run pipeline for missing courses only (or all if force_all=True)."""
+        # Retry unknowns mode - run classify step on all existing courses
+        if retry_unknowns:
+            courses = self.discovery.discover_courses()
+            existing = [c for c in courses if (self.data_path / c['name'] / str(c['year']) / 'data.csv').exists()]
+            print(f"🔁 Retrying unknowns across {len(existing)} existing courses...")
+            for course_info in existing:
+                print(f"\n{'='*50}")
+                print(f"🔁 Retrying: {course_info['name']}/{course_info['year']}")
+                self._run_step("src.generate_titles_and_classify", course_info)
+            return True
         """Run pipeline for missing courses only (or all if force_all=True)."""
         # Single course mode
         if course and year:
@@ -131,6 +143,8 @@ class PipelineRunner:
         # Add limit if specified
         if self.limit > 0:
             cmd.extend(["--limit", str(self.limit)])
+        # Add workers if specified
+        cmd.extend(["--workers", str(self.workers)])
         # Optionally process just one project URL
         if self.project_url and module == "src.generate_titles_and_classify":
             cmd.extend(["--project-url", self.project_url])
@@ -156,6 +170,13 @@ def main():
         "--course", type=str, help="Process specific course (e.g., dezoomcamp)"
     )
     parser.add_argument("--year", type=int, help="Process specific year (e.g., 2025)")
+    parser.add_argument(
+        "--retry-unknowns", action="store_true",
+        help="Re-run classify step on all existing courses to fix unknowns"
+    )
+    parser.add_argument(
+        "--workers", type=int, default=5, help="Parallel workers (default: 5)"
+    )
     parser.add_argument(
         "--limit", type=int, default=0, help="Limit projects to process (for testing)"
     )
@@ -185,10 +206,13 @@ def main():
             print("   export OPENROUTER_API_KEY='your_key'")
             sys.exit(1)
 
-    runner = PipelineRunner(limit=args.limit, project_url=args.project_url)
+    runner = PipelineRunner(limit=args.limit, project_url=args.project_url, workers=args.workers)
 
     if args.discover:
         runner.discover()
+    elif args.retry_unknowns:
+        success = runner.run(retry_unknowns=True)
+        sys.exit(0 if success else 1)
     elif args.course and args.year:
         success = runner.run(course=args.course, year=args.year)
         sys.exit(0 if success else 1)

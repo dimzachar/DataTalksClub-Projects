@@ -1,182 +1,182 @@
 project_url,project_title,Deployment Type,Reason,Cloud
-https://github.com/GuillermoFabian/llm-end-to-end-app/tree/main,Streamlined Q&A: LLM Retrieval Framework,Unknown,Unknown,Unknown
+https://github.com/GuillermoFabian/llm-end-to-end-app/tree/main,Streamlined Q&A: LLM Retrieval Framework,"Batch, Web Service",Uses Mage AI for orchestrating data ingestion and ETL pipelines (Batch) and Streamlit to serve an interactive web interface for RAG Q&A inference (Web Service).,Other
 https://github.com/ArturGR3/food_search_RAG,Recipe Discovery: Enhanced Search Solutions,Web Service,django,Unknown
 https://github.com/aleksandr-dzhumurat/leaf-bro,Conversational Cannabis: Explore with Ease,Web Service,fastapi,GCP
-https://github.com/hwting1/LLM-Zoomcamp-Project,Insight Extraction: Medical Dataset Navigator,Unknown,Unknown,Unknown
-https://github.com/thorstenfoltz/llm_rag,Transforming PDFs: Streamlined WHO Insights,Unknown,Unknown,Unknown
-https://github.com/maks36-dev/llm-chatbot,Semantic Echo: Historical Quote Retrieval,Unknown,Unknown,AWS
+https://github.com/hwting1/LLM-Zoomcamp-Project,Insight Extraction: Medical Dataset Navigator,Web Service,"The project serves a RAG-based medical assistant for interactive Q&A via a Streamlit application (`streamlit run app.py`), which aligns with the Web Service definition for serving ML inference.",Other
+https://github.com/thorstenfoltz/llm_rag,Unknown,Unknown,No files fetched,Unknown
+https://github.com/maks36-dev/llm-chatbot,Semantic Echo: Historical Quote Retrieval,Web Service,"The project uses Streamlit to serve an interactive RAG chatbot application, exposed via port 8501 in Docker Compose, which aligns with the Web Service definition for serving ML inference.",AWS
 https://github.com/bsacli/CustomerAssistRAG.git,Response Revolution: Streamlining Customer Queries,Web Service,flask,Unknown
-https://github.com/luiscs-dev/llm_rag_chess,TacticMate: Boost Your Chess Skills,Unknown,Unknown,Unknown
-https://github.com/hanaahammad/HH-LLM-Project,LLM Cricket Insights: Interactive Conversations,Unknown,Unknown,Unknown
-https://github.com/VladKha/kaggle-competition-assistant/tree/main,Quick Info: Kaggle Competition Navigator,Unknown,Unknown,Unknown
+https://github.com/luiscs-dev/llm_rag_chess,TacticMate: Boost Your Chess Skills,Web Service,"The application is containerized and served via Streamlit (`streamlit run app.py`), exposing an interactive web interface for RAG-based chess analysis and LLM inference. No batch orchestrators or streaming message brokers are present.",Other
+https://github.com/hanaahammad/HH-LLM-Project,LLM Cricket Insights: Interactive Conversations,Web Service,"The repository implements a RAG pipeline for an LLM chat application, with Streamlit explicitly planned as the interface for serving model inference and user interaction.",Other
+https://github.com/VladKha/kaggle-competition-assistant/tree/main,Quick Info: Kaggle Competition Navigator,Web Service,"The project deploys an interactive Streamlit application that serves an RAG-based ML assistant for user queries, functioning as a local web service via Docker Compose.",Other
 https://github.com/dbeta95/pdf-papers-assistant-project/tree/master,Knowledge Explorer: Unlocking Research Concepts,Web Service,flask,GCP
-https://github.com/tzhsu211/llm-zoomcamp/tree/main/07--project,Supplement Selector: Personalized User Insights,Unknown,Unknown,Unknown
+https://github.com/tzhsu211/llm-zoomcamp/tree/main/07--project,Supplement Selector: Personalized User Insights,Web Service,"The project uses Streamlit to serve an interactive web application for LLM inference and user queries, orchestrated via Docker Compose with no batch or streaming components.",Other
 https://github.com/aashalabi/tek_buddy,Repair Logic: Instant AI Insights,Web Service,flask,Unknown
-https://github.com/gzcarlos/banksa,PDF Transaction Extractor: Spending Insights,Unknown,Unknown,Unknown
+https://github.com/gzcarlos/banksa,PDF Transaction Extractor: Spending Insights,Unknown,LLM returned no response,Unknown
 https://github.com/julie1/Find-a-Doctor,Discover: Orthopedic Surgeons Database,Web Service,flask,Unknown
-https://github.com/atishgautam07/investiq-qna-rag,Knowledge Retrieval: Finance Q&A Solution,Unknown,Unknown,Unknown
+https://github.com/atishgautam07/investiq-qna-rag,Knowledge Retrieval: Finance Q&A Solution,Web Service,"The application uses Streamlit to serve an interactive RAG-based Q&A interface, with Docker Compose orchestrating the app, PostgreSQL, and Elasticsearch for real-time user queries and inference.",Other
 https://github.com/AMaldu/interview_preparation_bot,Interview Navigator: Data Science Focus,Web Service,flask,Unknown
 https://github.com/Moris0n/HypnoQ,Engage and Educate: HypnoQ Chatbot,Web Service,fastapi,GCP
 https://github.com/Alexander-Heinz/vdi_chatbot,Funding Insights: Multilingual Chatbot,Streaming,real-time,Unknown
 https://github.com/antihaddock/llm-zoomcamp-assessment,Health Queries Decoded: RAG Empowerment,Web Service,fastapi,Unknown
-https://github.com/EstifanosTeklay/NBEDirectivesAssist,Compliance Catalyst: Unlocking NBE Directives,Unknown,Unknown,Unknown
+https://github.com/EstifanosTeklay/NBEDirectivesAssist,Compliance Catalyst: Unlocking NBE Directives,Web Service,The application is containerized and explicitly configured to run a Streamlit web interface (`streamlit run mainapp.py`) that serves the RAG system interactively via HTTP ports 8501 and 8000.,Other
 https://github.com/milanimcgraw/Nutrition-Facts-Chat-Assistant/tree/main,Food Facts: Interactive Nutrition Assistant,Streaming,real-time,Unknown
 https://github.com/TimBeckerAachen/job-search-application,JobScout: Conversational Job Navigator,Web Service,fastapi,Unknown
-https://github.com/mac2bua/ai-driving-theory-teacher/tree/main,Quiz Wizard: Tailored Driving Theory,Unknown,Unknown,Unknown
-https://github.com/ArkadiyShuvaev/llm-zoomcamp-smart-mail,Response Revolution: Intelligent Customer Interaction,Unknown,Unknown,AWS
+https://github.com/mac2bua/ai-driving-theory-teacher/tree/main,Quiz Wizard: Tailored Driving Theory,Web Service,The application is built with Streamlit and runs as an interactive web server (exposing ports 8501/8502 via Docker) to serve AI-driven quizzes and RAG-based Q&A to users.,Other
+https://github.com/ArkadiyShuvaev/llm-zoomcamp-smart-mail,Response Revolution: Intelligent Customer Interaction,"Batch, Web Service","Uses Mage AI to orchestrate data ingestion and RAG pipelines (batch processing), and Streamlit to serve the interactive customer support chat interface (web service).",Other
 https://github.com/Sampayob/rag-youtube-titles-generator,ClickWorthy Creations: Title Generator,Web Service,flask,Unknown
-https://github.com/sagardampba2022w/Knowledge_Assistant,Methodology Mastery: Access Essential Insights,Unknown,Unknown,Unknown
-https://github.com/marc-soler/health-assistant,Health Insights: Accurate Q&A System,Unknown,Unknown,Unknown
+https://github.com/sagardampba2022w/Knowledge_Assistant,Methodology Mastery: Access Essential Insights,Web Service,"The application uses Streamlit to serve an interactive LLM/RAG assistant via a web interface, configured to run continuously as a web server in Docker with no batch orchestrators or streaming message brokers.",Other
+https://github.com/marc-soler/health-assistant,Health Insights: Accurate Q&A System,Web Service,"The application uses Streamlit to serve a RAG-based health assistant via a web interface on port 8501, with no batch orchestrators or streaming message brokers present.",Other
 https://github.com/XiaoLirui/LLM_Project,Finance Simplified: Conversational AI Insights,Web Service,flask,Unknown
-https://github.com/lbdlbdlbdl/philosophy-rag,Philosophical Navigator: Structured Insights,Unknown,Unknown,Unknown
+https://github.com/lbdlbdlbdl/philosophy-rag,Unknown,Unknown,No files fetched,Unknown
 https://github.com/Dannycesp/datascience_rag_bot,Data Science Decoded: AI Q&A,Web Service,flask,Unknown
-https://github.com/seacevedo/rekt_qa_system,Hack Insight: Crypto Data Retrieval,Unknown,Unknown,GCP
-https://github.com/agutiernc/contributor_assistant,Contribution Simplified: AI Chatbot Guide,Unknown,Unknown,Unknown
-https://github.com/Mani1213/LLM-Zoomcamp.git,From Data to Deployment: LLM Training Course,Unknown,Unknown,Unknown
+https://github.com/seacevedo/rekt_qa_system,Hack Insight: Crypto Data Retrieval,"Batch, Web Service","Prefect orchestrates scheduled web scraping and ETL pipelines (Batch), while Streamlit serves a RAG-based Q&A application via a web interface (Web Service).",GCP
+https://github.com/agutiernc/contributor_assistant,Contribution Simplified: AI Chatbot Guide,Web Service,"The application uses Streamlit to serve an interactive RAG-based chatbot interface via a web server, orchestrated with Docker Compose.",Other
+https://github.com/Mani1213/LLM-Zoomcamp.git,From Data to Deployment: LLM Training Course,"Batch, Web Service","Uses Apache Airflow DAGs for scheduled data ingestion and indexing (Batch), and a Streamlit application to serve the RAG system via an interactive web interface (Web Service).",Other
 https://github.com/romanaumov/YouTube-Browser,Efficient Learning: YouTube Content Explorer,Web Service,django,Unknown
 https://github.com/PerisN/Healthcare-QandA-System,Health Insights: Instant Q&A Tool,Web Service,flask,Unknown
-https://github.com/rzabolotin/nz-visa-assistant,Interactive Guidance: NZ Residency Chatbot,Unknown,Unknown,Unknown
+https://github.com/rzabolotin/nz-visa-assistant,Interactive Guidance: NZ Residency Chatbot,Web Service,"The application is a Telegram chatbot (aiogram) that runs as a long-running, interactive service to handle user queries and serve RAG-generated responses, aligning with the web service pattern rather than batch or streaming.",Other
 https://github.com/mj-ml/llm-shop-assistant,Shop Navigator: Seamless Language Support,Web Service,django,Unknown
 https://github.com/Enzoherewj/RAG-chatbot,Query Dostoevsky: Engaging RAG Chatbot,Web Service,flask,Unknown
-https://github.com/Abhisheknakka/datatalks-final-project,Flavor Feedback: RealTime Restaurant Insights,Unknown,Unknown,Unknown
-https://github.com/Blaqadonis/my_rag_project/tree/main/course_project,Extract & Converse: PDF Intelligence,Unknown,Unknown,Unknown
+https://github.com/Abhisheknakka/datatalks-final-project,Flavor Feedback: RealTime Restaurant Insights,Web Service,"The project uses Streamlit to serve an interactive RAG chatbot for real-time user queries and LLM inference, which aligns with the Web Service definition.",Other
+https://github.com/Blaqadonis/my_rag_project/tree/main/course_project,Extract & Converse: PDF Intelligence,Web Service,"The Dockerfile exposes port 7860 and runs `app.py`, while `requirements.txt` includes `gradio`, indicating a web-based interface for real-time RAG inference and interactive user queries.",Unknown
 https://github.com/thanhnhatt29/Movies_Assistant,Cinematic Compass: Tailored Film Recommendations,Web Service,flask,Unknown
-https://github.com/Avyukth/open-llm-rag,PDF Query Master: Document Insights,Unknown,Unknown,Unknown
+https://github.com/Avyukth/open-llm-rag,PDF Query Master: Document Insights,Web Service,"The project uses FastAPI (uvicorn) for the backend and Streamlit for the frontend, orchestrated via Docker Compose to serve a RAG application over HTTP. No batch orchestrators or streaming message brokers are present.",Other
 https://github.com/otacilio-psf/Chat-Gourmet-AI/,Flavor Fusion: Personalized Recipe Generator,Web Service,fastapi,Unknown
-https://github.com/kperv/git-assistant,Instant Git Solutions: LLama3Driven Responses,Unknown,Unknown,Unknown
-https://github.com/lvsuno/Recipes_Assistant,Culinary Compass: Interactive Recipe Guide,Unknown,Unknown,Unknown
+https://github.com/kperv/git-assistant,Instant Git Solutions: LLama3Driven Responses,Web Service,"The project uses Streamlit to serve an LLM-based AI assistant via a web interface on port 80, which aligns with the definition of a web service for ML inference.",Other
+https://github.com/lvsuno/Recipes_Assistant,Culinary Compass: Interactive Recipe Guide,Web Service,"The project uses Streamlit to serve an interactive LLM-based recipe assistant via a web interface, orchestrated with Docker Compose for application serving.",Other
 https://github.com/KonuTech/llm-zoomcamp-capstone-01,QueryQuest: RAG for Gamers,Web Service,flask,Unknown
-https://github.com/beotavalo/geospatial-chat,Geospatial GPT: Empowering Customer Insights,Unknown,Unknown,Unknown
-https://github.com/yusyel/rag-wiki-helpers,Fast Track: Subreddit Wiki Navigator,Unknown,Unknown,GCP
-https://github.com/Gjloz009/rag_system_for_traffic_regulations_cdmx,Traffic Clarity: RAG System for Drivers,Unknown,Unknown,Unknown
+https://github.com/beotavalo/geospatial-chat,Geospatial GPT: Empowering Customer Insights,Unknown,LLM returned no response,Unknown
+https://github.com/yusyel/rag-wiki-helpers,Fast Track: Subreddit Wiki Navigator,Web Service,"The project deploys a Streamlit application (CMD [""streamlit"", ""run"", ""app.py""]) that serves a RAG pipeline for interactive user queries, with no evidence of scheduled batch orchestrators or streaming message brokers.",GCP
+https://github.com/Gjloz009/rag_system_for_traffic_regulations_cdmx,Traffic Clarity: RAG System for Drivers,Web Service,"The project uses Plotly Dash to serve an interactive web application (exposed on port 8050) for querying the RAG system, functioning as a web service for ML inference.",Other
 https://github.com/padmapria/RAG-Care-Mental-Wellness-Assistant,FeedbackDriven Healing: AI for Wellness,Web Service,flask,AWS
-https://github.com/mmgxa/rag-with-eval,InsightMonitor: Research Data Interaction,Unknown,Unknown,AWS
-https://github.com/hypertoast/llm-zoomcamp-2024/,Unknown,Unknown,Unknown,Unknown
-https://github.com/omjirapat/llm-zoomcamp/tree/main/llm_zoomcamp_project,Unlock Insights: LLMs with RAG,Unknown,Unknown,Unknown
+https://github.com/mmgxa/rag-with-eval,InsightMonitor: Research Data Interaction,Web Service,The project uses Docker Compose to deploy a Streamlit application that serves an interactive RAG frontend for user queries and LLM inference.,AWS
+https://github.com/hypertoast/llm-zoomcamp-2024/,Unknown,Unknown,LLM returned no response,Unknown
+https://github.com/omjirapat/llm-zoomcamp/tree/main/llm_zoomcamp_project,Unlock Insights: LLMs with RAG,Unknown,"The repository contains documentation and setup files for a project about Large Language Models and Retrieval Augmented Generation, but no actual code for deployment (no DAGs, APIs, streaming jobs, or scheduled tasks).",Unknown
 https://github.com/khushal2911/crypto-linguist-ama-bot,Crypto Explain: Interactive Learning Tool,Web Service,flask,Unknown
-https://github.com/Yasser-Cloud/life-coach-assistant/tree/main,Motivation Unleashed: Personalized Insights,Unknown,Unknown,Unknown
+https://github.com/Yasser-Cloud/life-coach-assistant/tree/main,Motivation Unleashed: Personalized Insights,Unknown,LLM returned no response,Unknown
 https://github.com/PathornKiti/llm_zoomcamp_2024_project/,Mental Health Dialogues: Immediate Support,Streaming,real-time,Unknown
-https://github.com/tarasenya/llm-zoomcamp/tree/main/Project,Transform Instructions: RAG for IT,Unknown,Unknown,GCP
-https://github.com/ranga4all1/q-and-a-chatbot,Efficient HR: Generative AI Evaluations,Unknown,Unknown,AWS
-https://github.com/sofianfadli95/llm_crypto,Data Driven: Explore Cryptocurrency Basics,Unknown,Unknown,Unknown
+https://github.com/tarasenya/llm-zoomcamp/tree/main/Project,Transform Instructions: RAG for IT,Unknown,LLM returned no response,Unknown
+https://github.com/ranga4all1/q-and-a-chatbot,Efficient HR: Generative AI Evaluations,Web Service,Uses Streamlit to serve an interactive RAG-based chatbot UI for real-time LLM inference and document querying.,AWS
+https://github.com/sofianfadli95/llm_crypto,Data Driven: Explore Cryptocurrency Basics,"Batch, Web Service","The repository includes Apache Airflow for scheduled data scraping and vector indexing (Batch), alongside a Streamlit application that serves an interactive RAG interface for real-time user queries (Web Service).",Other
 https://github.com/wufengyou/Pet-Care-RAG-Application,Fetch Solutions: AI Pet Assistance,Web Service,flask,Unknown
-https://github.com/gfgrillo3/MessiXpert-Assistant,Kickoff Knowledge: Messi Career Insights,Unknown,Unknown,Unknown
-https://github.com/batxes/LLM_steel_classification/tree/main,Steel Standardization: Smart Classification Solutions,Unknown,Unknown,Unknown
-https://github.com/slv-ai/YumQuest/tree/main,Culinary Chatbot: Recipes & Advice,Unknown,Unknown,Unknown
+https://github.com/gfgrillo3/MessiXpert-Assistant,Kickoff Knowledge: Messi Career Insights,Unknown,LLM returned no response,Unknown
+https://github.com/batxes/LLM_steel_classification/tree/main,Steel Standardization: Smart Classification Solutions,Unknown,"The repository consists solely of local Python scripts (`run.py`, `predict.py`) for data extraction, model training, and inference. There are no workflow orchestrators, API frameworks, or streaming components, indicating it is a standalone local prototype/assignment rather than a deployed pipeline or service.",Unknown
+https://github.com/slv-ai/YumQuest/tree/main,Culinary Chatbot: Recipes & Advice,Web Service,"The application uses Streamlit to serve an interactive RAG chatbot UI, containerized via Docker Compose and exposed on port 8501 for real-time user interaction.",Other
 https://github.com/krmdel/medical_assistant_rag,Medical Queries Unlocked: Efficient RAG,Web Service,gunicorn,AWS
 https://github.com/danstd/vehicle_user_manual_rag_public,ManualMate: Efficient Vehicle Info Retrieval,Batch,batch,Unknown
 https://github.com/ctrl-A-del-specs/benefits-claims,Claims Navigator: Streamlining UK Benefits,Streaming,real-time,Unknown
-https://github.com/tristandatascience/llm_zoomcamp_project,Interactive Document Explorer: RAG with LLaMA,Unknown,Unknown,Unknown
+https://github.com/tristandatascience/llm_zoomcamp_project,Interactive Document Explorer: RAG with LLaMA,Web Service,The project uses a FastAPI backend (served via Uvicorn) and a Streamlit frontend to serve an interactive RAG/LLM chat application over HTTP.,Other
 https://github.com/MCAyd/financial-faq-assistant-llm-rag-vector-search,Accuracy Amplified: RAG for Finance,Streaming,real-time,Unknown
-https://github.com/artemji/llm-zoomcamp-2024-project,Efficient Responses: RAG with Elasticsearch,Unknown,Unknown,AWS
-https://github.com/nahumsa/llm-security-chatbot,Secure LLMs: OWASP Guidelines Integration,Unknown,Unknown,Unknown
+https://github.com/artemji/llm-zoomcamp-2024-project,Unknown,Unknown,No files fetched,Unknown
+https://github.com/nahumsa/llm-security-chatbot,Secure LLMs: OWASP Guidelines Integration,Web Service,"The project serves a chatbot via a FastAPI/Uvicorn application exposed on port 8080 with Swagger documentation, functioning as an interactive API endpoint.",Other
 https://github.com/zaahirdawood/Ecom-QABot,Conversational Commerce: Enhance Shopping,Web Service,flask,Unknown
 https://github.com/slavaheroes/chat-with-video,Streamline Knowledge: Chat With Clips,Streaming,real-time,Unknown
 https://github.com/el-grudge/deep-pod,Deep Dive: Transforming Podcast Interaction,Streaming,stream,Unknown
 https://github.com/danilson33/llm-zoomcamp-project,Recipe Revolution: Personalized Nutrition Plans,Web Service,flask,Unknown
 https://github.com/avinashvootkuri/Cancer_Q-A_chatbot,Cancer Dialogue: Answering Your Questions,Web Service,flask,Unknown
 https://github.com/anammari/BioMedical-ai-assistant,Unlocking Insights: Biomedical Data Simplified,Web Service,flask,GCP
-https://github.com/romaHerman/lego-RAG/tree/main,LEGO Inventory: Search and Discover,Unknown,Unknown,Unknown
+https://github.com/romaHerman/lego-RAG/tree/main,LEGO Inventory: Search and Discover,Web Service,"The project uses Streamlit to serve an interactive chat interface for searching items, running as a web application via `streamlit run app.py`.",Other
 https://github.com/bluemusk24/LLM-diet-assitant/tree/main,NutrientWise: Dynamic Diet Tracking,Batch,batch,Unknown
-https://github.com/DmitriiK/telegram_rag_search,Telegram Insights: LLMPowered RAG Search,Unknown,Unknown,Unknown
-https://github.com/haghighi2697/llm_final_project/tree/main,Query Navigator: Demystifying Insurance Policies,Unknown,Unknown,Unknown
-https://github.com/tiznobaik/llm-zoomcamp-project,FCRA Unlocked: Interactive Compliance Tool,Unknown,Unknown,GCP
+https://github.com/DmitriiK/telegram_rag_search,Telegram Insights: LLMPowered RAG Search,Web Service,"The project uses Streamlit to serve the RAG search functionality and visualizations via a web interface, with Docker Compose managing the local Elasticsearch instance.",Other
+https://github.com/haghighi2697/llm_final_project/tree/main,Unknown,Unknown,No files fetched,Unknown
+https://github.com/tiznobaik/llm-zoomcamp-project,FCRA Unlocked: Interactive Compliance Tool,Web Service,"The project uses Streamlit (app.py) to serve an interactive RAG application for user queries, functioning as a web-based inference interface without batch orchestrators or streaming message brokers.",Other
 https://github.com/M4riaLoureiro/ethical-travel-recommender,Ethical Exploration: Southeast Asia Focus,Streaming,real-time,Unknown
 https://github.com/jdaguilar/llm-zoomcamp-project,Dynamic Responses: Hudi Documentation Navigator,Web Service,flask,Unknown
 https://github.com/Chalermdej-l/LLM_Stock_Analysis/tree/main,Investment Intelligence: Conversational Data Exploration,Streaming,real-time,Unknown
 https://github.com/Brahm13/sql_prep_assistant.git,SQL Mastery: Interview Prep Tool,Web Service,flask,Unknown
-https://github.com/HaChan/llm-zoomcamp-rails-doc-project,Rails API Insights: Streamlined Search,Unknown,Unknown,Unknown
-https://github.com/VRabinin/llm-zoomcamp-capstone,Speak SQL: Conversational Database Queries,Unknown,Unknown,Unknown
-https://github.com/g-stavrakis/Investment_Assistant,Analyze Investments: Transform Financial Data,Unknown,Unknown,Unknown
+https://github.com/HaChan/llm-zoomcamp-rails-doc-project,Rails API Insights: Streamlined Search,"Batch, Web Service","Uses Apache Airflow DAGs for batch data processing (scraping, chunking, and indexing documentation) and a Streamlit application to serve the RAG model inference via a web interface.",Other
+https://github.com/VRabinin/llm-zoomcamp-capstone,Speak SQL: Conversational Database Queries,"Batch, Web Service",The project uses Dagster to orchestrate data indexing and pipeline tasks (Batch) and Streamlit to serve the interactive NLP-to-SQL application to end users (Web Service).,Other
+https://github.com/g-stavrakis/Investment_Assistant,Analyze Investments: Transform Financial Data,Web Service,"The project uses Streamlit to serve a RAG/LLM application for real-time user queries and inference, containerized with Docker. It does not contain batch orchestrators or streaming message brokers.",Other
 https://github.com/zwe-htet-paing/cook-assistant,Flavor Guide: Tailored Cooking Instructions,Web Service,flask,Unknown
 https://github.com/a-t-em/Store-Products-RAG-App,LLMEnhanced: Store Product Retrieval,Web Service,flask,Unknown
 https://github.com/btalha23/Personalized_Recipe_Generator,Flavor Fusion: Dynamic Recipe Generation,Streaming,real-time,Unknown
 https://github.com/thompsgj/ragnificent,Swift Insights: Navigate Styles Effortlessly,Web Service,fastapi,Unknown
-https://github.com/amogh-kalalbandi/gadget-spec-bot,Gadget Guru: Detailed Mobile Insights,Unknown,Unknown,Unknown
-https://github.com/shivkurtarkar/sql-rag.git,QueryCraft: Natural Language SQL Generation,Unknown,Unknown,Unknown
-https://github.com/Ebukachuqz/fabrizo-ai-rag-app,ReRanked Responses: Fabrizio's Football Insights,Unknown,Unknown,Unknown
-https://github.com/AishwaryaHastak/RAG-using-T5,Data Science Q&A: Precision Answers,Unknown,Unknown,Unknown
+https://github.com/amogh-kalalbandi/gadget-spec-bot,Gadget Guru: Detailed Mobile Insights,Web Service,"The project uses Streamlit to serve an interactive ML inference interface where users input a gadget name and receive AI-generated specifications, functioning as a web-based application.",Other
+https://github.com/shivkurtarkar/sql-rag.git,QueryCraft: Natural Language SQL Generation,Web Service,"The application uses Streamlit to serve an interactive web interface for LLM-based SQL query generation, deployed via Docker Compose. No batch orchestrators or streaming message brokers are present.",Other
+https://github.com/Ebukachuqz/fabrizo-ai-rag-app,ReRanked Responses: Fabrizio's Football Insights,Web Service,"The project is containerized with Docker and serves a RAG-based Q&A system via a Streamlit web interface, functioning as an interactive web service for ML inference.",Other
+https://github.com/AishwaryaHastak/RAG-using-T5,Data Science Q&A: Precision Answers,Web Service,"The repository contains a Streamlit application that serves a RAG (Retrieval-Augmented Generation) model for answering Data Science questions, with a web interface accessible via port 8501.",Other
 https://github.com/GustavoBrites/medical-conversational-ai,Research Chat: Medical Knowledge Unlocked,Web Service,flask,Unknown
 https://github.com/quickSilverShanks/VidSage,Knowledge Streamlined: Unlocking YouTube Content,Web Service,flask,Unknown
 https://github.com/quzanh1130/food_order_assistant.git,Menu Whisperer: Personalized Food Ordering,Web Service,flask,AWS
 https://github.com/dimzachar/Parthenon-RAG-Game,DataDriven Learning: The Parthenon Experience,Web Service,fastapi,Unknown
-https://github.com/thedatadudech/llm_project_llama,RAG Amplifier: Streamlining Smart Contracts,Unknown,Unknown,Unknown
-https://github.com/dmitrykosintsev/dtc-maths-helper,Math Mentor: Instant Problem Solver,Unknown,Unknown,Unknown
+https://github.com/thedatadudech/llm_project_llama,RAG Amplifier: Streamlining Smart Contracts,Web Service,"The project uses Streamlit to serve a RAG system via a web interface, containerized with Docker and Docker Compose. It lacks batch orchestrators or streaming message brokers.",Other
+https://github.com/dmitrykosintsev/dtc-maths-helper,Math Mentor: Instant Problem Solver,Web Service,"The application uses Streamlit to serve an interactive RAG-based math chatbot, providing a web UI for real-time user interaction and LLM inference.",Other
 https://github.com/okellodaniel/URA_Faq_llm_Chatbot_API,Tax Insight: URA Chatbot API,Web Service,flask,Azure
 https://github.com/Wali-Mohamed/PrimalHealth,Knowledge Forge: Transforming Primal Conversations,Web Service,flask,Unknown
-https://github.com/Bcopeland64/LLM-Zoomcamp/commit/c339828d9845e52ead61f6398aae68c97403f71e,Unknown,Unknown,Unknown,Unknown
+https://github.com/Bcopeland64/LLM-Zoomcamp/commit/c339828d9845e52ead61f6398aae68c97403f71e,Unknown,Web Service,"The project deploys an interactive LLM-based Q&A application exposed on port 8000 via Docker, serving real-time user queries through a web interface/API (utilizing Streamlit and LangChain).",Other
 https://github.com/F-U-Njoku/travel_itinerary_builder/tree/main,Adventure Unlocked: AI Itinerary Creator,Streaming,real-time,Unknown
-https://github.com/arsonor/AI-Powered-Knowledge-Assistant-for-Audio-Prod,Studio Savvy: Expert Advice Engine,Unknown,Unknown,Unknown
+https://github.com/arsonor/AI-Powered-Knowledge-Assistant-for-Audio-Prod,Studio Savvy: Expert Advice Engine,Web Service,"The project uses Streamlit to serve an interactive LLM RAG application via a web UI (exposed on port 8501), orchestrated with Docker Compose. It contains no batch workflow orchestrators or streaming message brokers.",Other
 https://github.com/AkshaysNimbalkar/AviMate-LLM,Pilot's Compass: Emergency Guidance Tool,Web Service,flask,Unknown
 https://github.com/elinaharnovich/food-hazard-detection,Incident Insight: Hazard Prediction System,Web Service,flask,Unknown
-https://github.com/Tobai24/logos,Scripture Insights: AI Bible Guide,Unknown,Unknown,GCP
-https://github.com/hariprasath-v/Nnet101_Assistant,Neural Network Insights: RAG Chatbot,Unknown,Unknown,Unknown
-https://github.com/dmytrovoytko/llm-interview-assistant,Data Engineering: Mastering Interviews,Unknown,Unknown,GCP
+https://github.com/Tobai24/logos,Scripture Insights: AI Bible Guide,Web Service,"The project serves an interactive RAG application via a Streamlit web UI and a Telegram bot, both designed for real-time user queries and LLM inference.",Other
+https://github.com/hariprasath-v/Nnet101_Assistant,Neural Network Insights: RAG Chatbot,Web Service,The repository deploys an interactive RAG chatbot via Streamlit (app.py and app_cloud.py) that serves real-time ML inference by combining text/vector retrieval with LLM generation.,Other
+https://github.com/dmytrovoytko/llm-interview-assistant,Data Engineering: Mastering Interviews,Web Service,"Uses Streamlit to serve an interactive RAG chatbot application via a web interface, with supporting inference and data services (Ollama, Elasticsearch, Postgres) running in Docker containers.",Other
 https://github.com/jelambrar96-datatalks/book-review-assistant,Review Revolution: Personalized Book Insights,Web Service,flask,AWS
 https://github.com/Optimistix/Movie_Chatbot,Movie Explorer: Interactive Film Discussions,Web Service,flask,Unknown
 https://github.com/BarrCoder2024/2024_Zoom_Camp_RAG_Project,Mental Health Navigator: Conversational Clarity,Web Service,fastapi,Azure
-https://github.com/Abhisheknakka/AI-Restaurent-Chat-bot,Savory Suggestions: AI Dining Bot,Unknown,Unknown,Unknown
+https://github.com/Abhisheknakka/AI-Restaurent-Chat-bot,Savory Suggestions: AI Dining Bot,Web Service,"Uses Streamlit and FastAPI/Uvicorn to serve the AI chatbot interface and API endpoints over HTTP, as configured in the Dockerfile and requirements.",Other
 https://github.com/nrx33/yoga-companion-rag/,Mindful Motion: Personalized Yoga Insights,Web Service,fastapi,Unknown
-https://github.com/relew/LLM_WisdomWhisperer,Enlighten Yourself: Modern Philosophy Queries,Unknown,Unknown,Unknown
-https://github.com/taikuchou/llm-zoomcamp-project,Cinematic Consultation: Unlocking Movie Data,Unknown,Unknown,Unknown
-https://github.com/AdairPonceuwu/ch_llm/tree/main,Model Management: Run Ollama Efficiently,Unknown,Unknown,Unknown
-https://github.com/barely-functional-de/SlackademicAdvisor-RAG,Knowledge Base Builder: Slack Integration,Unknown,Unknown,Unknown
+https://github.com/relew/LLM_WisdomWhisperer,Enlighten Yourself: Modern Philosophy Queries,Web Service,"The application uses Streamlit to serve an interactive LLM/RAG interface via a web UI, containerized with Docker and exposed on port 8501.",Other
+https://github.com/taikuchou/llm-zoomcamp-project,Cinematic Consultation: Unlocking Movie Data,Web Service,"The project uses Streamlit to serve an interactive RAG application for real-time user inference, backed by Dockerized Ollama and Elasticsearch, with no batch orchestrators or streaming message brokers present.",Other
+https://github.com/AdairPonceuwu/ch_llm/tree/main,Model Management: Run Ollama Efficiently,Web Service,"The project uses Streamlit as its primary interface to serve LLM inference and interact with backend services (Elasticsearch, Postgres, Ollama), orchestrated via Docker Compose. It contains no batch workflow orchestrators or streaming message brokers.",Other
+https://github.com/barely-functional-de/SlackademicAdvisor-RAG,Knowledge Base Builder: Slack Integration,"Batch, Web Service","Uses Mage AI to orchestrate scheduled batch ETL jobs for data ingestion and Elasticsearch indexing, and deploys a Streamlit application to serve the RAG chat interface for model inference.",Other
 https://github.com/sam23121/ChefAssistAI/,Culinary Clarity: Instant Recipe Guidance,Batch,batch,AWS
 https://github.com/AudhootChavan/llm_zc_2024_project_audhoot_chavan_parlamind,Video Summarization: Engage with Parliament,Web Service,django,Unknown
-https://github.com/spencer18001/llm_zoomcamp_project_2024,Unraveling Queries: Interactive Detective Engine,Unknown,Unknown,Unknown
-https://github.com/Betaperson/Academic-Paper-RAG,Retrieval Revolution: Academic Paper Search,Unknown,Unknown,Unknown
+https://github.com/spencer18001/llm_zoomcamp_project_2024,Unraveling Queries: Interactive Detective Engine,Web Service,Uses Streamlit to serve a RAG-based LLM application via a web interface for real-time user queries and model inference.,Other
+https://github.com/Betaperson/Academic-Paper-RAG,Retrieval Revolution: Academic Paper Search,Unknown,LLM returned no response,Unknown
 https://github.com/Fazle-hasan/Half_girlfriend,Emotional Echoes: Personalized Support,Streaming,real-time,Unknown
-https://github.com/MichaelShoemaker/PlaylistGuide-LLM,Transcript Retriever: Quick YouTube Insights,Unknown,Unknown,GCP
-https://github.com/anqma/mental-health-chatbot/tree/main,Accessible Insights: Mental Health Advisor,Unknown,Unknown,Unknown
+https://github.com/MichaelShoemaker/PlaylistGuide-LLM,Transcript Retriever: Quick YouTube Insights,Web Service,"The project uses Streamlit to serve an LLM/RAG chatbot application via a web interface, orchestrated with Docker Compose. There are no workflow orchestrators (Airflow, Prefect, etc.) for batch processing or message brokers (Kafka, Flink, etc.) for streaming.",Other
+https://github.com/anqma/mental-health-chatbot/tree/main,Accessible Insights: Mental Health Advisor,Web Service,"The application uses Streamlit to serve an interactive chatbot interface for real-time user queries and LLM inference, deployed and containerized via Docker Compose.",Other
 https://github.com/nathadriele/biophenotype-rag,Evolutionary Insights: Enhanced Data Retrieval,Streaming,real-time,AWS
-https://github.com/dmytrovoytko/llm-exam-assistant,Exam Prep Mastery: RAG Chatbot,Unknown,Unknown,GCP
-https://github.com/hadrrb/movie-assistant,Cinematic Insights: Tailored Movie Recommendations,Unknown,Unknown,Unknown
-https://github.com/GuillermoFabian/llm-end-to-end-app.git,Knowledge Amplifier: Streamlit Q&A System,Unknown,Unknown,Unknown
-https://github.com/Johnyckot/ifab_qna_rag.git,**Kickoff Queries: Football Rules Decoded**,Unknown,Unknown,Unknown
-https://github.com/Bcopeland64/LLM-Zoomcamp/tree/main/Final_Project_Upload,Unknown,Unknown,Unknown,Unknown
+https://github.com/dmytrovoytko/llm-exam-assistant,Exam Prep Mastery: RAG Chatbot,Web Service,"The project uses Streamlit to serve an interactive RAG chatbot interface, containerized and orchestrated via Docker Compose. It functions as a web application for real-time LLM inference and conversational user interaction.",Other
+https://github.com/hadrrb/movie-assistant,Cinematic Insights: Tailored Movie Recommendations,Web Service,"The application uses Streamlit to serve an interactive web interface for RAG-based movie recommendations, running as a continuously available service via Docker Compose.",Other
+https://github.com/GuillermoFabian/llm-end-to-end-app.git,Knowledge Amplifier: Streamlit Q&A System,"Batch, Web Service",Uses Mage AI for scheduled/triggered data ingestion and embedding pipelines (Batch) and Streamlit to serve the interactive RAG Q&A interface and LLM inference (Web Service).,Other
+https://github.com/Johnyckot/ifab_qna_rag.git,**Kickoff Queries: Football Rules Decoded**,"Batch, Web Service","The project uses Mage orchestrator for batch data scraping and ingestion pipelines, and a Streamlit application to serve the RAG chatbot as a web service for real-time user inference.",Other
+https://github.com/Bcopeland64/LLM-Zoomcamp/tree/main/Final_Project_Upload,Unknown,Web Service,"The README explicitly mentions building a Streamlit UI for the LLM/RAG application, which serves model inference interactively and aligns with the Web Service definition.",Other
 https://github.com/shruthi25sundar/Supply-Chain-Management,Risk Wrangler: Supplier Compliance Insights,Web Service,flask,Unknown
-https://github.com/chandana-koganti14/CellNucleiRAG,Visualize Nuclei: Histopathology Insights,Unknown,Unknown,Unknown
+https://github.com/chandana-koganti14/CellNucleiRAG,Visualize Nuclei: Histopathology Insights,Web Service,"The project uses Flask and Gunicorn to serve an interactive API/web application for querying and analyzing histopathology data, containerized with Docker and exposing port 5000.",Other
 https://github.com/melhamamsy/audio_podcast_qa_assistant,Audio Insight: Podcast QA Revolution,Streaming,real-time,Unknown
 https://github.com/psousasa/yt-summaries,YT CookQuest: From Videos to Delicious Recipes,Web Service,django,Unknown
 https://github.com/Wali-Mohamed/healthly_lifestyle,Actionable Advice: Navigate Primal Diet,Web Service,flask,Unknown
-https://github.com/alexkolo/rag_nutrition_facts_blog/,Nutrition Navigator: Inform Your Choices,Unknown,Unknown,Unknown
+https://github.com/alexkolo/rag_nutrition_facts_blog/,Nutrition Navigator: Inform Your Choices,Web Service,"The project deploys an interactive RAG chatbot and monitoring dashboard using Streamlit and a Flask/Gunicorn middleware API, serving real-time AI inference and user queries over HTTP.",Other
 https://github.com/lixx21/legal-document-assistant,Document Navigator: Streamline Legal Research,Streaming,real-time,Unknown
 https://github.com/VesnaPop-Dimitrijoska/Marketing-AI-Assistant,Elevate Strategy: Personalized Marketing Chatbot,Streaming,real-time,Unknown
 https://github.com/JetC0918/activity-app,Activity Navigator: Personalize Your Experience,Web Service,flask,Unknown
 https://github.com/davk115/recipe-assistant,**Cuisine Explorer: Personalized Cooking Insights**,Web Service,flask,Unknown
-https://github.com/JorgeAbrego/ask_the_book_rag_project,Knowledge Navigator: Efficient Learning Tool,Unknown,Unknown,Unknown
-https://github.com/vucongtuanduong/vietnamese-rag-project,Vietnamese Text Mastery: RAG Model Evolution,Unknown,Unknown,Unknown
-https://github.com/PatrickCmd/llm-zoomcamp/tree/main/project,Transcripts Unleashed: AI Podcast Assistant,Unknown,Unknown,GCP
+https://github.com/JorgeAbrego/ask_the_book_rag_project,Knowledge Navigator: Efficient Learning Tool,"Batch, Web Service",Uses Apache Airflow DAGs for scheduled document ingestion/ETL (Batch) and a Streamlit application to serve the RAG model interface to users (Web Service).,Other
+https://github.com/vucongtuanduong/vietnamese-rag-project,Vietnamese Text Mastery: RAG Model Evolution,Web Service,"The project uses Docker Compose to deploy a Streamlit application that serves the RAG model and provides an interactive UI for online evaluation, with no batch orchestrators or streaming message brokers present.",Other
+https://github.com/PatrickCmd/llm-zoomcamp/tree/main/project,Transcripts Unleashed: AI Podcast Assistant,Web Service,"The project uses Streamlit to serve a conversational AI/Q&A application via a web UI, handling real-time user queries and LLM inference.",Other
 https://github.com/RKIzmailov/movie-advisor-rag,Movie Recall: Conversational Plot Insights,Web Service,flask,Unknown
 https://github.com/Optimistix/medical_QandA_assistant,Treatment Navigator: Accurate Health Answers,Web Service,flask,Unknown
-https://github.com/Taciturny/Mental_Health_Convo/,Precision Responses: Mental Health Conversations,Unknown,Unknown,Unknown
-https://github.com/dusisarathchandra/llm-RAG-cloud-asset-service-categorization,Cloud Asset Intelligence: RAGPowered Categorization,Unknown,Unknown,Unknown
-https://github.com/jvscursulim/rag_project_llm_zoomcamp_2024,Unity Insights: Chatbot with RAG,Unknown,Unknown,Unknown
-https://github.com/Alonge9500/LLMZoomcampProject,Empowering Diabetes Dialogue: LLM Application,Unknown,Unknown,Unknown
+https://github.com/Taciturny/Mental_Health_Convo/,Precision Responses: Mental Health Conversations,Web Service,"The project implements a RAG-based conversational AI backend using Cohere LLMs and Qdrant, containerized via Docker Compose to handle real-time request/response inference, which aligns with a web service/API architecture.",Other
+https://github.com/dusisarathchandra/llm-RAG-cloud-asset-service-categorization,Cloud Asset Intelligence: RAGPowered Categorization,Web Service,"The project is a Streamlit-based application that serves a RAG/LLM model for interactive user queries and real-time inference, deployed via Streamlit Cloud and Docker.",Other
+https://github.com/jvscursulim/rag_project_llm_zoomcamp_2024,Unity Insights: Chatbot with RAG,Web Service,"The project is built with Streamlit to serve an interactive, RAG-powered chatbot that handles real-time user queries and LLM inference via a web UI.",Other
+https://github.com/Alonge9500/LLMZoomcampProject,Empowering Diabetes Dialogue: LLM Application,Web Service,"The project serves an interactive RAG Q&A application via Streamlit, containerized with Docker Compose and exposed through ngrok, aligning with serving ML inference through a web interface.",Other
 https://github.com/marcosppaiva/llm_final_project,Player Queries: Powered by Reviews,Streaming,real-time,Unknown
 https://github.com/FranciscoOrtizTena/eat-toronto-rec-rag/,Flavor Finder: Tailored Toronto Dining,Web Service,flask,Unknown
 https://github.com/HangenYuu/llm-zoomcamp-tf-show-archivist,Episode Navigator: Discover Ferriss Insights,Web Service,django,Unknown
-https://github.com/GMestreM/ragxiv,Streamlined Research: RAGPowered Document Retrieval,Unknown,Unknown,Unknown
-https://github.com/Pei-Tong/llm-zoomcamp-project.git,Film Query: Dynamic RAG Integration,Unknown,Unknown,Unknown
-https://github.com/alex-kolmakov/divelog-autoreport/blob/main/documentation/llm_project_evaluation.md,Unknown,Unknown,Unknown,Unknown
-https://github.com/dmitrykosintsev/dtc-arch-support-bot,Arch Support Unleashed: AIPowered Solutions,Unknown,Unknown,Unknown
-https://github.com/sgkertsos/ecommerce-site-assistant,**Connect: Direct Answers for Shoppers**,Unknown,Unknown,Unknown
+https://github.com/GMestreM/ragxiv,Streamlined Research: RAGPowered Document Retrieval,Web Service,"The application uses Streamlit to serve a RAG-based ML interface via a web UI, orchestrated with Docker Compose, without batch orchestrators or streaming message brokers.",Other
+https://github.com/Pei-Tong/llm-zoomcamp-project.git,Film Query: Dynamic RAG Integration,Web Service,"The project uses Streamlit to serve an interactive RAG-based movie assistant application via a web interface, orchestrated locally with Docker Compose.",Other
+https://github.com/alex-kolmakov/divelog-autoreport/blob/main/documentation/llm_project_evaluation.md,Unknown,Web Service,"The project uses a FastAPI backend served by Uvicorn and a React frontend served by Nginx, orchestrated via Docker Compose to handle on-demand user requests, file uploads, and interactive dashboard sessions.",GCP
+https://github.com/dmitrykosintsev/dtc-arch-support-bot,Arch Support Unleashed: AIPowered Solutions,Web Service,"The project uses NiceGUI to serve an interactive web interface for real-time LLM inference and user queries, deployed as a containerized web application.",Other
+https://github.com/sgkertsos/ecommerce-site-assistant,**Connect: Direct Answers for Shoppers**,Web Service,"The application uses Streamlit to serve an interactive LLM-based RAG assistant that processes user queries in real-time, aligning with the web service pattern for ML inference.",Other
 https://github.com/camilo-cf/llm-url_video-rag,URL Analyzer: Interactive Content Conversations,Streaming,real-time,Unknown
-https://github.com/viviensiu/LLM-project,Quickaccess: Azure Exam Study Aid,Unknown,Unknown,AWS
-https://github.com/psobczyk/llm-zoomcamp-project,FAQ Driven: Adaptive Response Generator,Unknown,Unknown,Unknown
+https://github.com/viviensiu/LLM-project,Quickaccess: Azure Exam Study Aid,Web Service,"Uses Streamlit to serve a RAG application via an interactive web interface, containerized with Docker and exposed on port 8501 for real-time user queries and model inference.",Other
+https://github.com/psobczyk/llm-zoomcamp-project,FAQ Driven: Adaptive Response Generator,Unknown,LLM returned no response,Unknown
 https://github.com/joyceannie/Ecommerce_Product_Search_Assistant,**Search Smarter: Ecommerce Product Insights**,Web Service,flask,Unknown
-https://github.com/dmamayeva/paper-engine,Explore Literature: Interactive RAG Tool,Unknown,Unknown,Unknown
+https://github.com/dmamayeva/paper-engine,Explore Literature: Interactive RAG Tool,Web Service,"The application uses Streamlit to serve an interactive conversational RAG interface, exposed via port 8501 in a Docker container, functioning as a web service for user queries and LLM inference.",Other
 https://github.com/ranga4all1/support-queue-assistant-rag,Elevate Customer Care: RAGPowered Responses,Web Service,flask,GCP
-https://github.com/abarlukova/Diets_assistant,Diets RAG: Personalized Diet Selection,Unknown,Unknown,Unknown
-https://github.com/aleksandr-dzhumurat/leaf_buddy/tree/master,Unknown,Unknown,Unknown,Unknown
+https://github.com/abarlukova/Diets_assistant,Diets RAG: Personalized Diet Selection,Web Service,"The application uses Streamlit to serve a RAG-based Q&A interface via a web UI, with no batch orchestrators or streaming message brokers present.",Other
+https://github.com/aleksandr-dzhumurat/leaf_buddy/tree/master,Unknown,Unknown,No files fetched,Unknown
 https://github.com/aturevich/zoomcamp_llm_project,Adventure Insights: Dynamic Query Pipeline,Web Service,fastapi,Unknown
 https://github.com/zaahirdawood/HoTD-QABot,Conversational Ecommerce: Responsive Information Bot,Web Service,flask,Unknown
-https://github.com/A0Gbadamosi2024,Unknown,Unknown,Unknown,Unknown
+https://github.com/A0Gbadamosi2024,Unknown,Unknown,No files fetched,Unknown
 https://github.com/bilozorov/glimmerfox,Explore Glimmerfox: Contextual Query System,Web Service,django,Hetzner Cloud
 https://github.com/victorfxz/Lolga-League-of-Legends-Game-Assistant,**Champion Secrets: Swift Game Insights**,Streaming,real-time,AWS
-https://github.com/RSRamKumar/LLM-Practice/blob/main/youtube_assistant.py,Unknown,Unknown,Unknown,Unknown
-https://github.com/nadinepco/travel_assistant_bot,Travel Tracker: Effortless Document Retrieval,Unknown,Unknown,Unknown
+https://github.com/RSRamKumar/LLM-Practice/blob/main/youtube_assistant.py,Unknown,Unknown,"Only a README and a single script filename are provided; no workflow orchestrators, web frameworks, or streaming/message broker components are visible to determine the deployment pattern.",Unknown
+https://github.com/nadinepco/travel_assistant_bot,Travel Tracker: Effortless Document Retrieval,Web Service,"The project uses Streamlit to serve an interactive RAG-based chatbot, with a Dockerfile explicitly exposing port 8501 for web-based user inference.",Other
 https://github.com/alexeygrigorev/fitness-assistant,Tailored Workouts: Your AI Coach,Web Service,flask,Unknown
-https://github.com/kahramanmurat/fitness-assistant,Workout Log: Monitor Progress Effortlessly,Unknown,Unknown,Unknown
+https://github.com/kahramanmurat/fitness-assistant,Workout Log: Monitor Progress Effortlessly,Unknown,"Only a minimal README.md is provided with no source code, configuration, or infrastructure files to analyze.",Unknown
 https://github.com/aashalabi/tek_buddy.git,Diagnostic Edge: Instant Repair Intelligence,Web Service,flask,Unknown
-https://github.com/ex00/llm-zoomcamp/blob/homeworks/hw/competition/starter-notebook.ipynb,Unknown,Unknown,Unknown,Unknown
+https://github.com/ex00/llm-zoomcamp/blob/homeworks/hw/competition/starter-notebook.ipynb,Unknown,Unknown,"The repository is an educational course containing Jupyter notebooks, homework assignments, and module outlines for learning LLM/RAG concepts. It does not contain production deployment code, workflow orchestrators, web service frameworks, or streaming infrastructure.",Other

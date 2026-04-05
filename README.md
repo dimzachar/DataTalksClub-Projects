@@ -173,7 +173,9 @@ Then open http://localhost:8501
 | `make docker-pipeline-all` | `docker-compose run --rm pipeline python -m src.pipeline_runner --all` | Reprocess all courses |
 | `make docker-pipeline-single COURSE=dezoomcamp YEAR=2025` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025` | Process specific course |
 | `make docker-pipeline-project COURSE=dezoomcamp YEAR=2025 PROJECT_URL=https://github.com/example-org/example-de-project` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025 --project-url https://github.com/example-org/example-de-project` | Process only one project URL |
+| `make docker-pipeline WORKERS=3` | `docker-compose run --rm pipeline python -m src.pipeline_runner --workers 3` | Process new courses with custom worker count |
 | `make docker-pipeline-test COURSE=dezoomcamp YEAR=2025 LIMIT=10` | `docker-compose run --rm pipeline python -m src.pipeline_runner --course dezoomcamp --year 2025 --limit 10` | Test with limited projects |
+| - | `docker-compose run --rm pipeline python -m src.pipeline_runner --retry-unknowns` | Retry Unknown rows across all existing courses |
 
 ### Pipeline Options
 
@@ -181,11 +183,12 @@ Then open http://localhost:8501
 |--------|-------------|
 | `--discover` | List available courses and their status |
 | `--all` | Reprocess all courses (overwrites existing) |
+| `--retry-unknowns` | Re-run classify step on all existing courses to fix unknowns |
 | `--course NAME` | Process specific course |
 | `--year YEAR` | Process specific year |
 | `--project-url URL` | Process only one repo URL (requires `--course` and `--year`) |
 | `--limit N` | Limit to N projects (for testing) |
-| `--workers N` | Parallel workers (default: 5) |
+| `--workers N` | Parallel workers (default: 5), pass via `WORKERS=N` in make |
 
 ---
 

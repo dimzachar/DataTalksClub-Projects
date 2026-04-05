@@ -1,5 +1,6 @@
 import os
 import re
+import time
 
 from openai import OpenAI
 
@@ -17,8 +18,12 @@ class OpenAIAPI:
             api_key=self.api_key,
             timeout=60.0,  # 60 second timeout for API calls
         )
-        # Free model from OpenRouter
-        self.default_model = "qwen/qwen3.6-plus-preview:free"
+        # Free models with fallback order
+        self.default_model = "qwen/qwen3.6-plus:free"
+        self.fallback_models = [
+            'stepfun/step-3.5-flash:free',
+            'arcee-ai/trinity-large-preview:free',
+        ]
 
     def build_prompt(self, project_url, summary, deployment_type=None):
         # Determine what tech terms are allowed based on deployment type
@@ -66,24 +71,39 @@ Generate 5 distinct domain-focused titles, each on a new line:
         """Legacy method for backward compatibility."""
         return self.build_prompt(project_url, summary, deployment_type=None)
 
-    def llm(self, prompt, model=None, max_tokens=150, temperature=0):
-        model = model or self.default_model
-        try:
-            response = self.client.chat.completions.create(
-                extra_headers={
-                    "HTTP-Referer": "https://github.com/DataTalksClub",
-                    "X-Title": "DataTalksClub Projects",
-                },
-                model=model,
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=max_tokens,
-                temperature=temperature,
-            )
-            content = response.choices[0].message.content
-            return content, response.usage
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            return None, None
+    def llm(self, prompt, model=None, max_tokens=150, temperature=0, max_retries=5):
+        # Build model queue: requested model first, then fallbacks (deduped)
+        requested = model or self.default_model
+        model_queue = [requested] + [m for m in self.fallback_models if m != requested]
+
+        delay = 60  # start with 60s on 429 (free tier resets per minute)
+        for attempt in range(max_retries):
+            current_model = model_queue[attempt % len(model_queue)]
+            try:
+                response = self.client.chat.completions.create(
+                    extra_headers={
+                        "HTTP-Referer": "https://github.com/DataTalksClub",
+                        "X-Title": "DataTalksClub Projects",
+                    },
+                    model=current_model,
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=max_tokens,
+                    temperature=temperature,
+                )
+                if not response.choices:
+                    raise ValueError("Empty choices in response")
+                content = response.choices[0].message.content
+                return content, response.usage
+            except Exception as e:
+                error_str = str(e)
+                if ("429" in error_str or "404" in error_str) and attempt < max_retries - 1:
+                    next_model = model_queue[(attempt + 1) % len(model_queue)]
+                    print(f"Error on {current_model} ({error_str[:60]}), switching to {next_model}...")
+                    time.sleep(5)
+                else:
+                    print(f"An error occurred: {e}")
+                    return None, None
+        return None, None
 
     def generate_summary(self, content):
         prompt_summary = f"Summarize the following GitHub project content in two sentences, focusing on its main purpose and key features:\n{content}"
@@ -257,12 +277,12 @@ CLOUD_REASON: <brief reason>"""
         try:
             response, _ = self.llm(prompt, max_tokens=200)
             if not response:
-                return self._default_classification()
+                return self._default_classification("LLM returned no response")
 
             return self._parse_classification_response(response)
         except Exception as e:
             print(f"Classification error: {e}")
-            return self._default_classification()
+            return self._default_classification(str(e)[:100])
 
     def _parse_classification_response(self, response: str) -> dict:
         """Parse the classification response."""
@@ -315,11 +335,11 @@ CLOUD_REASON: <brief reason>"""
 
         return result
 
-    def _default_classification(self) -> dict:
+    def _default_classification(self, reason: str = "Could not classify") -> dict:
         """Return default classification when LLM fails."""
         return {
             'deployment_type': 'Unknown',
-            'deployment_reason': 'Could not classify',
+            'deployment_reason': reason,
             'cloud_provider': 'Unknown',
-            'cloud_reason': 'Could not classify',
+            'cloud_reason': reason,
         }

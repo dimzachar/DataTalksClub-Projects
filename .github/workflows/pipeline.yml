@@ -68,17 +68,56 @@ jobs:
         run: |
           echo "🚀 Processing new courses only..."
           python -m src.pipeline_runner
+          # Capture which courses were just created for targeted retries
+          git ls-files --others --exclude-standard Data/ | grep 'data\.csv' | \
+            sed 's|Data/||;s|/[^/]*$||' | sort -u > /tmp/new_courses.txt
+          echo "New courses processed:"
+          cat /tmp/new_courses.txt || echo "(none)"
+
+      - name: Retry unknowns (pass 2)
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          if [ ! -s /tmp/new_courses.txt ]; then
+            echo "✓ No new courses to retry"
+            exit 0
+          fi
+          echo "🔁 Pass 2 - retrying unknowns in new courses..."
+          while IFS='/' read -r course year; do
+            echo "  Retrying $course/$year..."
+            python -m src.generate_titles_and_classify --course "$course" --year "$year"
+          done < /tmp/new_courses.txt
+
+      - name: Retry unknowns (pass 3)
+        env:
+          MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          if [ ! -s /tmp/new_courses.txt ]; then
+            echo "✓ No new courses to retry"
+            exit 0
+          fi
+          echo "🔁 Pass 3 - retrying unknowns in new courses..."
+          while IFS='/' read -r course year; do
+            echo "  Retrying $course/$year..."
+            python -m src.generate_titles_and_classify --course "$course" --year "$year"
+          done < /tmp/new_courses.txt
 
       - name: Check for changes
         id: changes
         run: |
-          if git diff --quiet Data/; then
+          if git diff --quiet Data/ && git ls-files --others --exclude-standard Data/ | grep -q .; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📦 New untracked data files detected"
+            git ls-files --others --exclude-standard Data/
+          elif ! git diff --quiet Data/; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "📦 Modified data files detected"
+            git diff --stat Data/
+          else
             echo "has_changes=false" >> $GITHUB_OUTPUT
             echo "✓ No new data to commit"
-          else
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "📦 New data files detected"
-            git diff --stat Data/
           fi
 
       - name: Commit and push new data
