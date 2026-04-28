@@ -163,7 +163,7 @@ class TestPipelineRunnerRun:
 
         assert result is False
         captured = capsys.readouterr()
-        assert 'not found' in captured.out
+        assert 'Unknown course name' in captured.out
 
 
 class TestProcessCourse:
