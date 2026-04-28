@@ -116,18 +116,26 @@ def process_single_project(args):
         'status': 'success',
     }
 
+    # Permanent skip: repo previously returned 404 (deleted/private)
+    existing_reason = row.get('Reason', '')
+    if isinstance(existing_reason, str) and existing_reason.startswith('404:'):
+        result['status'] = 'skip'
+        return index, result
+
     # Check if already processed (skip if both title and deployment are valid, non-Unknown values)
     existing_title = row.get('project_title')
     existing_deployment = row.get('Deployment Type')
-    if (
-        not force_reprocess
-        and pd.notnull(existing_title)
-        and existing_title != 'Unknown'
-        and existing_title != 'Error'
-        and pd.notnull(existing_deployment)
-        and existing_deployment != 'Unknown'
-        and existing_deployment != 'Error'
-    ):
+    title_valid = (
+        pd.notnull(existing_title)
+        and isinstance(existing_title, str)
+        and existing_title.strip().lower() not in ('unknown', 'error')
+    )
+    dep_valid = (
+        pd.notnull(existing_deployment)
+        and isinstance(existing_deployment, str)
+        and existing_deployment.strip().lower() not in ('unknown', 'error')
+    )
+    if not force_reprocess and title_valid and dep_valid:
         result['status'] = 'skip'
         return index, result
 
@@ -135,6 +143,15 @@ def process_single_project(args):
         # Step 1: Fetch multi-file context
         repo_data = repo_analyzer.analyze_repo(project_url)
         files_content = repo_data.get('files', {})
+
+        if repo_data.get('not_found'):
+            logger.warning(f"Repo not found (404): {project_url}")
+            result['project_title'] = "Unknown"
+            result['Deployment Type'] = "Unknown"
+            result['Reason'] = "404: Repository not found (may be deleted or private)"
+            result['Cloud'] = "Unknown"
+            result['status'] = 'skip'
+            return index, result
 
         if not files_content:
             logger.warning(f"No files fetched for {project_url}")
@@ -163,7 +180,11 @@ def process_single_project(args):
 
         # Step 2: Classify deployment type and cloud FIRST (needed for title generation)
         deployment_type = row.get('Deployment Type')
-        if force_reprocess or pd.isnull(deployment_type) or deployment_type == 'Unknown':
+        if (
+            force_reprocess
+            or pd.isnull(deployment_type)
+            or (isinstance(deployment_type, str) and deployment_type.strip().lower() == 'unknown')
+        ):
             classification = openai_api.classify_deployment_and_cloud(
                 project_url, files_content, valid_deployment_types
             )
@@ -174,7 +195,15 @@ def process_single_project(args):
             result['Cloud'] = classification['cloud_provider']
 
         # Step 3: Generate title using deployment type context
-        if force_reprocess or pd.isnull(row.get('project_title')):
+        existing_title = row.get('project_title')
+        existing_reason = row.get('Reason', '')
+        title_needs_gen = (
+            force_reprocess
+            or pd.isnull(existing_title)
+            or (isinstance(existing_title, str) and existing_title.strip().lower() in ('unknown', 'error'))
+            or (isinstance(existing_reason, str) and 'no files fetched' in existing_reason.lower())
+        )
+        if title_needs_gen:
             combined_content = ""
             for filepath, content in files_content.items():
                 combined_content += f"\n=== {filepath} ===\n"
@@ -185,7 +214,6 @@ def process_single_project(args):
             if combined_content:
                 summary = openai_api.generate_summary(combined_content)
                 if summary:
-                    # Pass deployment_type to avoid "Real-Time" in Batch titles
                     titles = openai_api.generate_multiple_titles(
                         project_url, summary, deployment_type=deployment_type
                     )

@@ -7,6 +7,7 @@ services:
     environment:
       - MY_GITHUB_TOKEN=${MY_GITHUB_TOKEN}
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - DEFAULT_MODEL=${DEFAULT_MODEL:-tencent/hy3-preview:free}
     # Override command as needed (see Makefile for shortcuts)
 
   streamlit:

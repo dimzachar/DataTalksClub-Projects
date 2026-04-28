@@ -59,16 +59,20 @@ class PipelineRunner:
                 self._run_step("src.generate_titles_and_classify", course_info)
             return True
         """Run pipeline for missing courses only (or all if force_all=True)."""
-        # Single course mode
+        # Single course mode - bypass discovery so active courses work too
         if course and year:
-            courses = [
-                c
-                for c in self.discovery.discover_courses()
-                if c["name"] == course and c["year"] == year
-            ]
-            if not courses:
-                print(f"❌ Course {course}/{year} not found on DataTalksClub")
+            from utils.course_discovery import TRACKED_COURSES
+            slug_prefix = next((k for k, v in TRACKED_COURSES.items() if v == course), None)
+            if not slug_prefix:
+                print(f"❌ Unknown course name: {course}. Known: {list(TRACKED_COURSES.values())}")
                 return False
+            slug = f"{slug_prefix}-{year}"
+            courses = [{
+                "name": course,
+                "year": year,
+                "slug": slug,
+                "url": f"{self.discovery.BASE_URL}/{slug}/projects",
+            }]
         elif force_all:
             courses = self.discovery.discover_courses()
             print(f"🔄 Force mode: Processing ALL {len(courses)} courses")

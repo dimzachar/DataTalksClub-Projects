@@ -3,6 +3,7 @@ import re
 import time
 
 from openai import OpenAI
+from tqdm import tqdm
 
 
 class OpenAIAPI:
@@ -18,11 +19,14 @@ class OpenAIAPI:
             api_key=self.api_key,
             timeout=60.0,  # 60 second timeout for API calls
         )
-        # Free models with fallback order
-        self.default_model = "qwen/qwen3.6-plus:free"
+        # Free models with fallback order (5 models for better throughput)
+        self.default_model = os.environ.get("DEFAULT_MODEL", "openai/gpt-oss-120b:free")
         self.fallback_models = [
-            'stepfun/step-3.5-flash:free',
-            'arcee-ai/trinity-large-preview:free',
+            self.default_model,
+            "openai/gpt-oss-20b:free",
+            "nvidia/nemotron-3-super-120b-a12b:free",
+            "google/gemma-3-27b-it:free",
+            "google/gemma-3-12b-it:free",
         ]
 
     def build_prompt(self, project_url, summary, deployment_type=None):
@@ -76,7 +80,6 @@ Generate 5 distinct domain-focused titles, each on a new line:
         requested = model or self.default_model
         model_queue = [requested] + [m for m in self.fallback_models if m != requested]
 
-        delay = 60  # start with 60s on 429 (free tier resets per minute)
         for attempt in range(max_retries):
             current_model = model_queue[attempt % len(model_queue)]
             try:
@@ -96,12 +99,32 @@ Generate 5 distinct domain-focused titles, each on a new line:
                 return content, response.usage
             except Exception as e:
                 error_str = str(e)
-                if ("429" in error_str or "404" in error_str) and attempt < max_retries - 1:
+                is_last = attempt == max_retries - 1
+
+                if "429" in error_str:
+                    # Extract retry-after if present, else back off exponentially
+                    wait = 60 * (2 ** min(attempt, 3))
                     next_model = model_queue[(attempt + 1) % len(model_queue)]
-                    print(f"Error on {current_model} ({error_str[:60]}), switching to {next_model}...")
-                    time.sleep(5)
+                    tqdm.write(
+                        f"⚠️  Rate limited on {current_model} (attempt {attempt+1}/{max_retries})"
+                        f" — waiting {wait}s, then trying {next_model}"
+                    )
+                    if not is_last:
+                        time.sleep(wait)
+                elif "404" in error_str:
+                    next_model = model_queue[(attempt + 1) % len(model_queue)]
+                    tqdm.write(
+                        f"❌ Model not found: {current_model} — switching to {next_model}"
+                    )
+                    if not is_last:
+                        time.sleep(2)
                 else:
-                    print(f"An error occurred: {e}")
+                    tqdm.write(f"❌ LLM error on {current_model} (attempt {attempt+1}/{max_retries}): {error_str[:120]}")
+                    if not is_last:
+                        time.sleep(5)
+
+                if is_last:
+                    tqdm.write(f"💀 All {max_retries} attempts failed for model queue {model_queue}")
                     return None, None
         return None, None
 

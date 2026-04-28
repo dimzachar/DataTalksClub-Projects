@@ -7,6 +7,7 @@ import os
 import base64
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from urllib.parse import unquote
 
 import requests
 
@@ -82,49 +83,101 @@ class RepoAnalyzer:
             self.headers['Authorization'] = f'token {self.token}'
 
     def parse_github_url(self, url: str) -> tuple:
-        """Extract owner, repo, and subpath from GitHub URL.
+        """Extract owner, repo, subpath, and branch from GitHub URL.
 
         Returns:
-            tuple: (owner, repo, subpath) where subpath is the nested directory or None
+            tuple: (owner, repo, subpath, branch) where:
+                - subpath is the nested directory or None (URL-decoded)
+                - branch is the branch name from /tree/branch/... or None (URL-decoded)
         """
+        url = url.strip()
+        url = url.split('?')[0].split('#')[0]
         url = url.rstrip('/')
         subpath = None
+        branch = None
 
-        # Handle /tree/branch/path URLs (nested project directories)
         if '/tree/' in url:
             base_url, tree_part = url.split('/tree/', 1)
-            # tree_part is like "main/project" or just "main"
             tree_parts = tree_part.split('/', 1)
+            branch = unquote(tree_parts[0])
             if len(tree_parts) > 1:
-                subpath = tree_parts[1]  # e.g., "project" or "Project"
+                subpath = unquote(tree_parts[1])
+            url = base_url
+        elif '/blob/' in url:
+            base_url, blob_part = url.split('/blob/', 1)
+            blob_parts = blob_part.split('/', 1)
+            branch = unquote(blob_parts[0])
             url = base_url
 
-        # Remove .git suffix
         if url.endswith('.git'):
             url = url[:-4]
 
-        # Extract owner/repo
         parts = url.replace('https://github.com/', '').split('/')
         if len(parts) >= 2:
-            return parts[0], parts[1], subpath
-        return None, None, None
+            return parts[0], parts[1], subpath, branch
+        return None, None, None, None
 
-    def get_repo_tree(self, owner: str, repo: str) -> list:
-        """Fetch repository file tree via GitHub API."""
-        for branch in ['main', 'master']:
-            url = f'https://api.github.com/repos/{owner}/{repo}/git/trees/{branch}?recursive=1'
+    def _get_default_branch(self, owner: str, repo: str) -> tuple:
+        """Get the repo's default branch via GitHub API.
+
+        Returns:
+            tuple: (branch_name, status_code)
+        """
+        try:
+            url = f'https://api.github.com/repos/{owner}/{repo}'
+            resp = requests.get(url, headers=self.headers, timeout=10)
+            if resp.ok:
+                return resp.json().get('default_branch'), resp.status_code
+            return None, resp.status_code
+        except Exception as e:
+            logger.debug(f"Error fetching repo info for {owner}/{repo}: {e}")
+            return None, None
+
+    def get_repo_tree(self, owner: str, repo: str, branch: str = None) -> list:
+        """Fetch repository file tree via GitHub API.
+
+        Tries branches in order: specified branch, main, master,
+        then repo's actual default branch.
+
+        Returns:
+            list of file paths, or None if repo returns 404 (not found).
+        """
+        branches_to_try = []
+        if branch:
+            branches_to_try.append(branch)
+        branches_to_try.extend(['main', 'master'])
+        for b in branches_to_try:
+            url = f'https://api.github.com/repos/{owner}/{repo}/git/trees/{b}?recursive=1'
             try:
                 resp = requests.get(url, headers=self.headers, timeout=15)
                 if resp.ok:
                     tree = resp.json().get('tree', [])
                     return [item['path'] for item in tree if item['type'] == 'blob']
             except Exception as e:
-                logger.debug(f"Error fetching tree for {branch}: {e}")
+                logger.debug(f"Error fetching tree for {b}: {e}")
+
+        # Last resort: query the repo API for its actual default branch
+        default_branch, status = self._get_default_branch(owner, repo)
+        if status == 404:
+            logger.warning(f"Repo not found (404): {owner}/{repo}")
+            return None  # sentinel for 404
+        if default_branch and default_branch not in branches_to_try:
+            url = f'https://api.github.com/repos/{owner}/{repo}/git/trees/{default_branch}?recursive=1'
+            try:
+                resp = requests.get(url, headers=self.headers, timeout=15)
+                if resp.ok:
+                    tree = resp.json().get('tree', [])
+                    return [item['path'] for item in tree if item['type'] == 'blob']
+            except Exception as e:
+                logger.debug(f"Error fetching tree for {default_branch}: {e}")
+
         return []
 
-    def fetch_file_content(self, owner: str, repo: str, path: str) -> str:
+    def fetch_file_content(self, owner: str, repo: str, path: str, ref: str = None) -> str:
         """Fetch content of a single file."""
         url = f'https://api.github.com/repos/{owner}/{repo}/contents/{path}'
+        if ref:
+            url += f'?ref={ref}'
         try:
             resp = requests.get(url, headers=self.headers, timeout=10)
             if resp.ok:
@@ -181,20 +234,18 @@ class RepoAnalyzer:
         return False
 
     def fetch_key_files(
-        self, owner: str, repo: str, subpath: str = None, max_files: int = 10
+        self, owner: str, repo: str, subpath: str = None, branch: str = None, max_files: int = 10
     ) -> dict:
         """Fetch content of key files from repository.
 
-        Args:
-            owner: GitHub repo owner
-            repo: GitHub repo name
-            subpath: If set, prioritize files within this subdirectory (for nested projects)
-            max_files: Maximum number of files to fetch
+        Returns:
+            dict of {filepath: content}, or None if repo returns 404.
         """
         content = {}
 
-        # Get repo tree
-        tree = self.get_repo_tree(owner, repo)
+        tree = self.get_repo_tree(owner, repo, branch)
+        if tree is None:  # 404 - repo not found
+            return None
         if not tree:
             logger.warning(f"Could not fetch tree for {owner}/{repo}")
             return content
@@ -215,7 +266,7 @@ class RepoAnalyzer:
         # Fetch in parallel
         with ThreadPoolExecutor(max_workers=5) as executor:
             future_to_path = {
-                executor.submit(self.fetch_file_content, owner, repo, f): f
+                executor.submit(self.fetch_file_content, owner, repo, f, branch): f
                 for f in files_to_fetch
             }
             for future in as_completed(future_to_path):
@@ -239,19 +290,33 @@ class RepoAnalyzer:
                 - owner: repo owner
                 - repo: repo name
                 - subpath: nested project directory (if any)
+                - branch: branch used (if any)
+                - not_found: True if repo returned 404
         """
-        owner, repo, subpath = self.parse_github_url(github_url)
+        owner, repo, subpath, branch = self.parse_github_url(github_url)
         if not owner or not repo:
             logger.error(f"Could not parse GitHub URL: {github_url}")
-            return {'files': {}, 'owner': None, 'repo': None, 'subpath': None}
+            return {'files': {}, 'owner': None, 'repo': None, 'subpath': None, 'branch': None, 'not_found': False}
 
-        files = self.fetch_key_files(owner, repo, subpath)
+        files = self.fetch_key_files(owner, repo, subpath, branch)
+
+        if files is None:  # 404
+            return {
+                'files': {},
+                'owner': owner,
+                'repo': repo,
+                'subpath': subpath,
+                'branch': branch,
+                'not_found': True,
+            }
 
         return {
             'files': files,
             'owner': owner,
             'repo': repo,
             'subpath': subpath,
+            'branch': branch,
+            'not_found': False,
         }
 
     def format_content_for_llm(self, files: dict, max_chars: int = 15000) -> str:

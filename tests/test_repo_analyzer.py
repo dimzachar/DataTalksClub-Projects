@@ -13,63 +13,151 @@ class TestParseGitHubUrl:
 
     def test_simple_url(self):
         analyzer = RepoAnalyzer()
-        owner, repo, subpath = analyzer.parse_github_url("https://github.com/user/repo")
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo"
+        )
         assert owner == "user"
         assert repo == "repo"
         assert subpath is None
+        assert branch is None
 
     def test_url_with_trailing_slash(self):
         analyzer = RepoAnalyzer()
-        owner, repo, subpath = analyzer.parse_github_url(
+        owner, repo, subpath, branch = analyzer.parse_github_url(
             "https://github.com/user/repo/"
         )
         assert owner == "user"
         assert repo == "repo"
         assert subpath is None
+        assert branch is None
 
     def test_url_with_git_suffix(self):
         analyzer = RepoAnalyzer()
-        owner, repo, subpath = analyzer.parse_github_url(
+        owner, repo, subpath, branch = analyzer.parse_github_url(
             "https://github.com/user/repo.git"
         )
         assert owner == "user"
         assert repo == "repo"
         assert subpath is None
+        assert branch is None
 
     def test_url_with_tree_main(self):
         analyzer = RepoAnalyzer()
-        owner, repo, subpath = analyzer.parse_github_url(
+        owner, repo, subpath, branch = analyzer.parse_github_url(
             "https://github.com/user/repo/tree/main"
         )
         assert owner == "user"
         assert repo == "repo"
         assert subpath is None
+        assert branch == "main"
 
     def test_url_with_nested_project(self):
         analyzer = RepoAnalyzer()
-        owner, repo, subpath = analyzer.parse_github_url(
+        owner, repo, subpath, branch = analyzer.parse_github_url(
             "https://github.com/user/repo/tree/main/project"
         )
         assert owner == "user"
         assert repo == "repo"
         assert subpath == "project"
+        assert branch == "main"
 
     def test_url_with_deep_nested_path(self):
         analyzer = RepoAnalyzer()
-        owner, repo, subpath = analyzer.parse_github_url(
+        owner, repo, subpath, branch = analyzer.parse_github_url(
             "https://github.com/user/repo/tree/main/src/project"
         )
         assert owner == "user"
         assert repo == "repo"
         assert subpath == "src/project"
+        assert branch == "main"
+
+    def test_url_with_query_params(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo?tab=readme-ov-file"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath is None
+        assert branch is None
+
+    def test_url_with_fragment(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo#"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath is None
+        assert branch is None
+
+    def test_url_with_non_main_branch(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo/tree/001-transaction-pipeline"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath is None
+        assert branch == "001-transaction-pipeline"
+
+    def test_url_with_non_main_branch_and_subpath(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo/tree/v2026/Project"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath == "Project"
+        assert branch == "v2026"
+
+    def test_url_with_blob(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo/blob/main/path/file.py"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath is None
+        assert branch == "main"
+
+    def test_url_with_query_and_fragment(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo/tree/main/project?tab=readme-ov-file#readme"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath == "project"
+        assert branch == "main"
+
+    def test_url_with_encoded_characters(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo/tree/main/Projcet%202/meto_analytics_engineering"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath == "Projcet 2/meto_analytics_engineering"
+        assert branch == "main"
+
+    def test_url_with_encoded_branch_name(self):
+        analyzer = RepoAnalyzer()
+        owner, repo, subpath, branch = analyzer.parse_github_url(
+            "https://github.com/user/repo/tree/feature%2Fxyz/src"
+        )
+        assert owner == "user"
+        assert repo == "repo"
+        assert subpath == "src"
+        assert branch == "feature/xyz"
 
     def test_invalid_url(self):
         analyzer = RepoAnalyzer()
         # URL without github.com - the parser splits on / so it returns parts
-        owner, repo, subpath = analyzer.parse_github_url("not-a-valid-url")
+        result = analyzer.parse_github_url("not-a-valid-url")
         # For non-github URLs, the parser may return unexpected results
         # The important thing is it doesn't crash
-        assert True  # Parser handles gracefully
+        assert len(result) == 4  # Returns 4-tuple (owner, repo, subpath, branch)
 
 
 class TestShouldFetchFile:
@@ -166,6 +254,23 @@ class TestFetchFileContent:
 
         assert len(result) == 8000
 
+    @patch('utils.repo_analyzer.requests.get')
+    def test_appends_ref_parameter_for_branch(self, mock_get):
+        content = "# README"
+        encoded = base64.b64encode(content.encode()).decode()
+
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.json.return_value = {'type': 'file', 'content': encoded}
+        mock_get.return_value = mock_response
+
+        analyzer = RepoAnalyzer()
+        result = analyzer.fetch_file_content("user", "repo", "README.md", ref="v2026")
+
+        assert result == content
+        call_url = mock_get.call_args[0][0]
+        assert 'ref=v2026' in call_url
+
 
 class TestGetRepoTree:
     """Tests for get_repo_tree method."""
@@ -209,12 +314,43 @@ class TestGetRepoTree:
     def test_returns_empty_on_failure(self, mock_get):
         mock_response = Mock()
         mock_response.ok = False
+        mock_response.status_code = 500
         mock_get.return_value = mock_response
 
         analyzer = RepoAnalyzer()
         result = analyzer.get_repo_tree("user", "repo")
 
         assert result == []
+
+    @patch.object(RepoAnalyzer, '_get_default_branch')
+    @patch('utils.repo_analyzer.requests.get')
+    def test_returns_none_on_404(self, mock_get, mock_get_branch):
+        mock_get_branch.return_value = (None, 404)
+        mock_response = Mock()
+        mock_response.ok = False
+        mock_response.status_code = 404
+        mock_get.return_value = mock_response
+
+        analyzer = RepoAnalyzer()
+        result = analyzer.get_repo_tree("user", "repo")
+
+        assert result is None
+
+    @patch('utils.repo_analyzer.requests.get')
+    def test_tries_specified_branch_first(self, mock_get):
+        mock_response = Mock()
+        mock_response.ok = True
+        mock_response.json.return_value = {
+            'tree': [{'path': 'README.md', 'type': 'blob'}]
+        }
+        mock_get.return_value = mock_response
+
+        analyzer = RepoAnalyzer()
+        result = analyzer.get_repo_tree("user", "repo", branch="v2026")
+
+        assert 'README.md' in result
+        call_url = mock_get.call_args[0][0]
+        assert 'v2026' in call_url
 
 
 class TestAnalyzeRepo:
@@ -223,7 +359,7 @@ class TestAnalyzeRepo:
     @patch.object(RepoAnalyzer, 'fetch_key_files')
     @patch.object(RepoAnalyzer, 'parse_github_url')
     def test_returns_structured_result(self, mock_parse, mock_fetch):
-        mock_parse.return_value = ('user', 'repo', None)
+        mock_parse.return_value = ('user', 'repo', None, None)
         mock_fetch.return_value = {'README.md': '# Test'}
 
         analyzer = RepoAnalyzer()
@@ -231,17 +367,36 @@ class TestAnalyzeRepo:
 
         assert result['owner'] == 'user'
         assert result['repo'] == 'repo'
+        assert result['subpath'] is None
+        assert result['branch'] is None
+        assert result['not_found'] is False
         assert 'README.md' in result['files']
+        mock_fetch.assert_called_once_with('user', 'repo', None, None)
+
+    @patch.object(RepoAnalyzer, 'fetch_key_files')
+    @patch.object(RepoAnalyzer, 'parse_github_url')
+    def test_handles_404(self, mock_parse, mock_fetch):
+        mock_parse.return_value = ('user', 'repo', None, None)
+        mock_fetch.return_value = None  # 404 sentinel
+
+        analyzer = RepoAnalyzer()
+        result = analyzer.analyze_repo("https://github.com/user/repo")
+
+        assert result['not_found'] is True
+        assert result['files'] == {}
+        assert result['owner'] == 'user'
 
     @patch.object(RepoAnalyzer, 'parse_github_url')
     def test_handles_invalid_url(self, mock_parse):
-        mock_parse.return_value = (None, None, None)
+        mock_parse.return_value = (None, None, None, None)
 
         analyzer = RepoAnalyzer()
         result = analyzer.analyze_repo("invalid-url")
 
         assert result['files'] == {}
         assert result['owner'] is None
+        assert result['branch'] is None
+        assert result['not_found'] is False
 
 
 class TestFormatContentForLLM:
