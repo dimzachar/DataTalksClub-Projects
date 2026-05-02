@@ -75,15 +75,15 @@ class TestFullPipelineIntegration:
         # Mock course page HTML
         html = """
         <html>
-        <div class="list-group-item">
-            <a href="https://github.com/user1/taxi-pipeline">Project 1</a>
-        </div>
-        <div class="list-group-item">
-            <a href="https://github.com/user2/kafka-stream">Project 2</a>
-        </div>
-        <div class="list-group-item">
-            <a href="https://github.com/user3/ml-api">Project 3</a>
-        </div>
+        <article>
+            <a href="https://github.com/user1/taxi-pipeline">Project 1</a><span>30</span>
+        </article>
+        <article>
+            <a href="https://github.com/user2/kafka-stream">Project 2</a><span>28</span>
+        </article>
+        <article>
+            <a href="https://github.com/user3/ml-api">Project 3</a><span>26</span>
+        </article>
         </html>
         """
         mock_response = Mock()
@@ -256,12 +256,12 @@ class TestFullPipelineIntegration:
         # Step 1: Mock scraping
         scrape_html = """
         <html>
-        <div class="list-group-item">
-            <a href="https://github.com/user1/taxi-pipeline">Project 1</a>
-        </div>
-        <div class="list-group-item">
-            <a href="https://github.com/user2/weather-data">Project 2</a>
-        </div>
+        <article>
+            <a href="https://github.com/user1/taxi-pipeline">Project 1</a><span>30</span>
+        </article>
+        <article>
+            <a href="https://github.com/user2/weather-data">Project 2</a><span>28</span>
+        </article>
         </html>
         """
         mock_scrape_response = Mock()

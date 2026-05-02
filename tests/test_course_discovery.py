@@ -27,6 +27,14 @@ class TestTrackedCourses:
         assert "llm-zoomcamp" in TRACKED_COURSES
         assert TRACKED_COURSES["llm-zoomcamp"] == "llmzoomcamp"
 
+    def test_smazoomcamp_tracked(self):
+        assert "sma-zoomcamp" in TRACKED_COURSES
+        assert TRACKED_COURSES["sma-zoomcamp"] == "smazoomcamp"
+
+    def test_aidevtools_tracked(self):
+        assert "ai-dev-tools" in TRACKED_COURSES
+        assert TRACKED_COURSES["ai-dev-tools"] == "aidevtools"
+
 
 class TestCourseDiscoveryInit:
     """Tests for CourseDiscovery initialization."""
@@ -71,14 +79,14 @@ class TestDiscoverCourses:
     def test_ignores_active_courses(self, mock_get):
         html = """
         <html>
-        <h3>Active courses</h3>
-        <ul>
-            <li><a href="/de-zoomcamp-2025">DE Zoomcamp 2025</a></li>
-        </ul>
-        <h3>Finished courses</h3>
-        <ul>
-            <li><a href="/de-zoomcamp-2024">DE Zoomcamp 2024</a></li>
-        </ul>
+        <section>
+            <h2>Active courses</h2>
+            <a href="/de-zoomcamp-2026/">DE Zoomcamp 2026</a>
+        </section>
+        <section>
+            <h2>Course archive</h2>
+            <a href="/de-zoomcamp-2024/">DE Zoomcamp 2024</a>
+        </section>
         </html>
         """
         mock_response = Mock()
@@ -89,7 +97,7 @@ class TestDiscoverCourses:
         discovery = CourseDiscovery()
         courses = discovery.discover_courses()
 
-        # Should only include finished course
+        # Should only include archived course, not active
         assert len(courses) == 1
         assert courses[0]['year'] == 2024
 

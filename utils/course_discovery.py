@@ -15,6 +15,8 @@ TRACKED_COURSES = {
     "ml-zoomcamp": "mlzoomcamp",
     "mlops-zoomcamp": "mlopszoomcamp",
     "llm-zoomcamp": "llmzoomcamp",
+    "sma-zoomcamp": "smazoomcamp",
+    "ai-dev-tools": "aidevtools",
 }
 
 
@@ -25,7 +27,7 @@ class CourseDiscovery:
         self.data_path = Path(data_path)
 
     def discover_courses(self):
-        """Scrape homepage to find only FINISHED courses (skip active ones)."""
+        """Scrape homepage to find finished/archived courses."""
         try:
             response = requests.get(self.BASE_URL, timeout=10)
             response.raise_for_status()
@@ -38,40 +40,32 @@ class CourseDiscovery:
         courses = []
         seen = set()
 
-        # Find the "Finished courses" section
-        in_finished_section = False
+        # Find the "Course archive" section (redesigned homepage)
+        archive_section = None
+        for h2 in soup.find_all("h2"):
+            if "archive" in h2.get_text(strip=True).lower():
+                archive_section = h2.find_parent("section")
+                break
 
-        for element in soup.find_all(["h3", "li"]):
-            # Check if we're entering the finished courses section
-            if element.name == "h3":
-                text = element.get_text(strip=True).lower()
-                in_finished_section = "finished" in text
-                continue
+        if archive_section:
+            links = archive_section.find_all("a", href=True)
+        else:
+            # Fallback: scan all links on the page
+            links = soup.find_all("a", href=True)
 
-            # Only process links in the finished section
-            if not in_finished_section:
-                continue
-
-            link = element.find("a", href=True)
-            if not link:
-                continue
-
+        for link in links:
             href = link["href"]
-
-            # Match pattern like "/de-zoomcamp-2024" or "/ml-zoomcamp-2023"
-            match = re.search(r"/([a-z]+-zoomcamp-(\d{4}))", href)
+            match = re.search(r"/([a-z][a-z0-9-]+-(\d{4}))/?$", href)
             if not match:
                 continue
 
-            course_slug = match.group(1)  # e.g., "de-zoomcamp-2024"
+            course_slug = match.group(1)
             year = int(match.group(2))
 
-            # Avoid duplicates
             if course_slug in seen:
                 continue
             seen.add(course_slug)
 
-            # Map to our folder naming convention
             for slug_prefix, folder_name in TRACKED_COURSES.items():
                 if course_slug.startswith(slug_prefix):
                     courses.append(
@@ -84,7 +78,6 @@ class CourseDiscovery:
                     )
                     break
 
-        # Sort by year descending (newest first)
         courses.sort(key=lambda x: (x["name"], -x["year"]))
         return courses
 
